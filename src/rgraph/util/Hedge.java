@@ -37,6 +37,16 @@ public class Hedge implements GraphObject {
     }
 
     @Override
+    public Type type() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Family[] families() {
+        return new Family[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public GraphFactory factory() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -44,5 +54,10 @@ public class Hedge implements GraphObject {
     @Override
     public void free() {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public GraphObject belongsTo() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

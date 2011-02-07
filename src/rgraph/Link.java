@@ -8,6 +8,8 @@ package rgraph;
  * To change this template use File | Settings | File Templates.
  */
 public interface Link extends GraphObject {
+    enum Direction { adjacent, incident }
+
     Node boundTo();
     Node belongsTo();
 

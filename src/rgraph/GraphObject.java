@@ -8,9 +8,6 @@ package rgraph;
  * To change this template use File | Settings | File Templates.
  */
 public interface GraphObject {
-    enum Direction { adjacent, incident }
-    enum Hyper { vertex, edge }
-
     enum Type { link, node, graph }
     enum Family { directed, hyper, recursive }
 
@@ -24,4 +21,5 @@ public interface GraphObject {
     GraphFactory factory();
 
     void free();
+    GraphObject belongsTo();
 }

@@ -8,8 +8,10 @@ package rgraph;
  * To change this template use File | Settings | File Templates.
  */
 public interface Node extends Container<Link> {
-    Container<Link> links(Direction direction);
-    Direction direction(Container<Link> links);
+    enum Hyper { vertex, edge }
+
+    Container<Link> links(Link.Direction direction);
+    Link.Direction direction(Container<Link> links);
 
     Container<Link> reverse(Container<Link> links);
     Container<Link> inverse(Container<Link> links);
