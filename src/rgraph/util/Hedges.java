@@ -3,11 +3,9 @@ package rgraph.util;
 import rgraph.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: nnombela
+ * This class models...
+ * Author: nnombela@gmail.com
  * Date: 1/02/11
- * Time: 12:20
- * To change this template use File | Settings | File Templates.
  */
 public class Hedges implements Container<Hedge> {
 

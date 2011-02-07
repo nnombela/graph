@@ -1,11 +1,9 @@
 package rgraph;
 
 /**
- * Created by IntelliJ IDEA.
- * User: nnombela
+ * This class models...
+ * Author: nnombela@gmail.com
  * Date: 3/01/11
- * Time: 15:36
- * To change this template use File | Settings | File Templates.
  */
 public interface GraphObject {
     enum Direction { adjacent, incident }
