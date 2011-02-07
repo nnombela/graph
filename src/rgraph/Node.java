@@ -9,6 +9,7 @@ package rgraph;
  */
 public interface Node extends Container<Link> {
     Container<Link> links(Direction direction);
+    Direction direction(Container<Link> links);
 
     Container<Link> reverse(Container<Link> links);
     Container<Link> inverse(Container<Link> links);
@@ -16,7 +17,7 @@ public interface Node extends Container<Link> {
     Graph belongsTo();
 
     boolean is(Hyper hyper);
-    Hyper type();
+    Hyper hyper();
 
     Graph up();
     Link down();

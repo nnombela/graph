@@ -9,6 +9,7 @@ package rgraph;
  */
 public interface Graph extends Container<Node> {
     Container<Node> nodes(Hyper hyper);
+    Hyper hyper(Container<Node> nodes);
 
     Container<Node> dual(Container<Node> nodes);
 
