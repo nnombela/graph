@@ -6,6 +6,8 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Link extends GraphObject {
+    enum Direction { adjacent, incident }
+
     Node boundTo();
     Node belongsTo();
 

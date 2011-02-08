@@ -6,7 +6,10 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Node extends Container<Link> {
-    Container<Link> links(Direction direction);
+    enum Hyper { vertex, edge }
+
+    Container<Link> links(Link.Direction direction);
+    Link.Direction direction(Container<Link> links);
 
     Container<Link> reverse(Container<Link> links);
     Container<Link> inverse(Container<Link> links);
@@ -14,7 +17,7 @@ public interface Node extends Container<Link> {
     Graph belongsTo();
 
     boolean is(Hyper hyper);
-    Hyper type();
+    Hyper hyper();
 
     Graph up();
     Link down();

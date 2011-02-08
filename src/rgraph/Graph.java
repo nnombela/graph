@@ -6,7 +6,8 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Graph extends Container<Node> {
-    Container<Node> nodes(Hyper hyper);
+    Container<Node> nodes(Node.Hyper hyper);
+    Node.Hyper hyper(Container<Node> nodes);
 
     Container<Node> dual(Container<Node> nodes);
 

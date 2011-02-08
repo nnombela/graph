@@ -76,12 +76,12 @@ public class Hedges implements Container<Hedge> {
     }
 
     @Override
-    public Hedge bind(Hedge hedge) {
+    public Hedge bind(Container<Hedge> g) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Hedge unbind(Hedge hedge) {
+    public Hedge unbind(Container<Hedge> g) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -96,6 +96,16 @@ public class Hedges implements Container<Hedge> {
     }
 
     @Override
+    public Type type() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Family[] families() {
+        return new Family[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public GraphFactory factory() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -103,5 +113,10 @@ public class Hedges implements Container<Hedge> {
     @Override
     public void free() {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public GraphObject belongsTo() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
