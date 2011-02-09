@@ -7,9 +7,9 @@ import rgraph.*;
  * Author: nnombela@gmail.com
  * Date: 1/02/11
  */
-public class Hedges implements Container<Hedge> {
+public class Edges implements Container<Edge> {
 
-    Hedges(Graph graph) {
+    Edges(Graph graph) {
         graph.forEach(new Closure<Node>() {
             @Override
             public void execute(Node node) {
@@ -17,7 +17,7 @@ public class Hedges implements Container<Hedge> {
                     @Override
                     public void execute(Link link) {
                         if (link.isLinked()) {
-                            add(new Hedge(link, link.linkedTo()));
+                            add(new Edge(link, link.linkedTo()));
                         }
                     }
                 });
@@ -46,7 +46,7 @@ public class Hedges implements Container<Hedge> {
     }
 
     @Override
-    public long index(Hedge hedge) {
+    public long index(Edge edge) {
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -56,33 +56,23 @@ public class Hedges implements Container<Hedge> {
     }
 
     @Override
-    public boolean contains(Hedge hedge) {
+    public boolean contains(Edge edge) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Hedge add(Hedge hedge) {
+    public Edge add(Edge edge) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Hedge addNew() {
+    public Edge addNew() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void remove(Hedge hedge) {
+    public void remove(Edge edge) {
         //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Hedge bind(Container<Hedge> g) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Hedge unbind(Container<Hedge> g) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -118,5 +108,10 @@ public class Hedges implements Container<Hedge> {
     @Override
     public GraphObject belongsTo() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public long ordinal() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

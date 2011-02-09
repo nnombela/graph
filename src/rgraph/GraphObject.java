@@ -13,11 +13,13 @@ public interface GraphObject {
     boolean is(Type type);
     boolean is(Family family);
 
-    Type getType();
-    Family[] getFamilies();
+    Type type();
+    Family[] families();
 
-    GraphFactory getFactory();
+    GraphFactory factory();
 
     void free();
     GraphObject belongsTo();
+
+    long ordinal();
 }
