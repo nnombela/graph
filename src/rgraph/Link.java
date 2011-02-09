@@ -6,7 +6,13 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Link extends GraphObject {
-    enum Direction { adjacent, incident }
+    enum Direction {
+        adjacent, incident;
+
+        Direction reverse(Direction direction) {
+            return direction == adjacent ? incident : adjacent;
+        }
+    }
 
     Node boundTo();
     Node belongsTo();
@@ -20,9 +26,11 @@ public interface Link extends GraphObject {
     boolean is(Direction direction);
     Direction direction();
 
+    // for directed family
     boolean isBidirectional();     // reverse() != null
     Link reverse();
 
+    // for recursive family
     Node up();
     Link inverse();
 }

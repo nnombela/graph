@@ -8,7 +8,7 @@ import java.util.*;
  * Date: 5/01/11
  */
 public class GraphFactory {
-    private static Set<GraphFactory> factories = Collections.synchronizedSet(new HashSet<GraphFactory>());
+    protected static Set<GraphFactory> factories = Collections.synchronizedSet(new HashSet<GraphFactory>());
 
     static Set<GraphFactory> getFactories() {
         return factories;

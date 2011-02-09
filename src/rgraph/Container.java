@@ -42,7 +42,4 @@ public interface Container<G extends GraphObject> extends GraphObject {
     G add(G g);
     G addNew();
     void remove(G g);
-
-    G bind(Container<G> g);
-    G unbind(Container<G>   g);
 }

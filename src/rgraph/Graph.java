@@ -12,4 +12,8 @@ public interface Graph extends Container<Node> {
     Container<Node> dual(Container<Node> nodes);
 
     Node down();
+
+    Node bind(Graph graph);
+    Node bind(Graph graph, Node.Hyper hyper);
+    Node unbind(Graph graph);
 }

@@ -6,7 +6,13 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Node extends Container<Link> {
-    enum Hyper { vertex, edge }
+    enum Hyper {
+        vertex, edge;
+
+        Hyper dual(Hyper hyper) {
+            return hyper == vertex? edge : vertex;
+        }
+    }
 
     Container<Link> links(Link.Direction direction);
     Link.Direction direction(Container<Link> links);
@@ -21,4 +27,8 @@ public interface Node extends Container<Link> {
 
     Graph up();
     Link down();
+
+    Link bind(Node node);
+    Link bind(Node node, Link.Direction direction);
+    Link unbind(Node node);
 }
