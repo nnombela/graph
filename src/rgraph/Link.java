@@ -5,6 +5,10 @@ package rgraph;
  * Author: nnombela@gmail.com
  * Date: 3/01/11
  */
+
+// Links are edges with only one end, also called half-edges. Should I rename it as HalfEdge?
+// The name half-edge seems something uncompleted which I don't like
+
 public interface Link extends GraphObject {
     enum Direction {
         adjacent, incident;
@@ -14,14 +18,14 @@ public interface Link extends GraphObject {
         }
     }
 
-    Node boundTo();
+    Node linksTo();    // pair().belongsTo()
     Node belongsTo();
 
-    boolean isLinked();
-    Link linkedTo();
+    boolean isPaired();
+    Link pair();
 
-    Link link(Link link);
-    void unlink();
+    Link bind(Link link);
+    void unbind();
 
     boolean is(Direction direction);
     Direction direction();

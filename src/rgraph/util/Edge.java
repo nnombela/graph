@@ -12,11 +12,11 @@ public class Edge implements GraphObject {
     public Node[] endpoints = new Node[2];
 
     private Node[] createEndpoints(Link link) {
-        return new Node[] { link.boundTo(), link.isLinked()? link.linkedTo().boundTo() : null };
+        return new Node[] { link.belongsTo(), link.isPaired()? link.linksTo() : null };
     }
 
     public Edge(Link link) {
-        this.endpoints = link.is(adjacent)? createEndpoints(link) : createEndpoints(link.linkedTo());
+        this.endpoints = link.is(adjacent)? createEndpoints(link) : createEndpoints(link.pair());
     }
 
     public Node[] endpoints() {
