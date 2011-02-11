@@ -25,8 +25,8 @@ public interface Node extends Container<Link> {
     boolean is(Hyper hyper);
     Hyper hyper();
 
-    Graph up();
-    Link down();
+    Graph down();
+    Link up();
 
     Link bind(Node node);
     Link bind(Node node, Link.Direction direction);

@@ -9,22 +9,26 @@ import static rgraph.Link.Direction.*;
  * Date: 1/02/11
  */
 public class Edge implements GraphObject {
-    public Link adjLink;
+    public Node[] endpoints = new Node[2];
 
-    public Edge(Link link) {
-        this.adjLink = link.is(adjacent)? link : link.linkedTo();
+    private Node[] createEndpoints(Link link) {
+        return new Node[] { link.boundTo(), link.isLinked()? link.linkedTo().boundTo() : null };
     }
 
-    public Link[] endpoints() {
-        return new Link[] {adjLink, adjLink.linkedTo() };
+    public Edge(Link link) {
+        this.endpoints = link.is(adjacent)? createEndpoints(link) : createEndpoints(link.linkedTo());
+    }
+
+    public Node[] endpoints() {
+        return endpoints;
     }
 
     public Node source() {
-        return adjLink.belongsTo();
+        return endpoints[0];
     }
 
     public Node target() {
-        return adjLink.linkedTo().belongsTo();
+        return endpoints[1];
     }
 
     @Override

@@ -31,6 +31,6 @@ public interface Link extends GraphObject {
     Link reverse();
 
     // for recursive family
-    Node up();
+    Node down();
     Link inverse();
 }

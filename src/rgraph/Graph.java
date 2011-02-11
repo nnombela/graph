@@ -11,7 +11,7 @@ public interface Graph extends Container<Node> {
 
     Container<Node> dual(Container<Node> nodes);
 
-    Node down();
+    Node up();
 
     Node bind(Graph graph);
     Node bind(Graph graph, Node.Hyper hyper);

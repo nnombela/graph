@@ -16,9 +16,8 @@ public class Edges implements Container<Edge> {
                 node.forEach(new Closure<Link>() {
                     @Override
                     public void execute(Link link) {
-                        if (link.isLinked()) {
-                            add(new Edge(link, link.linkedTo()));
-                        }
+                        // Todo: this is wrong
+                        add(new Edge(link));
                     }
                 });
             }
