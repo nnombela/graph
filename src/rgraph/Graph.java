@@ -14,6 +14,6 @@ public interface Graph extends Container<Node> {
     Node up();
 
     Node bind(Graph graph);
-    Node bind(Graph graph, Node.Hyper hyper);
+    Node bindThrough(Graph graph, Node.Hyper hyper);
     Node unbind(Graph graph);
 }

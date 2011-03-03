@@ -2,7 +2,7 @@ package rgraph.util;
 
 import rgraph.*;
 
-import static rgraph.Link.Direction.*;
+import static rgraph.Halfedge.Direction.*;
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -11,12 +11,12 @@ import static rgraph.Link.Direction.*;
 public class Edge implements GraphObject {
     public Node[] endpoints = new Node[2];
 
-    private Node[] createEndpoints(Link link) {
-        return new Node[] { link.belongsTo(), link.isPaired()? link.linksTo() : null };
+    private Node[] createEndpoints(Halfedge halfedge) {
+        return new Node[] { halfedge.belongsTo(), halfedge.isBinded()? halfedge.bindedTo() : null };
     }
 
-    public Edge(Link link) {
-        this.endpoints = link.is(adjacent)? createEndpoints(link) : createEndpoints(link.pair());
+    public Edge(Halfedge halfedge) {
+        this.endpoints = halfedge.is(adjacent)? createEndpoints(halfedge) : createEndpoints(halfedge.pair());
     }
 
     public Node[] endpoints() {

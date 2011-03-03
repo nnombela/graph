@@ -6,7 +6,7 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface GraphObject {
-    enum Type { link, node, graph }
+    enum Type { halfEdge, node, graph }
     enum Family { directed, hyper, recursive }
 
 

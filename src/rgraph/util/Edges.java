@@ -13,11 +13,11 @@ public class Edges implements Container<Edge> {
         graph.forEach(new Closure<Node>() {
             @Override
             public void execute(Node node) {
-                node.forEach(new Closure<Link>() {
+                node.forEach(new Closure<Halfedge>() {
                     @Override
-                    public void execute(Link link) {
+                    public void execute(Halfedge halfedge) {
                         // Todo: this is wrong
-                        add(new Edge(link));
+                        add(new Edge(halfedge));
                     }
                 });
             }
@@ -40,7 +40,7 @@ public class Edges implements Container<Edge> {
     }
 
     @Override
-    public Link find(Condition condition) {
+    public Halfedge find(Condition condition) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -70,8 +70,13 @@ public class Edges implements Container<Edge> {
     }
 
     @Override
-    public void remove(Edge edge) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public boolean remove(Edge edge) {
+        return false;
+    }
+
+    @Override
+    public boolean swap(Edge g1, Edge g2) {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

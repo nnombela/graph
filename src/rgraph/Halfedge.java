@@ -6,10 +6,10 @@ package rgraph;
  * Date: 3/01/11
  */
 
-// Links are edges with only one end, also called half-edges. Should I rename it as HalfEdge?
+// Links are edges with only one end, also called half-edges. Should I rename it as Halfedge?
 // The name half-edge seems something uncompleted which I don't like
 
-public interface Link extends GraphObject {
+public interface Halfedge extends GraphObject {
     enum Direction {
         adjacent, incident;
 
@@ -18,23 +18,25 @@ public interface Link extends GraphObject {
         }
     }
 
-    Node linksTo();    // pair().belongsTo()
+    Node bindedTo();    // pair().belongsTo()
     Node belongsTo();
 
-    boolean isPaired();
-    Link pair();
+    boolean isBinded();
+    Halfedge pair();
 
-    Link bind(Link link);
+    Halfedge bind(Halfedge halfedge);
     void unbind();
 
     boolean is(Direction direction);
     Direction direction();
 
     // for directed family
-    boolean isBidirectional();     // reverse() != null
-    Link reverse();
+    boolean hasReverse();   // is bidirectional
+    Halfedge reverse();
 
     // for recursive family
+    Halfedge inverse();
+    boolean hasInverse(); // belongsTo().up().pair()
+
     Node down();
-    Link inverse();
 }

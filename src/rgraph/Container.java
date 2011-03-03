@@ -6,6 +6,17 @@ package rgraph;
  * Date: 5/01/11
  */
 public interface Container<G extends GraphObject> extends GraphObject {
+
+//    interface Listener<G> {
+//        enum EventType { ADD, REMOVE, SWAP }
+//        void onEvent(EventType eventType, G g1, G g2);
+//    }
+//
+//    Listener<G> getListeners();
+//    void addListener(Listener<G> listener);
+//    void removeListener(Listener<G> listener);
+//    void clearListeners();
+
     interface Accessor<G> {
         void set(G g, Object obj);
         Object get(G g);
@@ -32,7 +43,7 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     void forEach(Closure closure);
 
-    Link find(Condition condition);
+    Halfedge find(Condition condition);
 
     long index(G g);
     long size();
@@ -41,5 +52,6 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     G add(G g);
     G addNew();
-    void remove(G g);
+    boolean remove(G g);
+    boolean swap(G g1, G g2);
 }
