@@ -18,14 +18,14 @@ public interface Halfedge extends GraphObject {
         }
     }
 
-    Node bindedTo();    // pair().belongsTo()
+    Node linkedTo();    // pair().belongsTo()
     Node belongsTo();
 
-    boolean isBinded();
+    boolean isLinked();
     Halfedge pair();
 
-    Halfedge bind(Halfedge halfedge);
-    void unbind();
+    Halfedge link(Halfedge halfedge);
+    void unlink();
 
     boolean is(Direction direction);
     Direction direction();

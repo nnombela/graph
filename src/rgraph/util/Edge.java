@@ -12,7 +12,7 @@ public class Edge implements GraphObject {
     public Node[] endpoints = new Node[2];
 
     private Node[] createEndpoints(Halfedge halfedge) {
-        return new Node[] { halfedge.belongsTo(), halfedge.isBinded()? halfedge.bindedTo() : null };
+        return new Node[] { halfedge.belongsTo(), halfedge.isLinked()? halfedge.linkedTo() : null };
     }
 
     public Edge(Halfedge halfedge) {

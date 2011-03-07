@@ -10,7 +10,7 @@ public interface Node extends Container<Halfedge> {
         vertex, edge;
 
         Hyper dual(Hyper hyper) {
-            return hyper == vertex ? edge : vertex;
+            return hyper == vertex? edge : vertex;
         }
     }
 
@@ -28,7 +28,7 @@ public interface Node extends Container<Halfedge> {
     Graph down();
     Halfedge up();
 
-    Halfedge bind(Node node);
-    Halfedge bindThrough(Node node, Halfedge.Direction direction);
-    Halfedge unbind(Node node);
+    Halfedge link(Node node);
+    Halfedge linkBy(Node node, Halfedge.Direction direction);
+    Halfedge unlink(Node node);
 }
