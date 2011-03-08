@@ -6,11 +6,11 @@ package rgraph;
  * Date: 3/01/11
  */
 public interface Node extends Container<Halfedge> {
-    enum Hyper {
-        vertex, edge;
+    enum Duality {
+        hypervertex, hyperedge;
 
-        Hyper dual(Hyper hyper) {
-            return hyper == vertex? edge : vertex;
+        Duality dual(Duality duality) {
+            return duality == hypervertex ? hyperedge : hypervertex;
         }
     }
 
@@ -22,13 +22,13 @@ public interface Node extends Container<Halfedge> {
 
     Graph belongsTo();
 
-    boolean is(Hyper hyper);
-    Hyper hyper();
+    boolean is(Duality duality);
+    Duality duality();
 
     Graph down();
     Halfedge up();
 
     Halfedge link(Node node);
-    Halfedge linkBy(Node node, Halfedge.Direction direction);
+    Halfedge link(Node node, Halfedge.Direction direction);
     Halfedge unlink(Node node);
 }

@@ -33,7 +33,7 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     void forEach(Closure closure);
 
-    Halfedge find(Condition condition);
+    G find(Condition condition);
 
     long index(G g);
     long size();

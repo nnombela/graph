@@ -6,8 +6,8 @@ package rgraph;
  * Date: 3/01/11
  */
 
-// Links are edges with only one end, also called half-edges. Should I rename it as Halfedge?
-// The name half-edge seems something uncompleted which I don't like
+
+// The name halfedge is kind of ugly, maybe I should rename it to link, hook or port
 
 public interface Halfedge extends GraphObject {
     enum Direction {

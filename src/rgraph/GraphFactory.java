@@ -10,7 +10,7 @@ import java.util.*;
 public class GraphFactory {
     protected static Set<GraphFactory> factories = Collections.synchronizedSet(new HashSet<GraphFactory>());
 
-    static Set<GraphFactory> getFactories() {
+    static Set<GraphFactory> factories() {
         return factories;
     }
 
@@ -23,11 +23,11 @@ public class GraphFactory {
     }
 
 
-    String getName() {
+    String name() {
         throw new RuntimeException("Not implemented");
     }
 
-    Graph createGraph() {
+    GraphObject create(GraphObject.Type type) {
         throw new RuntimeException("Not implemented");
     }
 }

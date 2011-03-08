@@ -7,7 +7,7 @@ package rgraph;
  */
 public interface GraphObject {
     enum Type { graph, node, halfedge }
-    enum Family { directed, hyper, recursive }
+    enum Family { directed, dual, recursive }
 
 
     boolean is(Type type);
@@ -20,6 +20,4 @@ public interface GraphObject {
 
     void free();
     GraphObject belongsTo();
-
-    long ordinal();
 }
