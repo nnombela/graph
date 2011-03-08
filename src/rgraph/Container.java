@@ -7,16 +7,6 @@ package rgraph;
  */
 public interface Container<G extends GraphObject> extends GraphObject {
 
-//    interface Listener<G> {
-//        enum EventType { ADD, REMOVE, SWAP }
-//        void onEvent(EventType eventType, G g1, G g2);
-//    }
-//
-//    Listener<G> getListeners();
-//    void addListener(Listener<G> listener);
-//    void removeListener(Listener<G> listener);
-//    void clearListeners();
-
     interface Accessor<G> {
         void set(G g, Object obj);
         Object get(G g);

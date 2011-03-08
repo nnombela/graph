@@ -18,25 +18,20 @@ public interface Halfedge extends GraphObject {
         }
     }
 
-    Node linkedTo();    // pair().belongsTo()
-    Node belongsTo();
-
+    Node linkedTo();
     boolean isLinked();
-    Halfedge pair();
 
+    Halfedge pair();
     Halfedge link(Halfedge halfedge);
-    void unlink();
+    Halfedge unlink();
+
+    Node belongsTo();
 
     boolean is(Direction direction);
     Direction direction();
 
-    // for directed family
-    boolean hasReverse();   // is bidirectional
-    Halfedge reverse();
-
-    // for recursive family
-    Halfedge inverse();
-    boolean hasInverse(); // belongsTo().up().pair()
+    Halfedge reverse();  // for directed family
+    Halfedge inverse();  // for recursive family
 
     Node down();
 }
