@@ -18,20 +18,23 @@ public interface Halfedge extends GraphObject {
         }
     }
 
-    Node linkedTo();
-    boolean isLinked();
-
-    Halfedge pair();
-    Halfedge link(Halfedge halfedge);
-    Halfedge unlink();
+    enum JoinType {
+        direct, reverse, inverse
+    }
 
     Node belongsTo();
+    Node linkedTo();
+
+    Halfedge pair();
+    Halfedge join(Halfedge halfedge);
+    Halfedge disjoin();
+
+    Halfedge pair(JoinType type);
+    Halfedge join(JoinType type, Halfedge halfedge);
+    Halfedge disjoin(JoinType type);
 
     boolean is(Direction direction);
     Direction direction();
-
-    Halfedge reverse();  // for directed family
-    Halfedge inverse();  // for recursive family
 
     Node down();
 }
