@@ -19,7 +19,7 @@ public interface Halfedge extends GraphObject {
     }
 
     enum JoinType {
-        direct, reverse, inverse
+        direct, reverse, inverse   // joins to make a full direct edge, a bidirectional halfedge (reverse) or a full inverse edge
     }
 
     Node belongsTo();
