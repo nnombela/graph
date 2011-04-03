@@ -1,4 +1,4 @@
-package rgraph;
+package fgraph;
 
 import java.util.*;
 

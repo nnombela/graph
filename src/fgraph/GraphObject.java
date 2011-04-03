@@ -1,4 +1,4 @@
-package rgraph;
+package fgraph;
 
 /**
  * This class models...
@@ -7,7 +7,7 @@ package rgraph;
  */
 public interface GraphObject {
     enum Type { graph, node, halfedge }
-    enum Family { directed, dual, recursive }
+    enum Family { directed, dual, fractal }
 
 
     boolean is(Type type);

@@ -1,6 +1,6 @@
-package rgraph.util;
+package fgraph.util;
 
-import rgraph.*;
+import fgraph.*;
 
 /**
  * This class models...

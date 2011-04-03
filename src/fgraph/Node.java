@@ -1,4 +1,4 @@
-package rgraph;
+package fgraph;
 
 /**
  * This class models...

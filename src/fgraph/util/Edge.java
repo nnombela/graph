@@ -1,8 +1,8 @@
-package rgraph.util;
+package fgraph.util;
 
-import rgraph.*;
+import fgraph.*;
 
-import static rgraph.Halfedge.Direction.*;
+import static fgraph.Halfedge.Direction.*;
 /**
  * This class models...
  * Author: nnombela@gmail.com
