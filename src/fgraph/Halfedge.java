@@ -23,8 +23,9 @@ public interface Halfedge extends GraphObject {
     }
 
     Node belongsTo();
-    Node linkedTo();
+    Node linksTo();
 
+    // currying for direct join type
     Halfedge pair();
     Halfedge join(Halfedge halfedge);
     Halfedge disjoin();
