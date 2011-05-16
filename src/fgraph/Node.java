@@ -10,7 +10,7 @@ public interface Node extends Container<Halfedge> {
         hypervertex, hyperedge;
 
         Duality dual(Duality duality) {
-            return duality == hypervertex ? hyperedge : hypervertex;
+            return duality == hypervertex? hyperedge : hypervertex;
         }
     }
 

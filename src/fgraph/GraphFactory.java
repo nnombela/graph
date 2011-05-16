@@ -7,7 +7,7 @@ import java.util.*;
  * Author: nnombela@gmail.com
  * Date: 5/01/11
  */
-public class GraphFactory {
+public abstract class GraphFactory {
     protected static Set<GraphFactory> factories = Collections.synchronizedSet(new HashSet<GraphFactory>());
 
     static Set<GraphFactory> factories() {
@@ -23,11 +23,7 @@ public class GraphFactory {
     }
 
 
-    String name() {
-        throw new RuntimeException("Not implemented");
-    }
+    abstract String name();
 
-    GraphObject create(GraphObject.Type type) {
-        throw new RuntimeException("Not implemented");
-    }
+    abstract GraphObject create(GraphObject.Type type);
 }

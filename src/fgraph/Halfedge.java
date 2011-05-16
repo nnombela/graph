@@ -14,11 +14,11 @@ public interface Halfedge extends GraphObject {
         adjacent, incident;
 
         Direction reverse(Direction direction) {
-            return direction == adjacent ? incident : adjacent;
+            return direction == adjacent? incident : adjacent;
         }
     }
 
-    enum JoinType {
+    enum Join {
         direct, reverse, inverse   // joins to make a full direct edge, a bidirectional halfedge (reverse) or a full inverse edge
     }
 
@@ -30,9 +30,9 @@ public interface Halfedge extends GraphObject {
     Halfedge join(Halfedge halfedge);
     Halfedge disjoin();
 
-    Halfedge pair(JoinType type);
-    Halfedge join(JoinType type, Halfedge halfedge);
-    Halfedge disjoin(JoinType type);
+    Halfedge pair(Join join);
+    Halfedge join(Join join, Halfedge halfedge);
+    Halfedge disjoin(Join join);
 
     boolean is(Direction direction);
     Direction direction();
