@@ -31,12 +31,12 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     Accessor accessor();
 
-    void forEach(Closure closure);
+    void forEach(Closure<G> closure);
 
-    G find(Condition condition);
+    G find(Condition<G> condition);
 
-    long index(G g);
-    long size();
+    int index(G g);
+    int size();
 
     boolean contains(G g);
 
