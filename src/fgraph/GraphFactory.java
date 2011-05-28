@@ -23,7 +23,7 @@ public abstract class GraphFactory {
     }
 
 
-    abstract String name();
+    public abstract String name();
 
-    abstract GraphObject create(GraphObject.Type type);
+    public abstract GraphObject create(GraphObject.Type type);
 }

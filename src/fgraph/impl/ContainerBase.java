@@ -11,7 +11,7 @@ import fgraph.GraphObject;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public class ContainerBase<G extends GraphObject> implements Container<G> {
+public abstract class ContainerBase<G extends GraphObject> implements Container<G> {
     protected GraphObject[] gobjs = new GraphObject[1];
     protected int size = 0;
 
@@ -23,6 +23,19 @@ public class ContainerBase<G extends GraphObject> implements Container<G> {
         gobjs[index] = g;
     }
 
+    protected void reserve(int capacity) {
+        if (gobjs.length < capacity) {
+            GraphObject[] _new = new GraphObject[capacity];
+            System.arraycopy(gobjs, 0, _new, 0, size);
+            gobjs = _new;
+        }
+    }
+
+    protected void accommodate() {
+        if (gobjs.length == size()) {
+            reserve((3 * (gobjs.length + 1)) / 2);
+        }
+    }
 
     public Iterator<G> iterator() {
         return new Iterator<G>() {
@@ -88,50 +101,26 @@ public class ContainerBase<G extends GraphObject> implements Container<G> {
     }
 
     public boolean contains(G g) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return index(g) != -1;
     }
 
     public G add(G g) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        accommodate();
+        set(g, size++);
+        return g;
     }
 
-    public G addNew() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public void remove(G g) {
+        set(get(--size), index(g));
+        gobjs[size] = null;
     }
 
-    public boolean remove(G g) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public void swap(G g1, G g2) {
+        int index1 = index(g1);
+        int index2 = index(g2);
+        gobjs[index1] = g2;
+        gobjs[index2] = g1;
     }
 
-    public boolean swap(G g1, G g2) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 
-    public boolean is(Type type) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public boolean is(Family family) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Type type() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Family[] families() {
-        return new Family[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public GraphFactory factory() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public void free() {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public GraphObject belongsTo() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 }

@@ -13,8 +13,6 @@ public interface GraphObject {
     boolean is(Type type);
     boolean is(Family family);
 
-    Type type();
-    Family[] families();
 
     GraphFactory factory();
 

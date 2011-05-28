@@ -42,6 +42,6 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     G add(G g);
     G addNew();
-    boolean remove(G g);
-    boolean swap(G g1, G g2);
+    void remove(G g);
+    void swap(G g1, G g2);
 }
