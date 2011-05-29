@@ -3,6 +3,7 @@ package fgraph.impl;
 import fgraph.Container;
 import fgraph.GraphFactory;
 import fgraph.GraphObject;
+import sun.security.smartcardio.SunPCSC;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,11 +12,47 @@ import fgraph.GraphObject;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ContainerBase<G extends GraphObject> implements Container<G> {
+public class ContainerBase<G extends GraphObject> implements Container<G> {
     protected GraphObject[] gobjs = new GraphObject[1];
     protected int size = 0;
+    protected GraphObject belongsTo;
+    protected Type type;
 
-    protected G get(int index) {
+    public ContainerBase(GraphObject belongsTo, Type type) {
+        this.belongsTo = belongsTo;
+        this.type = type;
+    }
+
+
+    public boolean is(Type type) {
+        return this.type == type;
+    }
+
+    public boolean is(Family family) {
+        return belongsTo().is(family);
+    }
+
+    public Type type() {
+        return type;
+    }
+
+    public Family[] families() {
+        return belongsTo.families();
+    }
+
+    public GraphFactory factory() {
+        return belongsTo.factory();
+    }
+
+    public void free() {
+        // TODO: Implement
+    }
+
+    public GraphObject belongsTo() {
+        return belongsTo;
+    }
+
+    public G get(int index) {
         return (G) gobjs[index];
     }
 
@@ -108,6 +145,10 @@ public abstract class ContainerBase<G extends GraphObject> implements Container<
         accommodate();
         set(g, size++);
         return g;
+    }
+
+    public G addNew() {
+        return add((G)factory().create(type));
     }
 
     public void remove(G g) {
