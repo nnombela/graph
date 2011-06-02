@@ -12,33 +12,21 @@ import fgraph.GraphObject;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class ContainerAbstract<G extends GraphObject> implements Container<G> {
-    protected GraphObject belongsTo;
-    protected Type type;
-
-    public ContainerAbstract(GraphObject belongsTo, Type type) {
-        this.belongsTo = belongsTo;
-        this.type = type;
-    }
-
 
     public boolean is(Type type) {
-        return this.type == type;
+        return type == type();
     }
 
     public boolean is(Family family) {
         return belongsTo().is(family);
     }
 
-    public Type type() {
-        return type;
-    }
-
     public Family[] families() {
-        return belongsTo.families();
+        return belongsTo().families();
     }
 
     public GraphFactory factory() {
-        return belongsTo.factory();
+        return belongsTo().factory();
     }
 
     public void free() {
@@ -47,10 +35,6 @@ public abstract class ContainerAbstract<G extends GraphObject> implements Contai
                 g.free();
             }
         });
-    }
-
-    public GraphObject belongsTo() {
-        return belongsTo;
     }
 
     public Iterator<G> iterator() {
@@ -119,7 +103,7 @@ public abstract class ContainerAbstract<G extends GraphObject> implements Contai
 
 
     public G addNew() {
-        return add((G)factory().create(type));
+        return add((G)factory().create(type()));
     }
 
 }

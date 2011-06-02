@@ -8,13 +8,20 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
-    private ContainerImpl<G> left;
-    private ContainerImpl<G> right;
+    protected ContainerImpl<G> left;
+    protected ContainerImpl<G> right;
 
     public DualContainerImpl(GraphObject belongsTo, Type type) {
-        super(belongsTo, type);
         this.left = new ContainerImpl<G>(belongsTo, type);
         this.right = new ContainerImpl<G>(belongsTo, type);
+    }
+
+    public Type type() {
+        return left.type();
+    }
+
+    public GraphObject belongsTo() {
+        return left.belongsTo();
     }
 
     public G get(int index) {

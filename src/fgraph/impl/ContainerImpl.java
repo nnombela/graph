@@ -15,8 +15,20 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
     protected GraphObject[] objs = new GraphObject[1];
     protected int size = 0;
 
+    protected GraphObject belongsTo;
+    protected Type type;
+
     public ContainerImpl(GraphObject belongsTo, Type type) {
-        super(belongsTo, type);
+        this.belongsTo = belongsTo;
+        this.type = type;
+    }
+
+    public Type type() {
+        return this.type;
+    }
+
+    public GraphObject belongsTo() {
+        return this.belongsTo;
     }
 
     public G get(int index) {
