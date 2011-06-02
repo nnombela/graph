@@ -3,7 +3,6 @@ package fgraph.impl;
 import fgraph.Container;
 import fgraph.GraphFactory;
 import fgraph.GraphObject;
-import sun.security.smartcardio.SunPCSC;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,7 +12,7 @@ import sun.security.smartcardio.SunPCSC;
  * To change this template use File | Settings | File Templates.
  */
 public class ContainerBase<G extends GraphObject> implements Container<G> {
-    protected GraphObject[] gobjs = new GraphObject[1];
+    protected GraphObject[] objs = new GraphObject[1];
     protected int size = 0;
     protected GraphObject belongsTo;
     protected Type type;
@@ -45,7 +44,11 @@ public class ContainerBase<G extends GraphObject> implements Container<G> {
     }
 
     public void free() {
-        // TODO: Implement
+        forEach(new Closure<G>() {
+            public void execute(G g) {
+                g.free();
+            }
+        });
     }
 
     public GraphObject belongsTo() {
@@ -53,24 +56,24 @@ public class ContainerBase<G extends GraphObject> implements Container<G> {
     }
 
     public G get(int index) {
-        return (G) gobjs[index];
+        return (G) objs[index];
     }
 
     protected void set(G g, int index) {
-        gobjs[index] = g;
+        objs[index] = g;
     }
 
     protected void reserve(int capacity) {
-        if (gobjs.length < capacity) {
-            GraphObject[] _new = new GraphObject[capacity];
-            System.arraycopy(gobjs, 0, _new, 0, size);
-            gobjs = _new;
+        if (objs.length < capacity) {
+            GraphObject[] newObjs = new GraphObject[capacity];
+            System.arraycopy(objs, 0, newObjs, 0, size);
+            objs = newObjs;
         }
     }
 
     protected void accommodate() {
-        if (gobjs.length == size()) {
-            reserve((3 * (gobjs.length + 1)) / 2);
+        if (objs.length == size()) {
+            reserve((3 * (objs.length + 1)) / 2);
         }
     }
 
@@ -153,14 +156,14 @@ public class ContainerBase<G extends GraphObject> implements Container<G> {
 
     public void remove(G g) {
         set(get(--size), index(g));
-        gobjs[size] = null;
+        objs[size] = null;
     }
 
     public void swap(G g1, G g2) {
         int index1 = index(g1);
         int index2 = index(g2);
-        gobjs[index1] = g2;
-        gobjs[index2] = g1;
+        objs[index1] = g2;
+        objs[index2] = g1;
     }
 
 
