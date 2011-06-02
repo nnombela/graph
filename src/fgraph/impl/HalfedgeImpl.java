@@ -7,7 +7,7 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class HalfedgeBase implements Halfedge {
+public class HalfedgeImpl implements Halfedge {
     private Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
     private Container<Halfedge> container;
 

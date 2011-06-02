@@ -7,6 +7,8 @@ package fgraph;
  */
 public interface Container<G extends GraphObject> extends GraphObject {
 
+    G get(int index);
+
     interface Accessor<G> {
         void set(G g, Object obj);
         Object get(G g);
@@ -42,6 +44,6 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     G add(G g);
     G addNew();
-    void remove(G g);
-    void swap(G g1, G g2);
+    boolean remove(G g);
+    boolean swap(G g1, G g2);
 }
