@@ -54,7 +54,7 @@ public class HalfedgeImpl implements Halfedge {
     }
 
 
-    public Halfedge disjoin() {
+    public boolean disjoin() {
         return disjoin(Join.direct);
     }
 
@@ -89,14 +89,15 @@ public class HalfedgeImpl implements Halfedge {
         return this;
     }
 
-    public Halfedge disjoin(Join join) {
+    public boolean disjoin(Join join) {
         Halfedge p = pair[join.ordinal()];
-        pair[join.ordinal()] = null;
-
-        if (p.pair() != null) {
+        if (p != null) {
+            pair[join.ordinal()] = null;
             p.disjoin(join);
+            return true;
+        } else {
+            return false;
         }
-        return this;
     }
 
     public boolean is(Direction direction) {

@@ -28,11 +28,11 @@ public interface Halfedge extends GraphObject {
     // currying for direct join type
     Halfedge pair();
     Halfedge join(Halfedge halfedge);
-    Halfedge disjoin();
+    boolean disjoin();
 
     Halfedge pair(Join join);
     Halfedge join(Join join, Halfedge halfedge);
-    Halfedge disjoin(Join join);
+    boolean disjoin(Join join);
 
     boolean is(Direction direction);
     Direction direction();
