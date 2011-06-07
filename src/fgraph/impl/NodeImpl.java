@@ -8,6 +8,8 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
+    protected Halfedge up;
+    protected Graph down;
 
     public NodeImpl() {
         left.setOwner(this);
@@ -32,8 +34,12 @@ public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
         return halfedges == left? right : halfedges == right? left : this;
     }
 
+    public Node inverse() {
+        return up().pair().down();
+    }
+
     public Container<Halfedge> inverse(Container<Halfedge> halfedges) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return inverse().halfedges(direction(halfedges).reverse());
     }
 
     public Type type() {
@@ -53,22 +59,11 @@ public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
     }
 
     public Graph down() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return down;
     }
 
     public Halfedge up() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return up;
     }
 
-    public Halfedge link(Node node) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Halfedge link(Node node, Halfedge.Direction direction) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Halfedge unlink(Node node) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 }

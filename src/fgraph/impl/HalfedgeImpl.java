@@ -8,7 +8,8 @@ import fgraph.*;
  * Date: 1/06/11
  */
 public class HalfedgeImpl extends HalfedgeAbstract {
-    private Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
+    protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
+    protected Node down;
 
     public Node node() {
         return (Node)owner.belongsTo();
@@ -57,7 +58,7 @@ public class HalfedgeImpl extends HalfedgeAbstract {
     }
 
     public Node down() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return down;
     }
 
 }

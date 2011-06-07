@@ -12,8 +12,4 @@ public interface Graph extends Container<Node> {
     Container<Node> dual(Container<Node> nodes);
 
     Node up();
-
-    Node link(Graph graph);
-    Node link(Graph graph, Node.Duality duality);
-    Node unlink(Graph graph);
 }

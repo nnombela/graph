@@ -9,8 +9,8 @@ public interface Node extends Container<Halfedge> {
     enum Duality {
         hypervertex, hyperedge;
 
-        Duality dual(Duality duality) {
-            return duality == hypervertex? hyperedge : hypervertex;
+        public Duality dual() {
+            return this == hypervertex? hyperedge : hypervertex;
         }
     }
 
@@ -20,6 +20,8 @@ public interface Node extends Container<Halfedge> {
     Container<Halfedge> reverse(Container<Halfedge> halfedges);
     Container<Halfedge> inverse(Container<Halfedge> halfedges);
 
+    Node inverse();
+
     Graph graph();
 
     boolean is(Duality duality);
@@ -27,8 +29,4 @@ public interface Node extends Container<Halfedge> {
 
     Graph down();
     Halfedge up();
-
-    Halfedge link(Node node);
-    Halfedge link(Node node, Halfedge.Direction direction);
-    Halfedge unlink(Node node);
 }

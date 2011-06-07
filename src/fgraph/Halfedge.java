@@ -13,8 +13,8 @@ public interface Halfedge extends GraphObject {
     enum Direction {
         adjacent, incident;
 
-        Direction reverse(Direction direction) {
-            return direction == adjacent? incident : adjacent;
+        public Direction reverse() {
+            return this == adjacent? incident : adjacent;
         }
     }
 

@@ -11,6 +11,7 @@ import fgraph.Node;
  * Date: 2/06/11
  */
 public class GraphImpl extends DualContainerImpl<Node> implements Graph {
+    protected Node up;
 
     public GraphImpl() {
         left.setOwner(this);
@@ -41,18 +42,7 @@ public class GraphImpl extends DualContainerImpl<Node> implements Graph {
     }
 
     public Node up() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return up;
     }
 
-    public Node link(Graph graph) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Node link(Graph graph, Node.Duality duality) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Node unlink(Graph graph) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 }
