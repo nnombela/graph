@@ -8,20 +8,17 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
-    Container<Node> container;
 
-    public NodeImpl(GraphObject belongsTo, Type type) {
-        super(type);
-        left.owner = this;
-        right.owner = this;
+    public NodeImpl() {
+        super(Type.node);
+        left.setOwner(this);
+        right.setOwner(this);
     }
 
-    public Graph belongsTo() {
-        return (Graph)super.belongsTo();
-    }
-
-    public void setOwner(GraphObject owner) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void free() {
+        left.free();
+        right.free();
+        super.free();
     }
 
     public Container<Halfedge> halfedges(Halfedge.Direction direction) {
@@ -33,7 +30,7 @@ public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
     }
 
     public Container<Halfedge> reverse(Container<Halfedge> halfedges) {
-        return halfedges == left? right : halfedges == right? left : null;
+        return halfedges == left? right : halfedges == right? left : this;
     }
 
     public Container<Halfedge> inverse(Container<Halfedge> halfedges) {
@@ -41,11 +38,7 @@ public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
     }
 
     public Graph graph() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Container<Node> container() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return (Graph)owner.belongsTo();
     }
 
     public boolean is(Duality duality) {

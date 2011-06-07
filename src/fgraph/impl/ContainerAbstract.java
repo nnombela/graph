@@ -29,6 +29,7 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
                 g.free();
             }
         });
+        super.free();
     }
 
     public Iterator<G> iterator() {

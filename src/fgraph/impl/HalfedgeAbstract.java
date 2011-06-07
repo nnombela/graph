@@ -17,6 +17,7 @@ public abstract class HalfedgeAbstract extends GraphObjectAbstract implements Ha
         for (Join join : Join.values()) {
             disjoin(join);
         }
+        super.free();
     }
 
     public Node linksTo() {

@@ -30,6 +30,10 @@ public abstract class GraphObjectAbstract implements GraphObject {
     }
 
 
+    public void free() {
+        owner = null;
+    }
+
     public GraphObject belongsTo() {
         return owner;
     }

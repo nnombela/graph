@@ -21,6 +21,13 @@ public class GraphFactoryImpl extends GraphFactory {
 
     @Override
     public GraphObject create(GraphObject.Type type) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        if (type == GraphObject.Type.halfedge) {
+            return new HalfedgeImpl();
+        } else if (type == GraphObject.Type.node) {
+            return new NodeImpl();
+        } else if (type == GraphObject.Type.graph) {
+            return new GraphImpl();
+        }
+        throw new RuntimeException("Unknown type " + type);
     }
 }
