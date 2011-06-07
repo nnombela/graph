@@ -1,5 +1,7 @@
 package fgraph;
 
+import org.omg.IOP.CodecPackage.FormatMismatch;
+
 import java.util.*;
 
 /**
@@ -8,6 +10,8 @@ import java.util.*;
  * Date: 5/01/11
  */
 public abstract class GraphFactory {
+    public enum Family { directed, dual, fractal }
+
     protected static Map<String, GraphFactory> factories = Collections.synchronizedMap(new HashMap<String, GraphFactory>());
 
     public static Collection<GraphFactory> factories() {
@@ -18,6 +22,16 @@ public abstract class GraphFactory {
         return factories.get(name);
     }
 
+    public static List<GraphFactory> get(Set<Family> families) {
+        List<GraphFactory> list = new ArrayList<GraphFactory>();
+        for (GraphFactory factory : factories.values()) {
+            if (factory.families().equals(families)) {
+                list.add(factory);
+            }
+        }
+        return list;
+    }
+
     protected static void register(GraphFactory gf) {
         factories.put(gf.name(), gf);
     }
@@ -26,6 +40,9 @@ public abstract class GraphFactory {
         factories.remove(gf.name());
     }
 
+    public abstract boolean is(Family family);
+
+    public abstract Set<Family> families();
 
     public abstract String name();
 

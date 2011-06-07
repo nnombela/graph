@@ -10,10 +10,6 @@ import fgraph.*;
 public class HalfedgeImpl extends HalfedgeAbstract {
     private Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
 
-    public Family[] families() {
-        return Family.values();
-    }
-
     public Node node() {
         return (Node)owner.belongsTo();
     }

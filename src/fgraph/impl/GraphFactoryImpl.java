@@ -3,6 +3,9 @@ package fgraph.impl;
 import fgraph.GraphFactory;
 import fgraph.GraphObject;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -15,8 +18,27 @@ public class GraphFactoryImpl extends GraphFactory {
     }
 
     @Override
+    public boolean is(Family family) {
+        for (Family f : families()) {
+            if (f == family) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Set<Family> families() {
+        Set<Family> families = new HashSet<Family>();
+        families.add(Family.directed);
+        families.add(Family.dual);
+        families.add(Family.fractal);
+        return families;
+    }
+
+    @Override
     public String name() {
-        return "default";
+        return "directed-dual-fractal";
     }
 
     @Override

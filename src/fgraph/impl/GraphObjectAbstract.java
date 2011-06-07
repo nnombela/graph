@@ -16,19 +16,9 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return type == type();
     }
 
-    public boolean is(Family family) {
-        for (Family f : families()) {
-            if (family == f) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public GraphFactory factory() {
         return GraphFactory.get("default");
     }
-
 
     public void free() {
         owner = null;

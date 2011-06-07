@@ -7,14 +7,9 @@ package fgraph;
  */
 public interface GraphObject {
     enum Type { graph, node, halfedge }
-    enum Family { directed, dual, fractal }
-
 
     boolean is(Type type);
-    boolean is(Family family);
-
     Type type();
-    Family[] families();
 
     GraphFactory factory();
 
