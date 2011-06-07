@@ -11,22 +11,16 @@ import fgraph.GraphObject;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ContainerAbstract<G extends GraphObject> implements Container<G> {
+public abstract class ContainerAbstract<G extends GraphObject> extends GraphObjectAbstract implements Container<G> {
 
-    public boolean is(Type type) {
-        return type == type();
-    }
+    protected Type type;
 
-    public boolean is(Family family) {
-        return belongsTo().is(family);
+    public Type type() {
+        return this.type;
     }
 
     public Family[] families() {
-        return belongsTo().families();
-    }
-
-    public GraphFactory factory() {
-        return belongsTo().factory();
+        return owner.families();
     }
 
     public void free() {

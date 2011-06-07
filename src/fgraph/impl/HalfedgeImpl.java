@@ -7,55 +7,15 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class HalfedgeImpl implements Halfedge {
+public class HalfedgeImpl extends HalfedgeAbstract {
     private Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
-    private Container<Halfedge> container;
-
-    public boolean is(Type type) {
-        return Type.halfedge == type;
-    }
-
-    public boolean is(Family family) {
-        return belongsTo().is(family);
-    }
-
-    public Type type() {
-        return Type.halfedge;
-    }
 
     public Family[] families() {
-        return container.families();
+        return Family.values();
     }
 
-    public GraphFactory factory() {
-        return belongsTo().factory();
-    }
-
-    public void free() {
-        disjoin(Join.direct);
-        disjoin(Join.reverse);
-        disjoin(Join.inverse);
-    }
-
-    public Node belongsTo() {
-        return (Node)container.belongsTo();
-    }
-
-    public Node linksTo() {
-        return pair[0].belongsTo();
-    }
-
-    public Halfedge pair() {
-        return pair[0];
-    }
-
-    public Halfedge join(Halfedge halfedge) {
-        return join(Join.direct, halfedge);
-    }
-
-
-    public boolean disjoin() {
-        return disjoin(Join.direct);
+    public Node node() {
+        return (Node)owner.belongsTo();
     }
 
     public Halfedge pair(Join join) {
@@ -100,15 +60,8 @@ public class HalfedgeImpl implements Halfedge {
         }
     }
 
-    public boolean is(Direction direction) {
-        return direction == direction();
-    }
-
-    public Direction direction() {
-        return belongsTo().direction(container);
-    }
-
     public Node down() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
+
 }

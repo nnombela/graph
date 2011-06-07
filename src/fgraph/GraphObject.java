@@ -20,4 +20,5 @@ public interface GraphObject {
 
     void free();
     GraphObject belongsTo();
+    void setOwner(GraphObject owner);
 }

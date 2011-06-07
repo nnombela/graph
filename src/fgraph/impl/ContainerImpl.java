@@ -1,7 +1,5 @@
 package fgraph.impl;
 
-import fgraph.Container;
-import fgraph.GraphFactory;
 import fgraph.GraphObject;
 
 /**
@@ -15,21 +13,10 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
     protected GraphObject[] objs = new GraphObject[1];
     protected int size = 0;
 
-    protected GraphObject belongsTo;
-    protected Type type;
-
-    public ContainerImpl(GraphObject belongsTo, Type type) {
-        this.belongsTo = belongsTo;
+    public ContainerImpl(Type type) {
         this.type = type;
     }
 
-    public Type type() {
-        return this.type;
-    }
-
-    public GraphObject belongsTo() {
-        return this.belongsTo;
-    }
 
     public G get(int index) {
         return (G) objs[index];
@@ -57,13 +44,11 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
         return size;
     }
 
-    public boolean contains(G g) {
-        return index(g) != -1;
-    }
 
     public G add(G g) {
         accommodate();
         set(g, size++);
+        g.setOwner(this);
         return g;
     }
 

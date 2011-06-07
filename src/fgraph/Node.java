@@ -20,7 +20,7 @@ public interface Node extends Container<Halfedge> {
     Container<Halfedge> reverse(Container<Halfedge> halfedges);
     Container<Halfedge> inverse(Container<Halfedge> halfedges);
 
-    Graph belongsTo();
+    Graph graph();
 
     boolean is(Duality duality);
     Duality duality();

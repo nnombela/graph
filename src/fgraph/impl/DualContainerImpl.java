@@ -11,17 +11,14 @@ public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<
     protected ContainerImpl<G> left;
     protected ContainerImpl<G> right;
 
-    public DualContainerImpl(GraphObject belongsTo, Type type) {
-        this.left = new ContainerImpl<G>(belongsTo, type);
-        this.right = new ContainerImpl<G>(belongsTo, type);
+    public DualContainerImpl(Type type) {
+        this.left = new ContainerImpl<G>(type);
+        this.right = new ContainerImpl<G>(type);
     }
 
-    public Type type() {
-        return left.type();
-    }
-
-    public GraphObject belongsTo() {
-        return left.belongsTo();
+    public void setOwner(GraphObject owner) {
+        this.left.setOwner(owner);
+        this.right.setOwner(owner);
     }
 
     public G get(int index) {

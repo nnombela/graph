@@ -22,7 +22,7 @@ public interface Halfedge extends GraphObject {
         direct, reverse, inverse   // joins to make a full direct edge, a bidirectional halfedge (reverse) or a full inverse edge
     }
 
-    Node belongsTo();
+    Node node();
     Node linksTo();
 
     // currying for direct join type

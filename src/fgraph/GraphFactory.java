@@ -8,18 +8,22 @@ import java.util.*;
  * Date: 5/01/11
  */
 public abstract class GraphFactory {
-    protected static Set<GraphFactory> factories = Collections.synchronizedSet(new HashSet<GraphFactory>());
+    protected static Map<String, GraphFactory> factories = Collections.synchronizedMap(new HashMap<String, GraphFactory>());
 
-    static Set<GraphFactory> factories() {
-        return factories;
+    public static Collection<GraphFactory> factories() {
+        return factories.values();
     }
 
-    static void register(GraphFactory gf) {
-        factories.add(gf);
+    public static GraphFactory get(String name) {
+        return factories.get(name);
     }
 
-    static void deregister(GraphFactory gf) {
-        factories.remove(gf);
+    protected static void register(GraphFactory gf) {
+        factories.put(gf.name(), gf);
+    }
+
+    protected static void deregister(GraphFactory gf) {
+        factories.remove(gf.name());
     }
 
 
