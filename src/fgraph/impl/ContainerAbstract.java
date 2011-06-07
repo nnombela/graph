@@ -12,10 +12,9 @@ import fgraph.GraphObject;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class ContainerAbstract<G extends GraphObject> extends GraphObjectAbstract implements Container<G> {
-    protected Type type;
 
     public Type type() {
-        return this.type;
+        return owner.type();
     }
 
     public void free() {

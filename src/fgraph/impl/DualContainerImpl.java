@@ -11,9 +11,9 @@ public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<
     protected ContainerImpl<G> left;
     protected ContainerImpl<G> right;
 
-    public DualContainerImpl(Type type) {
-        this.left = new ContainerImpl<G>(type);
-        this.right = new ContainerImpl<G>(type);
+    public DualContainerImpl() {
+        this.left = new ContainerImpl<G>();
+        this.right = new ContainerImpl<G>();
     }
 
     public void setOwner(GraphObject owner) {

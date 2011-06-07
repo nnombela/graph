@@ -42,6 +42,6 @@ public abstract class HalfedgeAbstract extends GraphObjectAbstract implements Ha
     }
 
     public Direction direction() {
-        return node().direction((Container<Halfedge>)belongsTo());
+        return node().direction((Container<Halfedge>)owner);
     }
 }

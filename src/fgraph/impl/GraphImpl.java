@@ -13,7 +13,6 @@ import fgraph.Node;
 public class GraphImpl extends DualContainerImpl<Node> implements Graph {
 
     public GraphImpl() {
-        super(Type.node);
         left.setOwner(this);
         right.setOwner(this);
     }
@@ -24,6 +23,10 @@ public class GraphImpl extends DualContainerImpl<Node> implements Graph {
         super.free();
     }
 
+
+    public Type type() {
+        return Type.graph;
+    }
 
     public Container<Node> nodes(Node.Duality duality) {
         return duality == Node.Duality.hypervertex? left : right;

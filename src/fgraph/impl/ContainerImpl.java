@@ -13,11 +13,6 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
     protected GraphObject[] objs = new GraphObject[1];
     protected int size = 0;
 
-    public ContainerImpl(Type type) {
-        this.type = type;
-    }
-
-
     public G get(int index) {
         return (G) objs[index];
     }
@@ -53,7 +48,7 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
     }
 
     public G addNew() {
-        return add((G)factory().create(type));
+        return add((G)factory().create(type()));
     }
 
     public boolean remove(G g) {

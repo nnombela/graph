@@ -10,7 +10,6 @@ import fgraph.*;
 public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
 
     public NodeImpl() {
-        super(Type.node);
         left.setOwner(this);
         right.setOwner(this);
     }
@@ -37,16 +36,20 @@ public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    public Type type() {
+        return Type.node;
+    }
+
     public Graph graph() {
         return (Graph)owner.belongsTo();
     }
 
     public boolean is(Duality duality) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return duality() == duality;
     }
 
     public Duality duality() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return graph().duality((Container<Node>)owner);
     }
 
     public Graph down() {
