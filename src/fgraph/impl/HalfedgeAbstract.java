@@ -21,14 +21,14 @@ public abstract class HalfedgeAbstract extends GraphObjectAbstract implements Ha
     }
 
     public Node linksTo() {
-        return pair().node();
+        return direct().node();
     }
 
     public Halfedge join(Halfedge halfedge) {
         return join(Join.direct, halfedge);
     }
 
-    public Halfedge pair() {
+    public Halfedge direct() {
         return pair(Join.direct);
     }
 

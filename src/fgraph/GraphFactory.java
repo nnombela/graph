@@ -10,7 +10,14 @@ import java.util.*;
  * Date: 5/01/11
  */
 public abstract class GraphFactory {
-    public enum Family { directed, dual, fractal }
+    public enum Family {
+        directed, dual, fractal;
+
+        public boolean is(Family family) {
+            return this == family;
+        }
+
+    }
 
     protected static Map<String, GraphFactory> factories = Collections.synchronizedMap(new HashMap<String, GraphFactory>());
 
@@ -40,7 +47,7 @@ public abstract class GraphFactory {
         factories.remove(gf.name());
     }
 
-    public abstract boolean is(Family family);
+    public abstract boolean has(Family family);
 
     public abstract Set<Family> families();
 

@@ -41,4 +41,10 @@ public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<
         return left.swap(g1, g2) || right.swap(g1, g2);
     }
 
+    public void free() {
+        left.free();
+        right.free();
+        super.free();
+    }
+
 }

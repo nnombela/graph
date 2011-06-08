@@ -5,11 +5,8 @@ package fgraph;
  * Author: nnombela@gmail.com
  * Date: 3/01/11
  */
-public interface Graph extends Container<Node> {
-    Container<Node> nodes(Node.Duality duality);
-    Node.Duality duality(Container<Node> nodes);
-
-    Container<Node> dual(Container<Node> nodes);
+public interface Graph extends Nodes {
+    Nodes nodes(Node.Duality duality);
 
     Node up();
 }

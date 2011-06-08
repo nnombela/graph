@@ -6,9 +6,14 @@ package fgraph;
  * Date: 3/01/11
  */
 public interface GraphObject {
-    enum Type { graph, node, halfedge }
+    enum Type {
+        graph, node, halfedge;
 
-    boolean is(Type type);
+        public boolean is(Type type) {
+            return this == type;
+        }
+    }
+
     Type type();
 
     GraphFactory factory();
@@ -16,4 +21,8 @@ public interface GraphObject {
     void free();
     GraphObject belongsTo();
     void setOwner(GraphObject owner);
+
+    Graph graph();
+    Node node();
+    Halfedge halfedge();
 }

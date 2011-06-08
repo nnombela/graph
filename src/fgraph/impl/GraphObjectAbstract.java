@@ -1,8 +1,6 @@
 package fgraph.impl;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-import fgraph.GraphFactory;
-import fgraph.GraphObject;
+import fgraph.*;
 
 /**
  * This class models...
@@ -35,4 +33,38 @@ public abstract class GraphObjectAbstract implements GraphObject {
             throw new RuntimeException("Already owned by " + owner);
         }
     }
+
+    public Graph graph() {
+        if (this instanceof Graph) {
+            return (Graph)this;
+        }
+
+        GraphObject gobj = owner;
+
+        while(gobj != null && !(gobj instanceof Graph)) {
+            gobj = owner.belongsTo();
+        }
+        return (Graph)owner;
+    }
+
+    public Node node() {
+        if (this instanceof Node) {
+            return (Node)this;
+        }
+
+        GraphObject gobj = owner;
+
+        while(gobj != null && !(gobj instanceof Node)) {
+            gobj = owner.belongsTo();
+        }
+        return (Node)owner;
+    }
+
+    public Halfedge halfedge() {
+        if (this instanceof Node) {
+            return (Halfedge)this;
+        }
+        return null;
+    }
+
 }

@@ -5,65 +5,54 @@ import fgraph.*;
 /**
  * This class models...
  * Author: nnombela@gmail.com
- * Date: 2/06/11
+ * Date: 8/06/11
  */
-public class NodeImpl extends DualContainerImpl<Halfedge> implements Node {
-    protected Halfedge up;
-    protected Graph down;
+public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
 
-    public NodeImpl() {
-        left.setOwner(this);
-        right.setOwner(this);
-    }
-
-    public void free() {
-        left.free();
-        right.free();
-        super.free();
-    }
-
+    @Override
     public Container<Halfedge> halfedges(Halfedge.Direction direction) {
-        return direction == Halfedge.Direction.adjacent? left : right;
+        return this;
     }
 
+    @Override
     public Halfedge.Direction direction(Container<Halfedge> halfedges) {
-        return halfedges == left? Halfedge.Direction.adjacent : halfedges == right? Halfedge.Direction.incident : null;
+        return null;
     }
 
+    @Override
     public Container<Halfedge> reverse(Container<Halfedge> halfedges) {
-        return halfedges == left? right : halfedges == right? left : this;
+        return this;
     }
 
-    public Node inverse() {
-        return up().pair().down();
-    }
-
+    @Override
     public Container<Halfedge> inverse(Container<Halfedge> halfedges) {
-        return inverse().halfedges(direction(halfedges).reverse());
+        return null;
     }
 
-    public Type type() {
-        return Type.node;
+    @Override
+    public Node inverse() {
+        return null;
     }
 
-    public Graph graph() {
-        return (Graph)owner.belongsTo();
-    }
-
+    @Override
     public boolean is(Duality duality) {
         return duality() == duality;
     }
 
+    @Override
     public Duality duality() {
         return graph().duality((Container<Node>)owner);
     }
 
+    @Override
     public Graph down() {
-        return down;
+        return null;
     }
 
+    @Override
     public Halfedge up() {
-        return up;
+        return null;
     }
+
 
 }

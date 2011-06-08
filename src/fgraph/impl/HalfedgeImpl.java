@@ -11,10 +11,6 @@ public class HalfedgeImpl extends HalfedgeAbstract {
     protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
     protected Node down;
 
-    public Node node() {
-        return (Node)owner.belongsTo();
-    }
-
     public Halfedge pair(Join join) {
         return pair[join.ordinal()];
     }
@@ -37,7 +33,7 @@ public class HalfedgeImpl extends HalfedgeAbstract {
 
 
     public Halfedge join(Join join, Halfedge halfedge) {
-        if (areDisjoined(pair[join.ordinal()], halfedge.pair())) {
+        if (areDisjoined(pair[join.ordinal()], halfedge.direct())) {
             pair[join.ordinal()] = halfedge;
             halfedge.join(this);
         } else {

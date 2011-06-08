@@ -18,7 +18,7 @@ public class GraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public boolean is(Family family) {
+    public boolean has(Family family) {
         for (Family f : families()) {
             if (f == family) {
                 return true;
@@ -46,7 +46,7 @@ public class GraphFactoryImpl extends GraphFactory {
         if (type == GraphObject.Type.halfedge) {
             return new HalfedgeImpl();
         } else if (type == GraphObject.Type.node) {
-            return new NodeImpl();
+            return new FracDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
             return new GraphImpl();
         }
