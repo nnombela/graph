@@ -7,13 +7,13 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
+public class DuoContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
     protected ContainerImpl<G> left;
     protected ContainerImpl<G> right;
 
-    public DualContainerImpl() {
-        this.left = new ContainerImpl<G>();
-        this.right = new ContainerImpl<G>();
+    public DuoContainerImpl(ContainerImpl<G> left, ContainerImpl<G> right) {
+        this.left = left;
+        this.right = right;
     }
 
     public void setOwner(GraphObject owner) {
@@ -31,6 +31,11 @@ public class DualContainerImpl<G extends GraphObject> extends ContainerAbstract<
 
     public G add(G g) {
         return left.add(g);
+    }
+
+    @Override
+    public G addNew() {
+        return left.addNew();
     }
 
     public boolean remove(G g) {

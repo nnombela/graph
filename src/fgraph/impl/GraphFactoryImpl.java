@@ -46,9 +46,9 @@ public class GraphFactoryImpl extends GraphFactory {
         if (type == GraphObject.Type.halfedge) {
             return new HalfedgeImpl();
         } else if (type == GraphObject.Type.node) {
-            return new FracDiNodeImpl();
+            return new FractalDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new GraphImpl();
+            return new DualGraphImpl();
         }
         throw new RuntimeException("Unknown type " + type);
     }

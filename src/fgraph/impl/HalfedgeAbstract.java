@@ -24,24 +24,20 @@ public abstract class HalfedgeAbstract extends GraphObjectAbstract implements Ha
         return direct().node();
     }
 
-    public Halfedge join(Halfedge halfedge) {
-        return join(Join.direct, halfedge);
-    }
-
     public Halfedge direct() {
         return pair(Join.direct);
     }
 
-    public boolean disjoin() {
-        return disjoin(Join.direct);
+    public Halfedge reverse() {
+        return pair(Join.reverse);
     }
 
-
-    public boolean is(Direction direction) {
-        return direction == direction();
+    public Halfedge inverse() {
+        return pair(Join.inverse);
     }
+
 
     public Direction direction() {
-        return node().direction((Container<Halfedge>)owner);
+        return ((Halfedges)owner).direction();
     }
 }

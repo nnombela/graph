@@ -9,7 +9,7 @@ import fgraph.*;
  */
 public class HalfedgeImpl extends HalfedgeAbstract {
     protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
-    protected Node down;
+
 
     public Halfedge pair(Join join) {
         return pair[join.ordinal()];
@@ -35,7 +35,7 @@ public class HalfedgeImpl extends HalfedgeAbstract {
     public Halfedge join(Join join, Halfedge halfedge) {
         if (areDisjoined(pair[join.ordinal()], halfedge.direct())) {
             pair[join.ordinal()] = halfedge;
-            halfedge.join(this);
+            halfedge.join(join, this);
         } else {
             pair[join.ordinal()] = halfedge;
         }
@@ -54,7 +54,7 @@ public class HalfedgeImpl extends HalfedgeAbstract {
     }
 
     public Node down() {
-        return down;
+        return null;
     }
 
 }

@@ -19,6 +19,8 @@ public interface Container<G extends GraphObject> extends GraphObject {
     interface Iterator<G> {
         G next();
         boolean hasNext();
+        G current();
+        int index();
     }
 
     interface Closure<G> {

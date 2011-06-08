@@ -10,6 +10,10 @@ import fgraph.*;
 public abstract class GraphObjectAbstract implements GraphObject {
     protected GraphObject owner;
 
+    public Type type() {
+        return null;
+    }
+
     public boolean is(Type type) {
         return type == type();
     }
@@ -35,36 +39,15 @@ public abstract class GraphObjectAbstract implements GraphObject {
     }
 
     public Graph graph() {
-        if (this instanceof Graph) {
-            return (Graph)this;
-        }
-
-        GraphObject gobj = owner;
-
-        while(gobj != null && !(gobj instanceof Graph)) {
-            gobj = owner.belongsTo();
-        }
-        return (Graph)owner;
+        return this instanceof Graph? (Graph)this : owner != null? owner.graph() : null;
     }
 
     public Node node() {
-        if (this instanceof Node) {
-            return (Node)this;
-        }
-
-        GraphObject gobj = owner;
-
-        while(gobj != null && !(gobj instanceof Node)) {
-            gobj = owner.belongsTo();
-        }
-        return (Node)owner;
+        return this instanceof Node? (Node)this : owner != null? owner.node() : null;
     }
 
     public Halfedge halfedge() {
-        if (this instanceof Node) {
-            return (Halfedge)this;
-        }
-        return null;
+        return this instanceof Halfedge? (Halfedge)this : null;
     }
 
 }

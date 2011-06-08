@@ -47,8 +47,10 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
         return g;
     }
 
+    @Override
     public G addNew() {
-        return add((G)factory().create(type()));
+        Type type = owner.type() == Type.graph? Type.node : Type.halfedge;
+        return add((G)factory().create(type));
     }
 
     public boolean remove(G g) {

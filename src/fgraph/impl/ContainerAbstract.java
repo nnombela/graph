@@ -13,10 +13,6 @@ import fgraph.GraphObject;
  */
 public abstract class ContainerAbstract<G extends GraphObject> extends GraphObjectAbstract implements Container<G> {
 
-    public Type type() {
-        return owner.type();
-    }
-
     public void free() {
         forEach(new Closure<G>() {
             public void execute(G g) {
@@ -32,6 +28,14 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
 
             public G next() {
                 return get(++cursor);
+            }
+
+            public G current() {
+                return get(cursor);
+            }
+
+            public int index() {
+                return cursor;
             }
 
             public boolean hasNext() {
@@ -68,9 +72,8 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
 
     public G find(Condition<G> condition) {
         for(Iterator<G> iterator = iterator(); iterator.hasNext();) {
-            G g = iterator.next();
-            if (condition.check(g)) {
-                return g;
+            if (condition.check(iterator.next())) {
+                return iterator.current();
             }
         }
         return null;
@@ -85,14 +88,7 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
         return -1;
     }
 
-
     public boolean contains(G g) {
         return index(g) != -1;
     }
-
-
-    public G addNew() {
-        return add((G)factory().create(type()));
-    }
-
 }
