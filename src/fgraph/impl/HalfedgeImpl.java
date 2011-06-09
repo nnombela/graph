@@ -73,19 +73,23 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
 
 
     public Halfedge join(Join join, Halfedge halfedge) {
-        if (areDisjoined(pair[join.ordinal()], halfedge.direct())) {
-            pair[join.ordinal()] = halfedge;
+        int i = join.ordinal();
+
+        if (areDisjoined(pair[i], halfedge.direct())) {
+            pair[i] = halfedge;
             halfedge.join(join, this);
         } else {
-            pair[join.ordinal()] = halfedge;
+            pair[i] = halfedge;
         }
         return this;
     }
 
     public boolean disjoin(Join join) {
-        Halfedge p = pair[join.ordinal()];
+        int i = join.ordinal();
+
+        Halfedge p = pair[i];
         if (p != null) {
-            pair[join.ordinal()] = null;
+            pair[i] = null;
             p.disjoin(join);
             return true;
         } else {
