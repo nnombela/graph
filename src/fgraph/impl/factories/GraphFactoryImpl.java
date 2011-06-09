@@ -15,11 +15,6 @@ public class GraphFactoryImpl extends GraphFactory {
         register(new GraphFactoryImpl());
     }
 
-    public boolean has(Family family) {
-        return has(this, family);
-    }
-
-
     @Override
     public Set<Family> families() {
         return asSet(new Family[] { Family.fractal });

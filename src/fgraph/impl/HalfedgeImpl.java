@@ -15,6 +15,11 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return Type.halfedge;
     }
 
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("default");
+    }
+
     public void free() {
         for (Join join : Join.values()) {
             disjoin(join);

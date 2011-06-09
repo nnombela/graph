@@ -11,6 +11,11 @@ public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
     protected Graph down;
     protected Halfedge up;
 
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("default");
+    }
+
     public void free() {
         if (up != null) {
             up.free();

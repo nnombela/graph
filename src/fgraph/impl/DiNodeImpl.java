@@ -11,6 +11,11 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
     protected Halfedge up;
     protected Graph down;
 
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("digraph");
+    }
+
     public DiNodeImpl() {
         super(new NodeImpl(), new NodeImpl());
         left.setOwner(this);

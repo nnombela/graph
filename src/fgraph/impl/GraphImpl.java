@@ -1,9 +1,6 @@
 package fgraph.impl;
 
-import fgraph.Container;
-import fgraph.Graph;
-import fgraph.Node;
-import fgraph.Nodes;
+import fgraph.*;
 
 /**
  * This class models...
@@ -12,6 +9,11 @@ import fgraph.Nodes;
  */
 public class GraphImpl extends ContainerImpl<Node> implements Graph {
     private Node up;
+
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("default");
+    }
 
     public void free() {
         if (up != null) {

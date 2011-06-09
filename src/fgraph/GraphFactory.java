@@ -16,7 +16,6 @@ public abstract class GraphFactory {
         public boolean is(Family family) {
             return this == family;
         }
-
     }
 
     protected static Map<String, GraphFactory> factories = Collections.synchronizedMap(new HashMap<String, GraphFactory>());
@@ -39,9 +38,9 @@ public abstract class GraphFactory {
     }
 
     public static Set<Family> asSet(Family[] families) {
-        Set<Family> set = new HashSet<Family>();
-        for(int i = 0; i < families.length; ++i) {
-            set.add(families[i]);
+        Set<Family> set = new HashSet<Family>(families.length);
+        for(Family f : families) {
+            set.add(f);
         }
         return set;
     }
@@ -64,8 +63,6 @@ public abstract class GraphFactory {
     protected static void deregister(GraphFactory gf) {
         factories.remove(gf.name());
     }
-
-    public abstract boolean has(Family family);
 
     public abstract Set<Family> families();
 

@@ -13,6 +13,11 @@ import fgraph.GraphObject;
  */
 public abstract class ContainerAbstract<G extends GraphObject> extends GraphObjectAbstract implements Container<G> {
 
+    @Override
+    public GraphFactory factory() {
+        return owner.factory();
+    }
+
     public void free() {
         forEach(new Closure<G>() {
             public void execute(G g) {

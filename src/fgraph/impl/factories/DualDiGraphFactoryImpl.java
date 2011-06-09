@@ -16,11 +16,6 @@ public class DualDiGraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public boolean has(Family family) {
-        return has(this, family);
-    }
-
-    @Override
     public Set<Family> families() {
         return asSet(new Family[] { Family.fractal, Family.dual, Family.fractal });
     }

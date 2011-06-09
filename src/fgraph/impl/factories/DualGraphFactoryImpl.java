@@ -17,10 +17,6 @@ public class DualGraphFactoryImpl extends GraphFactory {
         register(new DualGraphFactoryImpl());
     }
 
-    public boolean has(Family family) {
-        return has(this, family);
-    }
-
 
     @Override
     public Set<Family> families() {
@@ -29,7 +25,7 @@ public class DualGraphFactoryImpl extends GraphFactory {
 
     @Override
     public String name() {
-        return "digraph";
+        return "dual-graph";
     }
 
     @Override
