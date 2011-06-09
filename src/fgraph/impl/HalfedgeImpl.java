@@ -35,15 +35,15 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public Halfedge direct() {
-        return pair(Join.direct);
+        return pair[0];
     }
 
     public Halfedge reverse() {
-        return pair(Join.reverse);
+        return pair[1];
     }
 
     public Halfedge inverse() {
-        return pair(Join.inverse);
+        return pair[2];
     }
 
 

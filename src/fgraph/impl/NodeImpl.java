@@ -52,12 +52,12 @@ public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
     }
 
     @Override
-    public Halfedges reverse() {
+    public Node reverse() {
         return this;
     }
 
     @Override
-    public Halfedges inverse() {
-        return null;
+    public Node inverse() {
+        return up().direct().node();
     }
 }

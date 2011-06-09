@@ -44,7 +44,7 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
     }
 
     @Override
-    public Halfedges reverse() {
+    public Node reverse() {
         return this;
     }
 
