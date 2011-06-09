@@ -38,4 +38,8 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return this instanceof Halfedge? (Halfedge)this : null;
     }
 
+    public int ordinal() {
+        return owner !=null? owner.ordinal() : -1;
+    }
+
 }

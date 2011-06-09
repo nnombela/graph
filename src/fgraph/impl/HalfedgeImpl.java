@@ -1,6 +1,9 @@
 package fgraph.impl;
 
 import fgraph.*;
+import sun.plugin.cache.OldCacheEntry;
+
+import java.security.Identity;
 
 /**
  * This class models...
@@ -103,11 +106,7 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
 
     @Override
     public void setDown(Node down) {
-        if (this.down == null || down == null) {
-            this.down = down;
-        } else {
-            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.down);
-        }
+        this.down = down;
     }
 
 }

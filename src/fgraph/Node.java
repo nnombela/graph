@@ -1,5 +1,7 @@
 package fgraph;
 
+import com.sun.istack.internal.Nullable;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -22,9 +24,11 @@ public interface Node extends Halfedges {
     Halfedges halfedges(Halfedge.Direction direction);
 
     Graph down();
+
     Halfedge up();
 
     void setDown(Graph down);
+
     void setUp(Halfedge up);
 
 }

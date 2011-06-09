@@ -9,6 +9,7 @@ import fgraph.*;
  */
 public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     protected Node up;
+    protected int ordinal;
 
     @Override
     public GraphFactory factory() {
@@ -22,8 +23,9 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
         super.free();
     }
 
-    public DualGraphImpl() {
+    public DualGraphImpl(int ordinal) {
         super(NodesImpl.class);
+        this.ordinal = ordinal;
     }
 
     public Type type() {
@@ -50,10 +52,6 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
 
     @Override
     public void setUp(Node up) {
-        if (this.up == null || up == null) {
-            this.up = up;
-        } else {
-            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.up);
-        }
+        this.up = up;
     }
 }

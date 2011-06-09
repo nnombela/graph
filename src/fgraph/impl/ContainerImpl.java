@@ -49,7 +49,7 @@ public class ContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
 
     @Override
     public G addNew() {
-        return add((G)factory().create(type()));
+        return add((G)factory().create(type(), ordinal()));
     }
 
     public boolean remove(G g) {

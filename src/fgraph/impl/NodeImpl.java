@@ -63,18 +63,10 @@ public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
 
     @Override
     public void setDown(Graph down) {
-        if (this.down == null || down == null) {
-            this.down = down;
-        } else {
-            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.down);
-        }
+        this.down = down;
     }
     @Override
     public void setUp(Halfedge up) {
-        if (this.up == null || up == null) {
-            this.up = up;
-        } else {
-            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.up);
-        }
+        this.up = up;
     }
 }

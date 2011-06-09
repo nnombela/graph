@@ -26,13 +26,13 @@ public class DualDiGraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public GraphObject create(GraphObject.Type type) {
+    public GraphObject create(GraphObject.Type type, int ordinal) {
         if (type == GraphObject.Type.halfedge) {
             return new HalfedgeImpl();
         } else if (type == GraphObject.Type.node) {
             return new DiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new DualGraphImpl();
+            return new DualGraphImpl(ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

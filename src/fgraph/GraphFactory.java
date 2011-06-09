@@ -68,5 +68,5 @@ public abstract class GraphFactory {
 
     public abstract String name();
 
-    public abstract GraphObject create(GraphObject.Type type);
+    public abstract GraphObject create(GraphObject.Type type, int ordinal);
 }

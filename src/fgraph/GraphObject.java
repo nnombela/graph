@@ -25,4 +25,6 @@ public interface GraphObject {
     Graph graph();
     Node node();
     Halfedge halfedge();
+
+    int ordinal();
 }

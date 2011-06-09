@@ -8,7 +8,12 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class GraphImpl extends ContainerImpl<Node> implements Graph {
-    private Node up;
+    protected Node up;
+    protected int ordinal;
+
+    public GraphImpl(int ordinal) {
+        this.ordinal = ordinal;
+    }
 
     @Override
     public GraphFactory factory() {
@@ -40,10 +45,10 @@ public class GraphImpl extends ContainerImpl<Node> implements Graph {
 
     @Override
     public void setUp(Node up) {
-        if (this.up == null || up == null) {
-            this.up = up;
-        } else {
-            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.up);
-        }
+        this.up = up;
+    }
+
+    public int ordinal() {
+        return ordinal;
     }
 }
