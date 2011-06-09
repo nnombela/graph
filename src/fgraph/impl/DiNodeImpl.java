@@ -17,9 +17,7 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
     }
 
     public DiNodeImpl() {
-        super(new NodeImpl(), new NodeImpl());
-        left.setOwner(this);
-        right.setOwner(this);
+        super(NodeImpl.class);
     }
 
     public void free() {
@@ -34,7 +32,7 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
 
     @Override
     public Halfedges halfedges(Halfedge.Direction direction) {
-        return direction == Halfedge.Direction.adjacent? (Halfedges)left : (Halfedges)right;
+        return (Halfedges)containers[direction.ordinal()];
     }
 
 

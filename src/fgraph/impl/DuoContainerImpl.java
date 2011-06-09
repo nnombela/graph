@@ -2,53 +2,58 @@ package fgraph.impl;
 
 import fgraph.*;
 
+import java.lang.reflect.Array;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
 public class DuoContainerImpl<G extends GraphObject> extends ContainerAbstract<G> {
-    protected ContainerImpl<G> left;
-    protected ContainerImpl<G> right;
+    protected ContainerImpl<G>[] containers;
 
-    public DuoContainerImpl(ContainerImpl<G> left, ContainerImpl<G> right) {
-        this.left = left;
-        this.right = right;
-    }
+    public DuoContainerImpl(Class clazz)  {
+        try {
+            this.containers =(ContainerImpl<G>[]) Array.newInstance(clazz, 2);
+            this.containers[0] = (ContainerImpl<G>) clazz.newInstance();
+            this.containers[1] = (ContainerImpl<G>) clazz.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-    public void setOwner(GraphObject owner) {
-        this.left.setOwner(owner);
-        this.right.setOwner(owner);
+        this.containers[0].setOwner(this);
+        this.containers[1].setOwner(this);
     }
 
     public G get(int index) {
-        return index < left.size()? left.get(index) : right.get(index - left.size());
+        int size0 = containers[0].size();
+        return index < size0? containers[0].get(index) : containers[1].get(index - size0);
     }
 
     public int size() {
-        return left.size() + right.size();
+        return containers[0].size() + containers[1].size();
     }
 
     public G add(G g) {
-        return left.add(g);
+        return containers[0].add(g);
     }
 
     @Override
     public G addNew() {
-        return left.addNew();
+        return containers[0].addNew();
     }
 
     public boolean remove(G g) {
-        return left.remove(g) || right.remove(g);
+        return containers[0].remove(g) || containers[1].remove(g);
     }
 
     public boolean swap(G g1, G g2) {
-        return left.swap(g1, g2) || right.swap(g1, g2);
+        return containers[0].swap(g1, g2) || containers[1].swap(g1, g2);
     }
 
     public void free() {
-        left.free();
-        right.free();
+        containers[0].free();
+        containers[1].free();
         super.free();
     }
 

@@ -23,10 +23,7 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public DualGraphImpl() {
-        super(new GraphImpl(), new GraphImpl());
-
-        left.setOwner(this);
-        right.setOwner(this);
+        super(GraphImpl.class);
     }
 
     public Type type() {
@@ -34,7 +31,7 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public Nodes nodes(Node.Duality duality) {
-        return duality == Node.Duality.hypervertex? (Nodes)left : (Nodes)right;
+        return (Nodes)containers[duality.ordinal()];
     }
 
     public Node up() {
