@@ -9,4 +9,5 @@ public interface Graph extends Nodes {
     Nodes nodes(Node.Duality duality);
 
     Node up();
+    void setUp(Node up);
 }

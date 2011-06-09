@@ -23,4 +23,8 @@ public interface Node extends Halfedges {
 
     Graph down();
     Halfedge up();
+
+    void setDown(Graph down);
+    void setUp(Halfedge up);
+
 }

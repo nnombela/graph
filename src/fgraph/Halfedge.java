@@ -39,4 +39,6 @@ public interface Halfedge extends GraphObject {
     Direction direction();
 
     Node down();
+
+    void setDown(Node down);
 }

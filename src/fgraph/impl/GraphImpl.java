@@ -37,4 +37,13 @@ public class GraphImpl extends ContainerImpl<Node> implements Graph {
     public Nodes dual() {
         return null;
     }
+
+    @Override
+    public void setUp(Node up) {
+        if (this.up == null || up == null) {
+            this.up = up;
+        } else {
+            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.up);
+        }
+    }
 }

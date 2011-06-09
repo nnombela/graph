@@ -101,4 +101,13 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return down;
     }
 
+    @Override
+    public void setDown(Node down) {
+        if (this.down == null || down == null) {
+            this.down = down;
+        } else {
+            throw new RuntimeException("Invalid Operation. Down node is already set by " + this.down);
+        }
+    }
+
 }
