@@ -8,6 +8,18 @@ import fgraph.*;
  * Date: 8/06/11
  */
 public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
+    protected Graph down;
+    protected Halfedge up;
+
+    public void free() {
+        if (up != null) {
+            up.free();
+        }
+        if (down != null) {
+            down.free();
+        }
+        super.free();
+    }
 
     @Override
     public Duality duality() {
@@ -21,12 +33,12 @@ public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
 
     @Override
     public Graph down() {
-        return null;
+        return down;
     }
 
     @Override
     public Halfedge up() {
-        return null;
+        return up;
     }
 
     @Override

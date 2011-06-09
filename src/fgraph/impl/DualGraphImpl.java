@@ -11,6 +11,14 @@ import fgraph.Nodes;
  * Date: 2/06/11
  */
 public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
+    protected Node up;
+
+    public void free() {
+        if (up != null) {
+            up.free();
+        }
+        super.free();
+    }
 
     public DualGraphImpl() {
         super(new GraphImpl(), new GraphImpl());
@@ -28,7 +36,7 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public Node up() {
-        return null;
+        return up;
     }
 
     @Override

@@ -10,9 +10,6 @@ import fgraph.*;
 public abstract class GraphObjectAbstract implements GraphObject {
     protected GraphObject owner;
 
-    public Type type() {
-        return null;
-    }
 
     public boolean is(Type type) {
         return type == type();

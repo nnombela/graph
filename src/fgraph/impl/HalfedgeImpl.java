@@ -7,9 +7,44 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class HalfedgeImpl extends HalfedgeAbstract {
+public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
+    protected Node down;
 
+    public Type type() {
+        return Type.halfedge;
+    }
+
+    public void free() {
+        for (Join join : Join.values()) {
+            disjoin(join);
+        }
+        if (down != null) {
+            down.free();
+        }
+        super.free();
+    }
+
+    public Node linksTo() {
+        return pair[0].node();
+    }
+
+    public Halfedge direct() {
+        return pair(Join.direct);
+    }
+
+    public Halfedge reverse() {
+        return pair(Join.reverse);
+    }
+
+    public Halfedge inverse() {
+        return pair(Join.inverse);
+    }
+
+
+    public Direction direction() {
+        return ((Halfedges)owner).direction();
+    }
 
     public Halfedge pair(Join join) {
         return pair[join.ordinal()];
@@ -54,7 +89,7 @@ public class HalfedgeImpl extends HalfedgeAbstract {
     }
 
     public Node down() {
-        return null;
+        return down;
     }
 
 }

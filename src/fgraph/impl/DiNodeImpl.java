@@ -7,18 +7,24 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class FractalDiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
+public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
     protected Halfedge up;
     protected Graph down;
 
-    public FractalDiNodeImpl() {
+    public DiNodeImpl() {
         super(new NodeImpl(), new NodeImpl());
         left.setOwner(this);
         right.setOwner(this);
     }
 
     public void free() {
-        // TODO: up & down
+        if (up != null) {
+            up.free();
+        }
+        if (down != null) {
+            down.free();
+        }
+        super.free();
     }
 
     @Override

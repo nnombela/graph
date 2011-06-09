@@ -91,4 +91,9 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
     public boolean contains(G g) {
         return index(g) != -1;
     }
+
+    public Type type() {
+        return owner.type() == Type.graph? Type.node : owner.type() == Type.node? Type.halfedge : Type.graph;
+    }
+
 }
