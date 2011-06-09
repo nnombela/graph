@@ -17,7 +17,7 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
     }
 
     public DiNodeImpl() {
-        super(NodeImpl.class);
+        super(HalfedgesImpl.class);
     }
 
     public void free() {

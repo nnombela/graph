@@ -23,7 +23,7 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public DualGraphImpl() {
-        super(GraphImpl.class);
+        super(NodesImpl.class);
     }
 
     public Type type() {
