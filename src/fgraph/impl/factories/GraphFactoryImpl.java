@@ -1,9 +1,7 @@
-package fgraph.impl;
+package fgraph.impl.factories;
 
-import fgraph.GraphFactory;
-import fgraph.GraphObject;
-
-import java.util.HashSet;
+import fgraph.*;
+import fgraph.impl.*;
 import java.util.Set;
 
 /**
@@ -17,28 +15,19 @@ public class GraphFactoryImpl extends GraphFactory {
         register(new GraphFactoryImpl());
     }
 
-    @Override
     public boolean has(Family family) {
-        for (Family f : families()) {
-            if (f == family) {
-                return true;
-            }
-        }
-        return false;
+        return has(this, family);
     }
+
 
     @Override
     public Set<Family> families() {
-        Set<Family> families = new HashSet<Family>();
-        families.add(Family.directed);
-        families.add(Family.dual);
-        families.add(Family.fractal);
-        return families;
+        return asSet(new Family[] { Family.fractal });
     }
 
     @Override
     public String name() {
-        return "directed-dual-fractal";
+        return "default";
     }
 
     @Override
@@ -46,9 +35,9 @@ public class GraphFactoryImpl extends GraphFactory {
         if (type == GraphObject.Type.halfedge) {
             return new HalfedgeImpl();
         } else if (type == GraphObject.Type.node) {
-            return new DiNodeImpl();
+            return new NodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new DualGraphImpl();
+            return new GraphImpl();
         }
         throw new RuntimeException("Unknown type " + type);
     }

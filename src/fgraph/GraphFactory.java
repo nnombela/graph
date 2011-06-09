@@ -29,6 +29,24 @@ public abstract class GraphFactory {
         return factories.get(name);
     }
 
+    public static boolean has(GraphFactory factory, Family family) {
+        for (Family f : factory.families()) {
+            if (f == family) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Set<Family> asSet(Family[] families) {
+        Set<Family> set = new HashSet<Family>();
+        for(int i = 0; i < families.length; ++i) {
+            set.add(families[i]);
+        }
+        return set;
+    }
+
+
     public static List<GraphFactory> get(Set<Family> families) {
         List<GraphFactory> list = new ArrayList<GraphFactory>();
         for (GraphFactory factory : factories.values()) {
