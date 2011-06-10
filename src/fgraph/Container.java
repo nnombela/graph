@@ -9,25 +9,25 @@ public interface Container<G extends GraphObject> extends GraphObject {
 
     G get(int index);
 
-    interface Accessor<G> {
+    interface Accessor<G extends GraphObject> {
         void set(G g, Object obj);
         Object get(G g);
 
         Object[] objects();
     }
 
-    interface Iterator<G> {
+    interface Iterator<G extends GraphObject> {
         G next();
         boolean hasNext();
         G current();
         int index();
     }
 
-    interface Closure<G> {
+    interface Closure<G extends GraphObject> {
         void execute(G g);
     }
 
-    interface Condition<G> {
+    interface Condition<G extends GraphObject> {
         boolean check(G g);
     }
 

@@ -5,7 +5,7 @@ package fgraph;
  * Author: nnombela@gmail.com
  * Date: 7/06/11
  */
-public class Utils {
+public class Linker {
     Halfedge link(Node node1, Node node2) {
         return null;
     }
@@ -29,5 +29,4 @@ public class Utils {
     Node unlink(Graph graph1, Graph graph2) {
         return null;
     }
-
 }
