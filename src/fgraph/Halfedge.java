@@ -34,7 +34,7 @@ public interface Halfedge extends GraphObject {
 
     Halfedge pair(Join join);
     Halfedge join(Join join, Halfedge halfedge);
-    boolean disjoin(Join join);
+    void disjoin(Join join);
 
     Direction direction();
 

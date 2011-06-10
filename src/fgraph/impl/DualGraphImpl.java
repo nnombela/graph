@@ -52,6 +52,6 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
 
     @Override
     public void setUp(Node up) {
-        this.up = up;
+        this.up = Checker.setUp(this, up);
     }
 }

@@ -45,7 +45,7 @@ public class GraphImpl extends ContainerImpl<Node> implements Graph {
 
     @Override
     public void setUp(Node up) {
-        this.up = up;
+        this.up = Checker.setUp(this, up);
     }
 
     public int ordinal() {

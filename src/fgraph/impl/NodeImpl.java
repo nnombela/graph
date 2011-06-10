@@ -63,10 +63,10 @@ public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
 
     @Override
     public void setDown(Graph down) {
-        this.down = down;
+        this.down = Checker.setDown(this, down);
     }
     @Override
     public void setUp(Halfedge up) {
-        this.up = up;
+        this.up = Checker.setUp(this, up);
     }
 }

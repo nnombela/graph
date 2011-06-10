@@ -1,9 +1,6 @@
 package fgraph.impl;
 
 import fgraph.*;
-import sun.plugin.cache.OldCacheEntry;
-
-import java.security.Identity;
 
 /**
  * This class models...
@@ -49,7 +46,6 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return pair[2];
     }
 
-
     public Direction direction() {
         return ((Halfedges)owner).direction();
     }
@@ -58,45 +54,24 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return pair[join.ordinal()];
     }
 
-    // throws an error if they can not be joined, true if the other side is still disjoin and false otherwise
-    private boolean areDisjoined(Halfedge pair, Halfedge other) {
-        if (pair == null) {
-            if (other == null) {
-                return true;
-            } else if (other == this) {
-                return false;
-            } else {
-                throw new RuntimeException("Invalid Operation. First you need to disjoin " + other);
-            }
-        } else if (pair == other) {
-            return false;
-        }
-        throw new RuntimeException("Invalid Operation. First you need to disjoin " + pair);
-    }
-
-
     public Halfedge join(Join join, Halfedge halfedge) {
-        int i = join.ordinal();
+        int degree = Checker.degreeDisjoined(this, join, halfedge);
 
-        if (areDisjoined(pair[i], halfedge.direct())) {
-            pair[i] = halfedge;
-            halfedge.join(join, this);
-        } else {
-            pair[i] = halfedge;
+        if (degree > 0) {
+            pair[join.ordinal()] = halfedge;
+            if (degree == 2) {
+                halfedge.join(join, this);
+            }
         }
         return this;
     }
 
-    public boolean disjoin(Join join) {
-        int i = join.ordinal();
+    public void disjoin(Join join) {
+        Halfedge thePair = pair(join);
 
-        Halfedge p = pair[i];
-        if (p != null) {
-            pair[i] = null;
-            p.disjoin(join);
-            return true;
-        } else {
-            return false;
+        if (thePair != null) {
+            pair[join.ordinal()] = null;
+            thePair.disjoin(join);
         }
     }
 
@@ -106,7 +81,7 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
 
     @Override
     public void setDown(Node down) {
-        this.down = down;
+        this.down = Checker.setDown(this, down);
     }
 
 }
