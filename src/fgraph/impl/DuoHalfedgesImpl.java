@@ -12,15 +12,11 @@ import java.lang.reflect.Array;
  * Date: 2/06/11
  */
 public class DuoHalfedgesImpl extends HalfedgesAbstract {
-    protected HalfedgesImpl[] containers;
+    protected HalfedgesImpl[] containers = new HalfedgesImpl[] { new HalfedgesImpl(), new HalfedgesImpl() };
 
-    public DuoHalfedgesImpl()  {
-        this.containers = new HalfedgesImpl[2];
-        this.containers[0] = new HalfedgesImpl();
-        this.containers[1] = new HalfedgesImpl();
-
-        this.containers[0].setOwner(this);
-        this.containers[1].setOwner(this);
+    public void setOwner(GraphObject owner) {
+        containers[0].setOwner(owner);
+        containers[1].setOwner(owner);
     }
 
     public Halfedge get(int index) {

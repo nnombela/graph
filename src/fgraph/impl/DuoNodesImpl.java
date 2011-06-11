@@ -11,15 +11,11 @@ import fgraph.Nodes;
  * Date: 2/06/11
  */
 public class DuoNodesImpl extends NodesAbstract {
-    protected NodesImpl[] containers;
+    protected NodesImpl[] containers = new NodesImpl[] { new NodesImpl(), new NodesImpl() };
 
-    public DuoNodesImpl()  {
-        this.containers = new NodesImpl[2];
-        this.containers[0] = new NodesImpl();
-        this.containers[1] = new NodesImpl();
-
-        this.containers[0].setOwner(this);
-        this.containers[1].setOwner(this);
+    public void setOwner(GraphObject owner) {
+        this.containers[0].setOwner(owner);
+        this.containers[1].setOwner(owner);
     }
 
     public Node get(int index) {
