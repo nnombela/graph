@@ -7,7 +7,7 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
+public class DualGraphImpl extends DuoNodesImpl implements Graph {
     protected Node up;
     protected int ordinal;
 
@@ -24,7 +24,6 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public DualGraphImpl(int ordinal) {
-        super(NodesImpl.class);
         this.ordinal = ordinal;
     }
 
@@ -33,21 +32,11 @@ public class DualGraphImpl extends DuoContainerImpl<Node> implements Graph {
     }
 
     public Nodes nodes(Node.Duality duality) {
-        return (Nodes)containers[duality.ordinal()];
+        return containers[duality.ordinal()];
     }
 
     public Node up() {
         return up;
-    }
-
-    @Override
-    public Node.Duality duality() {
-        return null;
-    }
-
-    @Override
-    public Nodes dual() {
-        return this;
     }
 
     @Override

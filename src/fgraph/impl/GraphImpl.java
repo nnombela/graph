@@ -7,7 +7,7 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class GraphImpl extends ContainerImpl<Node> implements Graph {
+public class GraphImpl extends NodesImpl implements Graph {
     protected Node up;
     protected int ordinal;
 

@@ -10,19 +10,19 @@ import java.util.*;
  * Time: 22:32:53
  * Comment --
  */
-public class SearchIterator implements Nodes.Iterator<Node> {
+public class SearchIterator implements Nodes.Iterator {
     public static final int BFS_1 = 0;
     public static final int DFS_1 = 1;
     public static final int BFS_2 = 2;
     public static final int DFS_2 = 3;
 
-    protected LinkedList stack = new LinkedList();
+    protected LinkedList<Node> stack = new LinkedList<Node>();
     protected Nodes.Accessor visited;
     protected Closure closure;
 
     public SearchIterator(Node root, int type) {
         this.visited = (type == BFS_1 || type == DFS_1)?
-                root.graph().accessor() : root.accessor();
+                root.graph().accessor() : root.nodes().accessor();
         this.closure = getClosure(type);
 
         visited.set(root, Boolean.TRUE);
@@ -39,11 +39,13 @@ public class SearchIterator implements Nodes.Iterator<Node> {
 
     @Override
     public Node current() {
+        // TODO
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public int index() {
+        // TODO
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -69,23 +71,13 @@ public class SearchIterator implements Nodes.Iterator<Node> {
         }
     }
 
-    protected abstract class Closure implements Container.Closure {
+    protected abstract class Closure implements Halfedges.Closure, Nodes.Closure {
         public void execute(Halfedge hlink) {
-            executeIfNotVisited(hlink.linksTo());
-        }
-
-        private void executeIfNotVisited(Node connTo) {
+            Node connTo = hlink.linksTo();
             if (connTo != null && visited.get(connTo) == null) {
                 visited.set(connTo, Boolean.TRUE);
                 execute(connTo);
             }
-        }
-
-        public abstract void execute(Node node);
-
-        @Override
-        public void execute(GraphObject graphObject) {
-            //To change body of implemented methods use File | Settings | File Templates.
         }
     }
 

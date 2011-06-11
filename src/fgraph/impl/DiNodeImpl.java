@@ -7,17 +7,13 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
+public class DiNodeImpl extends DuoHalfedgesImpl implements Node {
     protected Halfedge up;
     protected Graph down;
 
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("digraph");
-    }
-
-    public DiNodeImpl() {
-        super(HalfedgesImpl.class);
     }
 
     public void free() {
@@ -32,18 +28,7 @@ public class DiNodeImpl extends DuoContainerImpl<Halfedge> implements Node {
 
     @Override
     public Halfedges halfedges(Halfedge.Direction direction) {
-        return (Halfedges)containers[direction.ordinal()];
-    }
-
-
-    @Override
-    public Halfedge.Direction direction() {
-        return null;
-    }
-
-    @Override
-    public Node reverse() {
-        return this;
+        return containers[direction.ordinal()];
     }
 
     public Node inverse() {

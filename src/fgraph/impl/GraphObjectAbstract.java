@@ -26,16 +26,29 @@ public abstract class GraphObjectAbstract implements GraphObject {
         }
     }
 
+
+    public GraphObject closest(Type type) {
+        return this.type() == type? this : owner.closest(type);
+    }
+
     public Graph graph() {
-        return this instanceof Graph? (Graph)this : owner != null? owner.graph() : null;
+        return (Graph)closest(Type.graph);
+    }
+
+    public Nodes nodes() {
+        return (Nodes)closest(Type.nodes);
     }
 
     public Node node() {
-        return this instanceof Node? (Node)this : owner != null? owner.node() : null;
+        return (Node)closest(Type.node);
+    }
+
+    public Halfedges halfedges() {
+        return (Halfedges)closest(Type.halfedges);
     }
 
     public Halfedge halfedge() {
-        return this instanceof Halfedge? (Halfedge)this : null;
+        return (Halfedge)closest(Type.halfedge);
     }
 
     public int ordinal() {

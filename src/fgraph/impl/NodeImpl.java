@@ -7,7 +7,7 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 8/06/11
  */
-public class NodeImpl extends ContainerImpl<Halfedge> implements Node {
+public class NodeImpl extends HalfedgesImpl implements Node {
     protected Graph down;
     protected Halfedge up;
 

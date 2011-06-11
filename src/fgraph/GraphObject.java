@@ -7,7 +7,7 @@ package fgraph;
  */
 public interface GraphObject {
     enum Type {
-        graph, node, halfedge;
+        graph, nodes, node, halfedges, halfedge;
 
         public boolean is(Type type) {
             return this == type;
@@ -22,8 +22,11 @@ public interface GraphObject {
     GraphObject belongsTo();
     void setOwner(GraphObject owner);
 
+    GraphObject closest(Type type);
     Graph graph();
+    Nodes nodes();
     Node node();
+    Halfedges halfedges();
     Halfedge halfedge();
 
     int ordinal();

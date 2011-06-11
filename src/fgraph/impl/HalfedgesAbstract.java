@@ -1,8 +1,6 @@
 package fgraph.impl;
 
-import fgraph.Container;
-import fgraph.GraphFactory;
-import fgraph.GraphObject;
+import fgraph.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,7 +9,7 @@ import fgraph.GraphObject;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ContainerAbstract<G extends GraphObject> extends GraphObjectAbstract implements Container<G> {
+public abstract class HalfedgesAbstract extends GraphObjectAbstract implements Halfedges {
 
     @Override
     public GraphFactory factory() {
@@ -19,23 +17,23 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
     }
 
     public void free() {
-        forEach(new Closure<G>() {
-            public void execute(G g) {
+        forEach(new Closure() {
+            public void execute(Halfedge g) {
                 g.free();
             }
         });
         super.free();
     }
 
-    public Iterator<G> iterator() {
-        return new Iterator<G>() {
+    public Iterator iterator() {
+        return new Iterator() {
             private int cursor = -1;
 
-            public G next() {
+            public Halfedge next() {
                 return get(++cursor);
             }
 
-            public G current() {
+            public Halfedge current() {
                 return get(cursor);
             }
 
@@ -49,15 +47,15 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
         };
     }
 
-    public Accessor<G> accessor() {
-        return new Accessor<G>() {
+    public Accessor accessor() {
+        return new Accessor() {
             private Object[] objs = new Object[size()];
 
-            public void set(G g, Object obj) {
+            public void set(Halfedge g, Object obj) {
                 objs[index(g)] = obj;
             }
 
-            public Object get(G g) {
+            public Object get(Halfedge g) {
                 return objs[index(g)];
             }
 
@@ -69,14 +67,14 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
         };
     }
 
-    public void forEach(Closure<G> closure) {
-        for(Iterator<G> iterator = iterator(); iterator.hasNext();) {
+    public void forEach(Closure closure) {
+        for(Iterator iterator = iterator(); iterator.hasNext();) {
             closure.execute(iterator.next());
         }
     }
 
-    public G find(Condition<G> condition) {
-        for(Iterator<G> iterator = iterator(); iterator.hasNext();) {
+    public Halfedge find(Condition condition) {
+        for(Iterator iterator = iterator(); iterator.hasNext();) {
             if (condition.check(iterator.next())) {
                 return iterator.current();
             }
@@ -84,7 +82,7 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
         return null;
     }
 
-    public int index(G g) {
+    public int index(Halfedge g) {
         for(int i = 0; i < size(); ++i) {
             if (get(i) == g) {
                 return i;
@@ -93,12 +91,12 @@ public abstract class ContainerAbstract<G extends GraphObject> extends GraphObje
         return -1;
     }
 
-    public boolean contains(G g) {
+    public boolean contains(Halfedge g) {
         return index(g) != -1;
     }
 
     public Type type() {
-        return owner.type() == Type.graph? Type.node : owner.type() == Type.node? Type.halfedge : Type.graph;
+        return Type.halfedges;
     }
 
 }
