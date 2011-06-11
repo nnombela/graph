@@ -1,5 +1,7 @@
 package fgraph;
 
+import java.util.Set;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -10,4 +12,7 @@ public interface Graph extends Nodes {
 
     Node up();
     void setUp(Node up);
+
+    Graph next();
+    Set<Graph> before();
 }

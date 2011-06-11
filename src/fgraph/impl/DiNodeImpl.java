@@ -11,18 +11,18 @@ public class DiNodeImpl extends DuoHalfedgesImpl implements Node {
     protected Halfedge up;
     protected Graph down;
 
+    public Type type() {
+        return Type.node;
+    }
+
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("digraph");
     }
 
     public void free() {
-        if (up != null) {
-            up.free();
-        }
-        if (down != null) {
-            down.free();
-        }
+        free(up);
+        free(down);
         super.free();
     }
 
@@ -35,12 +35,8 @@ public class DiNodeImpl extends DuoHalfedgesImpl implements Node {
         return up().direct().down();
     }
 
-    public Type type() {
-        return Type.node;
-    }
-
     public Duality duality() {
-        return ((Nodes)owner).duality();
+        return nodes().duality();
     }
 
     public Graph down() {

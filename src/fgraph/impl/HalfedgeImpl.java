@@ -24,9 +24,7 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         for (Join join : Join.values()) {
             disjoin(join);
         }
-        if (down != null) {
-            down.free();
-        }
+        free(down);
         super.free();
     }
 

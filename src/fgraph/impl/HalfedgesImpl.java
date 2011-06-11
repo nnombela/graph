@@ -7,7 +7,7 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 8/06/11
  */
-public class HalfedgesImpl extends HalfedgesAbstract  {
+public class HalfedgesImpl extends HalfedgesAbstract {
     protected Halfedge[] objs = new Halfedge[1];
     protected int size = 0;
 

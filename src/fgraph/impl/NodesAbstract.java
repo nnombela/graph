@@ -3,17 +3,14 @@ package fgraph.impl;
 import fgraph.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: nnombela
+ * This class models...
+ * Author: nnombela@gmail.com
  * Date: 28/05/11
- * Time: 19:11
- * To change this template use File | Settings | File Templates.
  */
 public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes {
 
-    @Override
-    public GraphFactory factory() {
-        return owner.factory();
+    public Type type() {
+        return Type.halfedges;
     }
 
     public void free() {
@@ -93,10 +90,6 @@ public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes
 
     public boolean contains(Node g) {
         return index(g) != -1;
-    }
-
-    public Type type() {
-        return Type.halfedges;
     }
 
 }

@@ -2,6 +2,9 @@ package fgraph.impl;
 
 import fgraph.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -17,9 +20,7 @@ public class DualGraphImpl extends DuoNodesImpl implements Graph {
     }
 
     public void free() {
-        if (up != null) {
-            up.free();
-        }
+        free(up);
         super.free();
     }
 
@@ -42,5 +43,15 @@ public class DualGraphImpl extends DuoNodesImpl implements Graph {
     @Override
     public void setUp(Node up) {
         this.up = Checker.setUp(this, up);
+    }
+
+    @Override
+    public Graph next() {
+        return up().graph();
+    }
+
+    @Override
+    public Set<Graph> before() {
+        return before(this);
     }
 }

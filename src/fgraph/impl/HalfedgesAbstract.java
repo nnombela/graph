@@ -11,9 +11,8 @@ import fgraph.*;
  */
 public abstract class HalfedgesAbstract extends GraphObjectAbstract implements Halfedges {
 
-    @Override
-    public GraphFactory factory() {
-        return owner.factory();
+    public Type type() {
+        return Type.halfedges;
     }
 
     public void free() {
@@ -93,10 +92,6 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
 
     public boolean contains(Halfedge g) {
         return index(g) != -1;
-    }
-
-    public Type type() {
-        return Type.halfedges;
     }
 
 }

@@ -17,18 +17,14 @@ public class NodeImpl extends HalfedgesImpl implements Node {
     }
 
     public void free() {
-        if (up != null) {
-            up.free();
-        }
-        if (down != null) {
-            down.free();
-        }
+        free(up);
+        free(down);
         super.free();
     }
 
     @Override
     public Duality duality() {
-        return ((Nodes)owner).duality();
+        return nodes().duality();
     }
 
     @Override

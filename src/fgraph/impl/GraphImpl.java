@@ -2,6 +2,11 @@ package fgraph.impl;
 
 import fgraph.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -21,9 +26,7 @@ public class GraphImpl extends NodesImpl implements Graph {
     }
 
     public void free() {
-        if (up != null) {
-            up.free();
-        }
+        free(up);
         super.free();
     }
 
@@ -46,6 +49,16 @@ public class GraphImpl extends NodesImpl implements Graph {
     @Override
     public void setUp(Node up) {
         this.up = Checker.setUp(this, up);
+    }
+
+    @Override
+    public Graph next() {
+        return up().graph();
+    }
+
+    @Override
+    public Set<Graph> before() {
+        return before(this);
     }
 
     public int ordinal() {
