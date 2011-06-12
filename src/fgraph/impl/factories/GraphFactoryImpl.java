@@ -17,12 +17,12 @@ public class GraphFactoryImpl extends GraphFactory {
 
     @Override
     public Set<Family> families() {
-        return asSet(new Family[] { Family.fractal });
+        return asSet(new Family[] {  });
     }
 
     @Override
     public String name() {
-        return "default";
+        return "graph";
     }
 
     @Override

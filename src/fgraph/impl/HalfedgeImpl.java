@@ -9,7 +9,6 @@ import fgraph.*;
  */
 public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
-    protected Node down;
 
     public Type type() {
         return Type.halfedge;
@@ -24,7 +23,6 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         for (Join join : Join.values()) {
             disjoin(join);
         }
-        free(down);
         super.free();
     }
 
@@ -74,12 +72,12 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public Node down() {
-        return down;
+        return null;
     }
 
     @Override
     public void setDown(Node down) {
-        this.down = Checker.setDown(this, down);
+        throw new RuntimeException("Invalid operation");
     }
 
     public Halfedges belongsTo() {
