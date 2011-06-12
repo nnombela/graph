@@ -9,8 +9,6 @@ import fgraph.*;
  */
 public class NodeImpl extends GraphObjectAbstract implements Node {
     protected Halfedges halfedges;
-    protected Graph down;
-    protected Halfedge up;
 
     @Override
     public GraphFactory factory() {
@@ -33,11 +31,6 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
         return (Nodes)owner;
     }
 
-    public void free() {
-        free(up);
-        free(down);
-        super.free();
-    }
 
     @Override
     public Duality duality() {
@@ -56,20 +49,20 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
 
     @Override
     public Graph down() {
-        return down;
+        return null;
     }
 
     @Override
     public Halfedge up() {
-        return up;
+        return null;
     }
 
     @Override
     public void setDown(Graph down) {
-        this.down = Checker.setDown(this, down);
+        throw new RuntimeException("Invalid operation");
     }
     @Override
     public void setUp(Halfedge up) {
-        this.up = Checker.setUp(this, up);
+        throw new RuntimeException("Invalid operation");
     }
 }

@@ -1,15 +1,23 @@
 package fgraph.impl;
 
-import fgraph.*;
+import fgraph.GraphFactory;
+import fgraph.Halfedge;
+import fgraph.Halfedges;
+import fgraph.Nodes;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DiNodeImpl extends NodeImpl {
-    public DiNodeImpl() {
-        super(new DuoHalfedgesImpl());
+public class FracDiNodeImpl extends FracNodeImpl {
+
+    public FracDiNodeImpl() {
+        this(new DuoHalfedgesImpl());
+    }
+
+    public FracDiNodeImpl(Halfedges halfedges) {
+        super(halfedges);
     }
 
     @Override

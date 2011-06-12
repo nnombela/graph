@@ -47,6 +47,7 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
 
     @Override
     public void setUp(Node up) {
+        throw new RuntimeException("Invalid operation");
     }
 
     @Override
