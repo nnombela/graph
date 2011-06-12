@@ -7,7 +7,8 @@ import java.util.Set;
  * Author: nnombela@gmail.com
  * Date: 3/01/11
  */
-public interface Graph extends Nodes {
+public interface Graph extends GraphObject {
+    Nodes nodes();
     Nodes nodes(Node.Duality duality);
 
     Node up();

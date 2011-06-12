@@ -50,6 +50,6 @@ public interface Nodes extends GraphObject {
     boolean swap(Node g1, Node g2);
 
     Node.Duality duality();
-
     Nodes dual();
+    Graph belongsTo();
 }

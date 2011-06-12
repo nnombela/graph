@@ -7,13 +7,30 @@ import fgraph.*;
  * Author: nnombela@gmail.com
  * Date: 8/06/11
  */
-public class NodeImpl extends HalfedgesImpl implements Node {
+public class NodeImpl extends GraphObjectAbstract implements Node {
+    protected Halfedges halfedges;
     protected Graph down;
     protected Halfedge up;
 
     @Override
     public GraphFactory factory() {
-        return GraphFactory.get("default");
+        return GraphFactory.get("graph");
+    }
+
+    public NodeImpl() {
+        this(new HalfedgesImpl());
+    }
+    public NodeImpl(Halfedges halfedges) {
+        this.halfedges = halfedges;
+        halfedges.setOwner(this);
+    }
+
+    public Type type() {
+        return Type.node;
+    }
+
+    public Nodes belongsTo() {
+        return (Nodes)owner;
     }
 
     public void free() {
@@ -24,12 +41,17 @@ public class NodeImpl extends HalfedgesImpl implements Node {
 
     @Override
     public Duality duality() {
-        return nodes().duality();
+        return belongsTo().duality();
+    }
+
+    @Override
+    public Halfedges halfedges() {
+        return halfedges;
     }
 
     @Override
     public Halfedges halfedges(Halfedge.Direction direction) {
-        return this;
+        return halfedges;
     }
 
     @Override
@@ -40,21 +62,6 @@ public class NodeImpl extends HalfedgesImpl implements Node {
     @Override
     public Halfedge up() {
         return up;
-    }
-
-    @Override
-    public Halfedge.Direction direction() {
-        return null;
-    }
-
-    @Override
-    public Node reverse() {
-        return this;
-    }
-
-    @Override
-    public Node inverse() {
-        return up().direct().node();
     }
 
     @Override

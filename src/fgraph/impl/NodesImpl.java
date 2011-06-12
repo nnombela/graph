@@ -72,20 +72,4 @@ public class NodesImpl extends NodesAbstract {
             return false;
         }
     }
-
-    public Node.Duality duality() {
-        Graph graph = graph();
-        Nodes vertices = graph.nodes(Node.Duality.hypervertex);
-        Nodes edges = graph.nodes(Node.Duality.hyperedge);
-
-        return this == vertices? Node.Duality.hypervertex :  this == edges? Node.Duality.hyperedge : null;
-    }
-
-    public Nodes dual() {
-        Graph graph = graph();
-        Nodes vertices = graph.nodes(Node.Duality.hypervertex);
-        Nodes edges = graph.nodes(Node.Duality.hyperedge);
-
-        return this == vertices? edges : this == edges? vertices : graph;
-    }
 }

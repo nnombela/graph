@@ -82,4 +82,9 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         this.down = Checker.setDown(this, down);
     }
 
+    public Halfedges belongsTo() {
+        return (Halfedges)owner;
+    }
+
+
 }

@@ -27,6 +27,7 @@ public interface Halfedge extends GraphObject {
     }
 
     Node linksTo();
+    Halfedges belongsTo();
 
     Halfedge direct();
     Halfedge reverse();

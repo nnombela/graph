@@ -12,7 +12,11 @@ import java.lang.reflect.Array;
  * Date: 2/06/11
  */
 public class DuoHalfedgesImpl extends HalfedgesAbstract {
-    protected HalfedgesImpl[] containers = new HalfedgesImpl[] { new HalfedgesImpl(), new HalfedgesImpl() };
+    HalfedgesImpl[] containers = new HalfedgesImpl[] { new HalfedgesImpl(), new HalfedgesImpl() };
+
+    public Halfedges halfedges(Halfedge.Direction direction) {
+        return containers[direction.ordinal()];
+    }
 
     public void setOwner(GraphObject owner) {
         containers[0].setOwner(owner);
@@ -45,25 +49,9 @@ public class DuoHalfedgesImpl extends HalfedgesAbstract {
         return containers[0].swap(g1, g2) || containers[1].swap(g1, g2);
     }
 
-    @Override
-    public Halfedge.Direction direction() {
-        return null;
-    }
-
-    @Override
-    public Halfedges reverse() {
-        return this;
-    }
-
-    @Override
-    public Halfedges inverse() {
-        return node().inverse();
-    }
-
     public void free() {
         containers[0].free();
         containers[1].free();
         super.free();
     }
-
 }

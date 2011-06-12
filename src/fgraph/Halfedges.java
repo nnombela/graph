@@ -48,8 +48,8 @@ public interface Halfedges extends GraphObject {
     boolean remove(Halfedge g);
     boolean swap(Halfedge g1, Halfedge g2);
 
+    Node belongsTo();
     Halfedge.Direction direction();
-
     Halfedges reverse();
     Halfedges inverse();
 }

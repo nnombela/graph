@@ -7,7 +7,7 @@ import com.sun.istack.internal.Nullable;
  * Author: nnombela@gmail.com
  * Date: 3/01/11
  */
-public interface Node extends Halfedges {
+public interface Node extends GraphObject {
     enum Duality {
         hypervertex, hyperedge;
 
@@ -21,14 +21,15 @@ public interface Node extends Halfedges {
 
     Duality duality();
 
+    Nodes belongsTo();
+
+    Halfedges halfedges();
     Halfedges halfedges(Halfedge.Direction direction);
 
     Graph down();
-
-    Halfedge up();
-
     void setDown(Graph down);
 
+    Halfedge up();
     void setUp(Halfedge up);
 
 }

@@ -12,9 +12,22 @@ import java.util.Set;
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class GraphImpl extends NodesImpl implements Graph {
+public class GraphImpl extends GraphObjectAbstract implements Graph {
+    protected Nodes nodes;
     protected Node up;
     protected int ordinal;
+
+    public GraphImpl() {
+        this(new NodesImpl());
+    }
+    public GraphImpl(Nodes nodes) {
+        this.nodes = nodes;
+        nodes.setOwner(this);
+    }
+
+    public Type type() {
+        return Type.graph;
+    }
 
     public GraphImpl(int ordinal) {
         this.ordinal = ordinal;
@@ -22,7 +35,7 @@ public class GraphImpl extends NodesImpl implements Graph {
 
     @Override
     public GraphFactory factory() {
-        return GraphFactory.get("default");
+        return GraphFactory.get("graph");
     }
 
     public void free() {
@@ -30,20 +43,16 @@ public class GraphImpl extends NodesImpl implements Graph {
         super.free();
     }
 
+    public Nodes nodes() {
+        return nodes;
+    }
+
     public Nodes nodes(Node.Duality duality) {
-        return this;
+        return nodes;
     }
 
     public Node up() {
         return up;
-    }
-
-    public Node.Duality duality() {
-        return null;
-    }
-
-    public Nodes dual() {
-        return null;
     }
 
     @Override

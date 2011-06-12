@@ -13,6 +13,10 @@ import fgraph.Nodes;
 public class DuoNodesImpl extends NodesAbstract {
     protected NodesImpl[] containers = new NodesImpl[] { new NodesImpl(), new NodesImpl() };
 
+    public Nodes nodes(Node.Duality duality) {
+        return containers[duality.ordinal()];
+    }
+
     public void setOwner(GraphObject owner) {
         this.containers[0].setOwner(owner);
         this.containers[1].setOwner(owner);
@@ -42,16 +46,6 @@ public class DuoNodesImpl extends NodesAbstract {
 
     public boolean swap(Node g1, Node g2) {
         return containers[0].swap(g1, g2) || containers[1].swap(g1, g2);
-    }
-
-    @Override
-    public Node.Duality duality() {
-        return null;
-    }
-
-    @Override
-    public Nodes dual() {
-        return this;
     }
 
     public void free() {

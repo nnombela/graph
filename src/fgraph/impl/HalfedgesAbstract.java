@@ -15,6 +15,29 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         return Type.halfedges;
     }
 
+    public Node belongsTo() {
+        return (Node)owner;
+    }
+    @Override
+    public Halfedge.Direction direction() {
+        Node node = belongsTo();
+        Halfedges adjs = node.halfedges(Halfedge.Direction.adjacent);
+        Halfedges incs = node.halfedges(Halfedge.Direction.incident);
+        return (this == adjs)? Halfedge.Direction.adjacent : (this == incs)? Halfedge.Direction.incident : null;
+    }
+
+    public Halfedges reverse() {
+        Node node = belongsTo();
+        Halfedges adjs = node.halfedges(Halfedge.Direction.adjacent);
+        Halfedges incs = node.halfedges(Halfedge.Direction.incident);
+        return (this == adjs)? incs :  (this == incs)? adjs : this;
+    }
+
+    @Override
+    public Halfedges inverse() {
+        return belongsTo().up().direct().belongsTo();
+    }
+
     public void free() {
         forEach(new Closure() {
             public void execute(Halfedge g) {

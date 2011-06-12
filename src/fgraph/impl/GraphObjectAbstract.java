@@ -20,7 +20,7 @@ public abstract class GraphObjectAbstract implements GraphObject {
     protected static Set<Graph> before(Graph graph) {
         final Set<Graph> graphs = new HashSet<Graph>();
 
-        graph.forEach(new Nodes.Closure() {
+        graph.nodes().forEach(new Nodes.Closure() {
             public void execute(Node g) {
                 if (g.down() != null) {
                     graphs.add(g.down().graph());
