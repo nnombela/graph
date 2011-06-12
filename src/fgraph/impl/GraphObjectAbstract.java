@@ -17,19 +17,6 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return owner.factory();
     }
 
-    protected static Set<Graph> before(Graph graph) {
-        final Set<Graph> graphs = new HashSet<Graph>();
-
-        graph.nodes().forEach(new Nodes.Closure() {
-            public void execute(Node g) {
-                if (g.down() != null) {
-                    graphs.add(g.down().graph());
-                }
-            }
-        });
-        return graphs;
-    }
-
     protected static void free(GraphObject gobj) {
         if (gobj != null) {
             gobj.free();

@@ -19,13 +19,16 @@ public interface Node extends GraphObject {
         }
     }
 
-    Duality duality();
-
+    Halfedges halfedges();
     Nodes belongsTo();
 
-    Halfedges halfedges();
+    // Dual
+    Duality duality();
+
+    // Directed
     Halfedges halfedges(Halfedge.Direction direction);
 
+    // Fractal
     Graph down();
     void setDown(Graph down);
 

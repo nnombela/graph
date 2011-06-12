@@ -14,12 +14,11 @@ import java.util.Set;
  */
 public class GraphImpl extends GraphObjectAbstract implements Graph {
     protected Nodes nodes;
-    protected Node up;
-    protected int ordinal;
 
     public GraphImpl() {
         this(new NodesImpl());
     }
+
     public GraphImpl(Nodes nodes) {
         this.nodes = nodes;
         nodes.setOwner(this);
@@ -29,18 +28,9 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
         return Type.graph;
     }
 
-    public GraphImpl(int ordinal) {
-        this.ordinal = ordinal;
-    }
-
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("graph");
-    }
-
-    public void free() {
-        free(up);
-        super.free();
     }
 
     public Nodes nodes() {
@@ -52,25 +42,24 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
     }
 
     public Node up() {
-        return up;
+        return null;
     }
 
     @Override
     public void setUp(Node up) {
-        this.up = Checker.setUp(this, up);
     }
 
     @Override
     public Graph next() {
-        return up().graph();
+        return null;
     }
 
     @Override
     public Set<Graph> before() {
-        return before(this);
+        return null;
     }
 
     public int ordinal() {
-        return ordinal;
+        return 0;
     }
 }

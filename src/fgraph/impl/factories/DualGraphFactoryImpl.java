@@ -35,7 +35,7 @@ public class DualGraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new NodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new DualGraphImpl(ordinal);
+            return new DualGraphImpl();
         }
         throw new RuntimeException("Unknown type " + type);
     }

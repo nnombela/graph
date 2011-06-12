@@ -49,7 +49,9 @@ public interface Nodes extends GraphObject {
     boolean remove(Node g);
     boolean swap(Node g1, Node g2);
 
+    Graph belongsTo();
+
+    // Dual
     Node.Duality duality();
     Nodes dual();
-    Graph belongsTo();
 }

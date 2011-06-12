@@ -32,7 +32,7 @@ public class DiGraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new DiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new GraphImpl(ordinal);
+            return new GraphImpl();
         }
         throw new RuntimeException("Unknown type " + type);
     }

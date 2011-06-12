@@ -49,7 +49,11 @@ public interface Halfedges extends GraphObject {
     boolean swap(Halfedge g1, Halfedge g2);
 
     Node belongsTo();
+
+    // Directed
     Halfedge.Direction direction();
     Halfedges reverse();
+
+    // Fractal
     Halfedges inverse();
 }

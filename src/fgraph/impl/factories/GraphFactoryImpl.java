@@ -32,7 +32,7 @@ public class GraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new NodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new GraphImpl(ordinal);
+            return new GraphImpl();
         }
         throw new RuntimeException("Unknown type " + type);
     }

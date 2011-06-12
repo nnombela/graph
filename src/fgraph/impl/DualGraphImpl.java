@@ -21,11 +21,6 @@ public class DualGraphImpl extends GraphImpl {
         return GraphFactory.get("dual-graph");
     }
 
-
-    public DualGraphImpl(int ordinal) {
-        this.ordinal = ordinal;
-    }
-
     public Nodes nodes(Node.Duality duality) {
         return ((DuoNodesImpl)nodes).nodes(duality);
     }
