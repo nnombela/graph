@@ -15,12 +15,6 @@ import java.util.Set;
 public class GraphFactoryImpl extends GraphFactory {
 
     static {
-        register(new DiGraphFactoryImpl());
-        register(new DualDiGraphFactoryImpl());
-        register(new DualGraphFactoryImpl());
-        register(new FracDiGraphFactoryImpl());
-        register(new FracDualDiGraphFactoryImpl());
-        register(new FracDualGraphFactoryImpl());
         register(new GraphFactoryImpl());
     }
 

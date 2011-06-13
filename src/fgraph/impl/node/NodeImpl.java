@@ -49,6 +49,11 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     @Override
+    public Node inverse() {
+        return halfedges.inverse().belongsTo();
+    }
+
+    @Override
     public Graph down() {
         return null;
     }

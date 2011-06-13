@@ -92,5 +92,7 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return (Halfedges)owner;
     }
 
-
+    public Node node() {
+        return belongsTo().belongsTo();
+    }
 }

@@ -19,6 +19,8 @@ public class SearchIterator implements Nodes.Iterator {
     protected LinkedList<Node> stack = new LinkedList<Node>();
     protected Nodes.Accessor visited;
     protected Closure closure;
+    protected Node current;
+    int index = 0;
 
     public SearchIterator(Node root, int type) {
         Nodes nodes = (type == BFS_1 || type == DFS_1)? root.graph().nodes() : root.nodes();
@@ -39,22 +41,21 @@ public class SearchIterator implements Nodes.Iterator {
 
     @Override
     public Node current() {
-        // TODO
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return current;
     }
 
     @Override
     public int index() {
-        // TODO
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return index;
     }
 
 
     public Node next() {
         if (hasNext()) {
-            Node helem = stack.removeFirst();
-            helem.nodes().forEach(closure);
-            return helem;
+            current = stack.removeFirst();
+            ++index;
+            current.nodes().forEach(closure);
+            return current;
         }
         throw new NoSuchElementException();
     }
@@ -67,7 +68,7 @@ public class SearchIterator implements Nodes.Iterator {
             case DFS_2: return get2ndClosure(getDfsClosure());
 
             default:
-                throw new RuntimeException("Unknowned type: " + type);
+                throw new RuntimeException("Unknown type: " + type);
         }
     }
 

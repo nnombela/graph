@@ -29,6 +29,8 @@ public interface Node extends GraphObject {
     Halfedges halfedges(Halfedge.Direction direction);
 
     // Fractal
+    Node inverse();
+
     Graph down();
     void setDown(Graph down);
 
