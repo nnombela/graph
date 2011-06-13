@@ -17,7 +17,7 @@ public class DualDiGraphFactoryImpl extends GraphFactory {
 
     @Override
     public Set<Family> families() {
-        return asSet(new Family[] { Family.dual, Family.fractal });
+        return asSet(new Family[] { Family.dual, Family.directed });
     }
 
     @Override
