@@ -30,7 +30,7 @@ public class FracDiGraphFactoryImpl extends GraphFactory {
     @Override
     public GraphObject create(GraphObject.Type type, int ordinal) {
         if (type == GraphObject.Type.halfedge) {
-            return new FracHalfedgeImpl();
+            return new FracDiHalfedgeImpl();
         } else if (type == GraphObject.Type.node) {
             return new FracDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {

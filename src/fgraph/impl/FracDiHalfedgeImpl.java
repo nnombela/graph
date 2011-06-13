@@ -1,6 +1,8 @@
 package fgraph.impl;
 
 import fgraph.GraphFactory;
+import fgraph.Halfedge;
+import fgraph.Halfedges;
 import fgraph.Node;
 
 /**
@@ -8,7 +10,7 @@ import fgraph.Node;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class FracHalfedgeImpl extends HalfedgeImpl {
+public class FracDiHalfedgeImpl extends DiHalfedgeImpl {
     protected Node down;
 
     @Override

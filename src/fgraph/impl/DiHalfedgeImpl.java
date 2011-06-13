@@ -1,16 +1,17 @@
 package fgraph.impl;
 
-import fgraph.*;
-
-import javax.swing.plaf.TreeUI;
+import fgraph.GraphFactory;
+import fgraph.Halfedge;
+import fgraph.Halfedges;
+import fgraph.Node;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
-    protected Halfedge direct;
+public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
+    protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
 
     public Type type() {
         return Type.halfedge;
@@ -22,24 +23,26 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public void free() {
-        disjoin(Join.direct);
+        for (Join join : Join.values()) {
+            disjoin(join);
+        }
         super.free();
     }
 
     public Node linksTo() {
-        return direct.node();
+        return pair[0].node();
     }
 
     public Halfedge direct() {
-        return direct;
+        return pair[0];
     }
 
     public Halfedge reverse() {
-        return direct;
+        return pair[1];
     }
 
     public Halfedge inverse() {
-        return null;
+        return pair[2];
     }
 
     public Direction direction() {
@@ -47,18 +50,14 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public Halfedge pair(Join join) {
-        return join == Join.direct? direct : null;
+        return pair[join.ordinal()];
     }
 
     public Halfedge join(Join join, Halfedge halfedge) {
-        if (join != Join.direct) {
-            throw new RuntimeException("Invalid operation");
-        }
-
         int degree = Checker.degreeDisjoined(this, join, halfedge);
 
         if (degree > 0) {
-            direct = halfedge;
+            pair[join.ordinal()] = halfedge;
             if (degree == 2) {
                 halfedge.join(join, this);
             }
@@ -70,7 +69,7 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         Halfedge thePair = pair(join);
 
         if (thePair != null) {
-            direct = null;
+            pair[join.ordinal()] = null;
             thePair.disjoin(join);
             return true;
         } else {
