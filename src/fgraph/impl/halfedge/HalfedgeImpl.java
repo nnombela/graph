@@ -1,17 +1,18 @@
-package fgraph.impl;
+package fgraph.impl.halfedge;
 
-import fgraph.GraphFactory;
-import fgraph.Halfedge;
-import fgraph.Halfedges;
-import fgraph.Node;
+import fgraph.*;
+import fgraph.impl.Checker;
+import fgraph.impl.GraphObjectAbstract;
+
+import javax.swing.plaf.TreeUI;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
-    protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
+public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
+    protected Halfedge direct;
 
     public Type type() {
         return Type.halfedge;
@@ -23,26 +24,24 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public void free() {
-        for (Join join : Join.values()) {
-            disjoin(join);
-        }
+        disjoin(Join.direct);
         super.free();
     }
 
     public Node linksTo() {
-        return pair[0].node();
+        return direct.node();
     }
 
     public Halfedge direct() {
-        return pair[0];
+        return direct;
     }
 
     public Halfedge reverse() {
-        return pair[1];
+        return direct;
     }
 
     public Halfedge inverse() {
-        return pair[2];
+        return null;
     }
 
     public Direction direction() {
@@ -50,14 +49,18 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
     }
 
     public Halfedge pair(Join join) {
-        return pair[join.ordinal()];
+        return join == Join.direct? direct : null;
     }
 
     public Halfedge join(Join join, Halfedge halfedge) {
+        if (join != Join.direct) {
+            throw new RuntimeException("Invalid operation");
+        }
+
         int degree = Checker.degreeDisjoined(this, join, halfedge);
 
         if (degree > 0) {
-            pair[join.ordinal()] = halfedge;
+            direct = halfedge;
             if (degree == 2) {
                 halfedge.join(join, this);
             }
@@ -69,7 +72,7 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         Halfedge thePair = pair(join);
 
         if (thePair != null) {
-            pair[join.ordinal()] = null;
+            direct = null;
             thePair.disjoin(join);
             return true;
         } else {

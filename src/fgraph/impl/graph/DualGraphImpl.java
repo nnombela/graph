@@ -1,9 +1,6 @@
-package fgraph.impl;
+package fgraph.impl.graph;
 
 import fgraph.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * This class models...

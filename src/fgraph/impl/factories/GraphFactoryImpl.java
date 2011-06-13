@@ -1,7 +1,10 @@
 package fgraph.impl.factories;
 
 import fgraph.*;
-import fgraph.impl.*;
+import fgraph.impl.graph.GraphImpl;
+import fgraph.impl.halfedge.HalfedgeImpl;
+import fgraph.impl.node.NodeImpl;
+
 import java.util.Set;
 
 /**

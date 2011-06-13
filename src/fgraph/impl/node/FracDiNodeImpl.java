@@ -1,9 +1,8 @@
-package fgraph.impl;
+package fgraph.impl.node;
 
 import fgraph.GraphFactory;
 import fgraph.Halfedge;
 import fgraph.Halfedges;
-import fgraph.Nodes;
 
 /**
  * This class models...

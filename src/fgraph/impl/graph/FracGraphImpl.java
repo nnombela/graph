@@ -1,9 +1,11 @@
-package fgraph.impl;
+package fgraph.impl.graph;
 
 import fgraph.Graph;
 import fgraph.GraphFactory;
 import fgraph.Node;
 import fgraph.Nodes;
+import fgraph.impl.Checker;
+import fgraph.impl.GraphObjectAbstract;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,7 +35,7 @@ public class FracGraphImpl extends GraphImpl {
     }
 
     public void free() {
-        free(up);
+        GraphObjectAbstract.free(up);
         super.free();
     }
 

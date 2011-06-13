@@ -1,16 +1,15 @@
-package fgraph.impl;
+package fgraph.impl.halfedge;
 
 import fgraph.GraphFactory;
-import fgraph.Halfedge;
-import fgraph.Halfedges;
 import fgraph.Node;
+import fgraph.impl.Checker;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class FracDiHalfedgeImpl extends DiHalfedgeImpl {
+public class FracHalfedgeImpl extends HalfedgeImpl {
     protected Node down;
 
     @Override

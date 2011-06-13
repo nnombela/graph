@@ -2,7 +2,9 @@ package fgraph.impl.factories;
 
 import fgraph.GraphFactory;
 import fgraph.GraphObject;
-import fgraph.impl.*;
+import fgraph.impl.graph.FracDualGraphImpl;
+import fgraph.impl.halfedge.FracDiHalfedgeImpl;
+import fgraph.impl.node.FracDiNodeImpl;
 
 import java.util.Set;
 

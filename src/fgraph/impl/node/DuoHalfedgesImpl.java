@@ -1,10 +1,8 @@
-package fgraph.impl;
+package fgraph.impl.node;
 
 import fgraph.GraphObject;
 import fgraph.Halfedge;
 import fgraph.Halfedges;
-
-import java.lang.reflect.Array;
 
 /**
  * This class models...

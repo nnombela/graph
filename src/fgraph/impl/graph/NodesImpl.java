@@ -1,4 +1,4 @@
-package fgraph.impl;
+package fgraph.impl.graph;
 
 import fgraph.*;
 

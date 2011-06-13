@@ -1,6 +1,7 @@
-package fgraph.impl;
+package fgraph.impl.node;
 
 import fgraph.*;
+import fgraph.impl.GraphObjectAbstract;
 
 /**
  * This class models...

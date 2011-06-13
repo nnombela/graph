@@ -1,12 +1,8 @@
-package fgraph.impl;
+package fgraph.impl.graph;
 
-import fgraph.Graph;
 import fgraph.GraphFactory;
 import fgraph.Node;
 import fgraph.Nodes;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * This class models...
