@@ -11,10 +11,10 @@ package fgraph;
 
 public interface Halfe extends GraphObject {
     enum Direction {
-        adj, inc;  // adjacent, incident
+        adjacent, incident;  // adjacent, incident
 
         public Direction reverse() {
-            return this == adj ? inc : adj;
+            return this == adjacent ? incident : adjacent;
         }
 
         public boolean is(Direction direction) {

@@ -18,6 +18,9 @@ public interface GraphObject {
 
     GraphFactory factory();
 
+    String id();
+    int index();
+
     void free();
     GraphObject belongsTo();
     void setOwner(GraphObject owner);

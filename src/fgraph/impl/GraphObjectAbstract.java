@@ -2,6 +2,8 @@ package fgraph.impl;
 
 import fgraph.*;
 
+import javax.swing.text.TableView;
+
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -12,6 +14,22 @@ public abstract class GraphObjectAbstract implements GraphObject {
 
     public GraphFactory factory() {
         return owner.factory();
+    }
+
+    public int index() {
+        switch (type()) {
+            case halfe: return halfes().index((Halfe)this);
+            case halfes: return ((Halfes)this).direction().ordinal();
+            case node: return nodes().index((Node) this);
+            case nodes: return ((Nodes)this).duality().ordinal();
+            case graph: return ordinal();
+        }
+        throw new RuntimeException();
+    }
+
+    public String id() {
+        String id = type().name() + ':' + index();
+        return owner != null? owner.id() + id : id;
     }
 
     protected static void free(GraphObject gobj) {
