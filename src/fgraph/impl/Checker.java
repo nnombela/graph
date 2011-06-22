@@ -1,7 +1,7 @@
 package fgraph.impl;
 
 import fgraph.Graph;
-import fgraph.Halfedge;
+import fgraph.Halfe;
 import fgraph.Node;
 
 /**
@@ -11,14 +11,14 @@ import fgraph.Node;
  */
 public class Checker {
 
-    public static Node setDown(Halfedge halfedge, Node down) {
-        if (halfedge.down() != null && down != null) {
-            throw new RuntimeException("Invalid operation. Value already set with value " + halfedge.down());
+    public static Node setDown(Halfe halfe, Node down) {
+        if (halfe.down() != null && down != null) {
+            throw new RuntimeException("Invalid operation. Value already set with value " + halfe.down());
         }
-        if (down != null && halfedge.ordinal() - down.ordinal() != 1) {
+        if (down != null && halfe.ordinal() - down.ordinal() != 1) {
             throw new RuntimeException("Invalid operation. Wrong ordinal " + down.ordinal());
         }
-        if (down != null && down.up() != null && down.up() != halfedge) {
+        if (down != null && down.up() != null && down.up() != halfe) {
             throw new RuntimeException("Invalid operation. Linked value already set with value " + down.up());
         }
         return down;
@@ -37,7 +37,7 @@ public class Checker {
         return down;
     }
 
-    public static Halfedge setUp(Node node, Halfedge up) {
+    public static Halfe setUp(Node node, Halfe up) {
         if (node.up() != null && up != null) {
             throw new RuntimeException("Invalid operation. Value already set with value " + node.up());
         }
@@ -64,9 +64,9 @@ public class Checker {
     }
 
     // throws an error if they can not be joined, true if the other side is still disjoin and false otherwise
-    public static int degreeDisjoined(Halfedge bra, Halfedge.Join join, Halfedge ket) {
-        Halfedge braPair = bra.pair(join);
-        Halfedge ketPair = ket.pair(join);
+    public static int degreeDisjoined(Halfe bra, Halfe.Join join, Halfe ket) {
+        Halfe braPair = bra.pair(join);
+        Halfe ketPair = ket.pair(join);
 
         if (braPair == null) {  // are disjoined
             if (ketPair == null) {

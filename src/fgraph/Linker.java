@@ -6,15 +6,15 @@ package fgraph;
  * Date: 7/06/11
  */
 public class Linker {
-    Halfedge link(Node node1, Node node2) {
+    Halfe link(Node node1, Node node2) {
         return null;
     }
 
-    Halfedge link(Node node1, Node node2, Halfedge.Direction direction) {
+    Halfe link(Node node1, Node node2, Halfe.Direction direction) {
         return null;
     }
 
-    Halfedge unlink(Node node1, Node node2) {
+    Halfe unlink(Node node1, Node node2) {
         return null;
     }
 

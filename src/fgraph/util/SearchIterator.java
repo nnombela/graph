@@ -71,9 +71,9 @@ public class SearchIterator implements Nodes.Iterator {
         }
     }
 
-    protected abstract class Closure implements Halfedges.Closure, Nodes.Closure {
-        public void execute(Halfedge halfedge) {
-            Node node = halfedge.linksTo();
+    protected abstract class Closure implements Halfes.Closure, Nodes.Closure {
+        public void execute(Halfe halfe) {
+            Node node = halfe.linksTo();
 
             if (node != null && visited.get(node) == null) {
                 visited.set(node, true);

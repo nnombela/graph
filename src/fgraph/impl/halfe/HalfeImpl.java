@@ -1,21 +1,19 @@
-package fgraph.impl.halfedge;
+package fgraph.impl.halfe;
 
 import fgraph.*;
 import fgraph.impl.Checker;
 import fgraph.impl.GraphObjectAbstract;
-
-import javax.swing.plaf.TreeUI;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
-    protected Halfedge direct;
+public class HalfeImpl extends GraphObjectAbstract implements Halfe {
+    protected Halfe direct;
 
     public Type type() {
-        return Type.halfedge;
+        return Type.halfe;
     }
 
     @Override
@@ -32,44 +30,44 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return direct.node();
     }
 
-    public Halfedge direct() {
+    public Halfe direct() {
         return direct;
     }
 
-    public Halfedge reverse() {
+    public Halfe reverse() {
         return direct;
     }
 
-    public Halfedge inverse() {
+    public Halfe inverse() {
         return null;
     }
 
     public Direction direction() {
-        return ((Halfedges)owner).direction();
+        return ((Halfes)owner).direction();
     }
 
-    public Halfedge pair(Join join) {
+    public Halfe pair(Join join) {
         return join == Join.direct? direct : null;
     }
 
-    public Halfedge join(Join join, Halfedge halfedge) {
+    public Halfe join(Join join, Halfe halfe) {
         if (join != Join.direct) {
             throw new RuntimeException("Invalid operation");
         }
 
-        int degree = Checker.degreeDisjoined(this, join, halfedge);
+        int degree = Checker.degreeDisjoined(this, join, halfe);
 
         if (degree > 0) {
-            direct = halfedge;
+            direct = halfe;
             if (degree == 2) {
-                halfedge.join(join, this);
+                halfe.join(join, this);
             }
         }
         return this;
     }
 
     public boolean disjoin(Join join) {
-        Halfedge thePair = pair(join);
+        Halfe thePair = pair(join);
 
         if (thePair != null) {
             direct = null;
@@ -89,8 +87,8 @@ public class HalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         throw new RuntimeException("Invalid operation");
     }
 
-    public Halfedges belongsTo() {
-        return (Halfedges)owner;
+    public Halfes belongsTo() {
+        return (Halfes)owner;
     }
 
     public Node node() {

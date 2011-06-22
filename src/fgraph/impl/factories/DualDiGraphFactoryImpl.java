@@ -2,7 +2,7 @@ package fgraph.impl.factories;
 
 import fgraph.*;
 import fgraph.impl.graph.DualGraphImpl;
-import fgraph.impl.halfedge.DiHalfedgeImpl;
+import fgraph.impl.halfe.DiHalfeImpl;
 import fgraph.impl.node.DiNodeImpl;
 
 import java.util.Set;
@@ -30,8 +30,8 @@ public class DualDiGraphFactoryImpl extends GraphFactory {
 
     @Override
     public GraphObject create(GraphObject.Type type, int ordinal) {
-        if (type == GraphObject.Type.halfedge) {
-            return new DiHalfedgeImpl();
+        if (type == GraphObject.Type.halfe) {
+            return new DiHalfeImpl();
         } else if (type == GraphObject.Type.node) {
             return new DiNodeImpl();
         } else if (type == GraphObject.Type.graph) {

@@ -1,8 +1,8 @@
-package fgraph.impl.halfedge;
+package fgraph.impl.halfe;
 
 import fgraph.GraphFactory;
-import fgraph.Halfedge;
-import fgraph.Halfedges;
+import fgraph.Halfe;
+import fgraph.Halfes;
 import fgraph.Node;
 import fgraph.impl.Checker;
 import fgraph.impl.GraphObjectAbstract;
@@ -12,11 +12,11 @@ import fgraph.impl.GraphObjectAbstract;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
-    protected Halfedge[] pair = new Halfedge[3];  // direct, reverse, inverse
+public class DiHalfeImpl extends GraphObjectAbstract implements Halfe {
+    protected Halfe[] pair = new Halfe[3];  // direct, reverse, inverse
 
     public Type type() {
-        return Type.halfedge;
+        return Type.halfe;
     }
 
     @Override
@@ -35,40 +35,40 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         return pair[0].node();
     }
 
-    public Halfedge direct() {
+    public Halfe direct() {
         return pair[0];
     }
 
-    public Halfedge reverse() {
+    public Halfe reverse() {
         return pair[1];
     }
 
-    public Halfedge inverse() {
+    public Halfe inverse() {
         return pair[2];
     }
 
     public Direction direction() {
-        return ((Halfedges)owner).direction();
+        return ((Halfes)owner).direction();
     }
 
-    public Halfedge pair(Join join) {
+    public Halfe pair(Join join) {
         return pair[join.ordinal()];
     }
 
-    public Halfedge join(Join join, Halfedge halfedge) {
-        int degree = Checker.degreeDisjoined(this, join, halfedge);
+    public Halfe join(Join join, Halfe halfe) {
+        int degree = Checker.degreeDisjoined(this, join, halfe);
 
         if (degree > 0) {
-            pair[join.ordinal()] = halfedge;
+            pair[join.ordinal()] = halfe;
             if (degree == 2) {
-                halfedge.join(join, this);
+                halfe.join(join, this);
             }
         }
         return this;
     }
 
     public boolean disjoin(Join join) {
-        Halfedge thePair = pair(join);
+        Halfe thePair = pair(join);
 
         if (thePair != null) {
             pair[join.ordinal()] = null;
@@ -88,8 +88,8 @@ public class DiHalfedgeImpl extends GraphObjectAbstract implements Halfedge {
         throw new RuntimeException("Invalid operation");
     }
 
-    public Halfedges belongsTo() {
-        return (Halfedges)owner;
+    public Halfes belongsTo() {
+        return (Halfes)owner;
     }
 
     public Node node() {

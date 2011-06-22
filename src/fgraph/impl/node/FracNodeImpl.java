@@ -10,7 +10,7 @@ import fgraph.impl.Checker;
  */
 public class FracNodeImpl extends NodeImpl {
     protected Graph down;
-    protected Halfedge up;
+    protected Halfe up;
 
     @Override
     public GraphFactory factory() {
@@ -18,11 +18,11 @@ public class FracNodeImpl extends NodeImpl {
     }
 
     public FracNodeImpl() {
-        this(new HalfedgesImpl());
+        this(new HalfesImpl());
     }
 
-    public FracNodeImpl(Halfedges halfedges) {
-        super(halfedges);
+    public FracNodeImpl(Halfes halfes) {
+        super(halfes);
     }
 
 
@@ -38,7 +38,7 @@ public class FracNodeImpl extends NodeImpl {
     }
 
     @Override
-    public Halfedge up() {
+    public Halfe up() {
         return up;
     }
 
@@ -47,7 +47,7 @@ public class FracNodeImpl extends NodeImpl {
         this.down = Checker.setDown(this, down);
     }
     @Override
-    public void setUp(Halfedge up) {
+    public void setUp(Halfe up) {
         this.up = Checker.setUp(this, up);
     }
 }

@@ -9,7 +9,7 @@ import fgraph.impl.GraphObjectAbstract;
  * Date: 8/06/11
  */
 public class NodeImpl extends GraphObjectAbstract implements Node {
-    protected Halfedges halfedges;
+    protected Halfes halfes;
 
     @Override
     public GraphFactory factory() {
@@ -17,11 +17,11 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     public NodeImpl() {
-        this(new HalfedgesImpl());
+        this(new HalfesImpl());
     }
-    public NodeImpl(Halfedges halfedges) {
-        this.halfedges = halfedges;
-        halfedges.setOwner(this);
+    public NodeImpl(Halfes halfes) {
+        this.halfes = halfes;
+        halfes.setOwner(this);
     }
 
     public Type type() {
@@ -39,18 +39,18 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     @Override
-    public Halfedges halfedges() {
-        return halfedges;
+    public Halfes halfes() {
+        return halfes;
     }
 
     @Override
-    public Halfedges halfedges(Halfedge.Direction direction) {
-        return halfedges;
+    public Halfes halfes(Halfe.Direction direction) {
+        return halfes;
     }
 
     @Override
     public Node inverse() {
-        return halfedges.inverse().belongsTo();
+        return halfes.inverse().belongsTo();
     }
 
     @Override
@@ -59,7 +59,7 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     @Override
-    public Halfedge up() {
+    public Halfe up() {
         return null;
     }
 
@@ -68,7 +68,7 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
         throw new RuntimeException("Invalid operation");
     }
     @Override
-    public void setUp(Halfedge up) {
+    public void setUp(Halfe up) {
         throw new RuntimeException("Invalid operation");
     }
 }

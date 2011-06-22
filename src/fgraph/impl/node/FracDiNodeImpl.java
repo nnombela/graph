@@ -1,8 +1,8 @@
 package fgraph.impl.node;
 
 import fgraph.GraphFactory;
-import fgraph.Halfedge;
-import fgraph.Halfedges;
+import fgraph.Halfe;
+import fgraph.Halfes;
 
 /**
  * This class models...
@@ -12,11 +12,11 @@ import fgraph.Halfedges;
 public class FracDiNodeImpl extends FracNodeImpl {
 
     public FracDiNodeImpl() {
-        this(new DuoHalfedgesImpl());
+        this(new DuoHalfesImpl());
     }
 
-    public FracDiNodeImpl(Halfedges halfedges) {
-        super(halfedges);
+    public FracDiNodeImpl(Halfes halfes) {
+        super(halfes);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class FracDiNodeImpl extends FracNodeImpl {
     }
 
     @Override
-    public Halfedges halfedges(Halfedge.Direction direction) {
-        return ((DuoHalfedgesImpl)halfedges).halfedges(direction);
+    public Halfes halfes(Halfe.Direction direction) {
+        return ((DuoHalfesImpl) halfes).halfedges(direction);
     }
 }

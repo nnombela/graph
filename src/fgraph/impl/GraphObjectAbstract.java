@@ -2,9 +2,6 @@ package fgraph.impl;
 
 import fgraph.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -56,12 +53,12 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return (Node)closest(Type.node);
     }
 
-    public Halfedges halfedges() {
-        return (Halfedges)closest(Type.halfedges);
+    public Halfes halfes() {
+        return (Halfes)closest(Type.halfes);
     }
 
-    public Halfedge halfedge() {
-        return (Halfedge)closest(Type.halfedge);
+    public Halfe halfe() {
+        return (Halfe)closest(Type.halfe);
     }
 
     public int ordinal() {

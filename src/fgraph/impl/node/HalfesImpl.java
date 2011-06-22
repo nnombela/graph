@@ -1,28 +1,27 @@
 package fgraph.impl.node;
 
 import fgraph.*;
-import fgraph.impl.node.HalfedgesAbstract;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 8/06/11
  */
-public class HalfedgesImpl extends HalfedgesAbstract {
-    protected Halfedge[] objs = new Halfedge[1];
+public class HalfesImpl extends HalfesAbstract {
+    protected Halfe[] objs = new Halfe[1];
     protected int size = 0;
 
-    public Halfedge get(int index) {
+    public Halfe get(int index) {
         return objs[index];
     }
 
-    protected void set(Halfedge g, int index) {
+    protected void set(Halfe g, int index) {
         objs[index] = g;
     }
 
     protected void reserve(int capacity) {
         if (objs.length < capacity) {
-            Halfedge[] newObjs = new Halfedge[capacity];
+            Halfe[] newObjs = new Halfe[capacity];
             System.arraycopy(objs, 0, newObjs, 0, size);
             objs = newObjs;
         }
@@ -39,7 +38,7 @@ public class HalfedgesImpl extends HalfedgesAbstract {
     }
 
 
-    public Halfedge add(Halfedge g) {
+    public Halfe add(Halfe g) {
         accommodate();
         set(g, size++);
         g.setOwner(this);
@@ -47,11 +46,11 @@ public class HalfedgesImpl extends HalfedgesAbstract {
     }
 
     @Override
-    public Halfedge addNew() {
-        return add((Halfedge)factory().create(Type.halfedge, ordinal()));
+    public Halfe addNew() {
+        return add((Halfe)factory().create(Type.halfe, ordinal()));
     }
 
-    public boolean remove(Halfedge g) {
+    public boolean remove(Halfe g) {
         int i = index(g);
         if (i != -1) {
             set(get(--size), i);
@@ -62,7 +61,7 @@ public class HalfedgesImpl extends HalfedgesAbstract {
         }
     }
 
-    public boolean swap(Halfedge g1, Halfedge g2) {
+    public boolean swap(Halfe g1, Halfe g2) {
         int index1 = index(g1);
         int index2 = index(g2);
         if (index1 > 0 && index2 > 0) {

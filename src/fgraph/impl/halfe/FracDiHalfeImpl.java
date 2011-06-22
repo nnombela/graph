@@ -1,4 +1,4 @@
-package fgraph.impl.halfedge;
+package fgraph.impl.halfe;
 
 import fgraph.GraphFactory;
 import fgraph.Node;
@@ -9,7 +9,7 @@ import fgraph.impl.Checker;
  * Author: nnombela@gmail.com
  * Date: 1/06/11
  */
-public class FracHalfedgeImpl extends HalfedgeImpl {
+public class FracDiHalfeImpl extends DiHalfeImpl {
     protected Node down;
 
     @Override

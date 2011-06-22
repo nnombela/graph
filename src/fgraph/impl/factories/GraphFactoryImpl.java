@@ -2,7 +2,7 @@ package fgraph.impl.factories;
 
 import fgraph.*;
 import fgraph.impl.graph.GraphImpl;
-import fgraph.impl.halfedge.HalfedgeImpl;
+import fgraph.impl.halfe.HalfeImpl;
 import fgraph.impl.node.NodeImpl;
 
 import java.util.Set;
@@ -30,8 +30,8 @@ public class GraphFactoryImpl extends GraphFactory {
 
     @Override
     public GraphObject create(GraphObject.Type type, int ordinal) {
-        if (type == GraphObject.Type.halfedge) {
-            return new HalfedgeImpl();
+        if (type == GraphObject.Type.halfe) {
+            return new HalfeImpl();
         } else if (type == GraphObject.Type.node) {
             return new NodeImpl();
         } else if (type == GraphObject.Type.graph) {

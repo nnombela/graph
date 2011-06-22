@@ -1,7 +1,5 @@
 package fgraph;
 
-import com.sun.istack.internal.Nullable;
-
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -9,24 +7,24 @@ import com.sun.istack.internal.Nullable;
  */
 public interface Node extends GraphObject {
     enum Duality {
-        hypervertex, hyperedge;
+        hvert, hedge;   //hyper-vertex, hyper-edge
 
         public Duality dual() {
-            return this == hypervertex? hyperedge : hypervertex;
+            return this == hvert ? hedge : hvert;
         }
         public boolean is(Duality duality) {
             return this == duality;
         }
     }
 
-    Halfedges halfedges();
+    Halfes halfes();
     Nodes belongsTo();
 
     // Dual
     Duality duality();
 
     // Directed
-    Halfedges halfedges(Halfedge.Direction direction);
+    Halfes halfes(Halfe.Direction direction);
 
     // Fractal
     Node inverse();
@@ -34,7 +32,7 @@ public interface Node extends GraphObject {
     Graph down();
     void setDown(Graph down);
 
-    Halfedge up();
-    void setUp(Halfedge up);
+    Halfe up();
+    void setUp(Halfe up);
 
 }

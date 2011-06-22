@@ -9,7 +9,7 @@ import fgraph.*;
  */
 public class DiNodeImpl extends NodeImpl {
     public DiNodeImpl() {
-        super(new DuoHalfedgesImpl());
+        super(new DuoHalfesImpl());
     }
 
     @Override
@@ -18,7 +18,7 @@ public class DiNodeImpl extends NodeImpl {
     }
 
     @Override
-    public Halfedges halfedges(Halfedge.Direction direction) {
-        return ((DuoHalfedgesImpl)halfedges).halfedges(direction);
+    public Halfes halfes(Halfe.Direction direction) {
+        return ((DuoHalfesImpl) halfes).halfedges(direction);
     }
 }

@@ -1,18 +1,18 @@
 package fgraph.impl.node;
 
 import fgraph.GraphObject;
-import fgraph.Halfedge;
-import fgraph.Halfedges;
+import fgraph.Halfe;
+import fgraph.Halfes;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DuoHalfedgesImpl extends HalfedgesAbstract {
-    HalfedgesImpl[] containers = new HalfedgesImpl[] { new HalfedgesImpl(), new HalfedgesImpl() };
+public class DuoHalfesImpl extends HalfesAbstract {
+    HalfesImpl[] containers = new HalfesImpl[] { new HalfesImpl(), new HalfesImpl() };
 
-    public Halfedges halfedges(Halfedge.Direction direction) {
+    public Halfes halfedges(Halfe.Direction direction) {
         return containers[direction.ordinal()];
     }
 
@@ -21,7 +21,7 @@ public class DuoHalfedgesImpl extends HalfedgesAbstract {
         containers[1].setOwner(owner);
     }
 
-    public Halfedge get(int index) {
+    public Halfe get(int index) {
         int size0 = containers[0].size();
         return index < size0? containers[0].get(index) : containers[1].get(index - size0);
     }
@@ -30,20 +30,20 @@ public class DuoHalfedgesImpl extends HalfedgesAbstract {
         return containers[0].size() + containers[1].size();
     }
 
-    public Halfedge add(Halfedge g) {
+    public Halfe add(Halfe g) {
         return containers[0].add(g);
     }
 
     @Override
-    public Halfedge addNew() {
+    public Halfe addNew() {
         return containers[0].addNew();
     }
 
-    public boolean remove(Halfedge g) {
+    public boolean remove(Halfe g) {
         return containers[0].remove(g) || containers[1].remove(g);
     }
 
-    public boolean swap(Halfedge g1, Halfedge g2) {
+    public boolean swap(Halfe g1, Halfe g2) {
         return containers[0].swap(g1, g2) || containers[1].swap(g1, g2);
     }
 

@@ -10,38 +10,38 @@ import fgraph.impl.GraphObjectAbstract;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public abstract class HalfedgesAbstract extends GraphObjectAbstract implements Halfedges {
+public abstract class HalfesAbstract extends GraphObjectAbstract implements Halfes {
 
     public Type type() {
-        return Type.halfedges;
+        return Type.halfes;
     }
 
     public Node belongsTo() {
         return (Node)owner;
     }
     @Override
-    public Halfedge.Direction direction() {
+    public Halfe.Direction direction() {
         Node node = belongsTo();
-        Halfedges adjs = node.halfedges(Halfedge.Direction.adjacent);
-        Halfedges incs = node.halfedges(Halfedge.Direction.incident);
-        return (this == adjs)? Halfedge.Direction.adjacent : (this == incs)? Halfedge.Direction.incident : null;
+        Halfes adjs = node.halfes(Halfe.Direction.adj);
+        Halfes incs = node.halfes(Halfe.Direction.inc);
+        return (this == adjs)? Halfe.Direction.adj : (this == incs)? Halfe.Direction.inc : null;
     }
 
-    public Halfedges reverse() {
+    public Halfes reverse() {
         Node node = belongsTo();
-        Halfedges adjs = node.halfedges(Halfedge.Direction.adjacent);
-        Halfedges incs = node.halfedges(Halfedge.Direction.incident);
+        Halfes adjs = node.halfes(Halfe.Direction.adj);
+        Halfes incs = node.halfes(Halfe.Direction.inc);
         return (this == adjs)? incs :  (this == incs)? adjs : this;
     }
 
     @Override
-    public Halfedges inverse() {
+    public Halfes inverse() {
         return belongsTo().up().direct().belongsTo();
     }
 
     public void free() {
         forEach(new Closure() {
-            public void execute(Halfedge g) {
+            public void execute(Halfe g) {
                 g.free();
             }
         });
@@ -52,11 +52,11 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         return new Iterator() {
             private int cursor = -1;
 
-            public Halfedge next() {
+            public Halfe next() {
                 return get(++cursor);
             }
 
-            public Halfedge current() {
+            public Halfe current() {
                 return get(cursor);
             }
 
@@ -74,11 +74,11 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         return new Accessor() {
             private Object[] objs = new Object[size()];
 
-            public void set(Halfedge g, Object obj) {
+            public void set(Halfe g, Object obj) {
                 objs[index(g)] = obj;
             }
 
-            public Object get(Halfedge g) {
+            public Object get(Halfe g) {
                 return objs[index(g)];
             }
 
@@ -96,7 +96,7 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         }
     }
 
-    public Halfedge find(Condition condition) {
+    public Halfe find(Condition condition) {
         for(Iterator iterator = iterator(); iterator.hasNext();) {
             if (condition.check(iterator.next())) {
                 return iterator.current();
@@ -105,7 +105,7 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         return null;
     }
 
-    public int index(Halfedge g) {
+    public int index(Halfe g) {
         for(int i = 0; i < size(); ++i) {
             if (get(i) == g) {
                 return i;
@@ -114,7 +114,7 @@ public abstract class HalfedgesAbstract extends GraphObjectAbstract implements H
         return -1;
     }
 
-    public boolean contains(Halfedge g) {
+    public boolean contains(Halfe g) {
         return index(g) != -1;
     }
 
