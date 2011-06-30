@@ -7,10 +7,10 @@ package fgraph;
  */
 public interface Node extends GraphObject {
     enum Duality {
-        hypervertex, hyperedge;   //hyper-vertex, hyper-edge
+        hvert, hedge;   //hyper-vertex, hyper-edge
 
         public Duality dual() {
-            return this == hypervertex ? hyperedge : hypervertex;
+            return this == hvert ? hedge : hvert;
         }
         public boolean is(Duality duality) {
             return this == duality;

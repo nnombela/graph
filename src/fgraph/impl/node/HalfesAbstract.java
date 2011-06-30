@@ -22,21 +22,21 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
     @Override
     public Halfe.Direction direction() {
         Node node = belongsTo();
-        Halfes adjs = node.halfes(Halfe.Direction.adjacent);
-        Halfes incs = node.halfes(Halfe.Direction.incident);
-        return (this == adjs)? Halfe.Direction.adjacent : (this == incs)? Halfe.Direction.incident : Halfe.Direction.adjacent;
+        Halfes adjs = node.halfes(Halfe.Direction.adj);
+        Halfes incs = node.halfes(Halfe.Direction.inc);
+        return (this == adjs)? Halfe.Direction.adj : (this == incs)? Halfe.Direction.inc : Halfe.Direction.adj;
     }
 
     public Halfes reverse() {
         Node node = belongsTo();
-        Halfes adjs = node.halfes(Halfe.Direction.adjacent);
-        Halfes incs = node.halfes(Halfe.Direction.incident);
+        Halfes adjs = node.halfes(Halfe.Direction.adj);
+        Halfes incs = node.halfes(Halfe.Direction.inc);
         return (this == adjs)? incs :  (this == incs)? adjs : this;
     }
 
     @Override
     public Halfes inverse() {
-        return belongsTo().up().direct().belongsTo();
+        return belongsTo().up().converse().belongsTo();
     }
 
     public void free() {

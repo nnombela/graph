@@ -22,7 +22,7 @@ public class HalfeImpl extends GraphObjectAbstract implements Halfe {
     }
 
     public void free() {
-        disjoin(Join.direct);
+        disjoin(Join.converse);
         super.free();
     }
 
@@ -30,7 +30,7 @@ public class HalfeImpl extends GraphObjectAbstract implements Halfe {
         return direct.node();
     }
 
-    public Halfe direct() {
+    public Halfe converse() {
         return direct;
     }
 
@@ -47,11 +47,11 @@ public class HalfeImpl extends GraphObjectAbstract implements Halfe {
     }
 
     public Halfe pair(Join join) {
-        return join == Join.direct? direct : null;
+        return join == Join.converse ? direct : null;
     }
 
     public Halfe join(Join join, Halfe halfe) {
-        if (join != Join.direct) {
+        if (join != Join.converse) {
             throw new RuntimeException("Invalid operation");
         }
 

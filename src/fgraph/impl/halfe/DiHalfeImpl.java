@@ -13,7 +13,7 @@ import fgraph.impl.GraphObjectAbstract;
  * Date: 1/06/11
  */
 public class DiHalfeImpl extends GraphObjectAbstract implements Halfe {
-    protected Halfe[] pair = new Halfe[3];  // direct, reverse, inverse
+    protected Halfe[] pair = new Halfe[3];  // converse, reverse, inverse
 
     public Type type() {
         return Type.halfe;
@@ -35,7 +35,7 @@ public class DiHalfeImpl extends GraphObjectAbstract implements Halfe {
         return pair[0].node();
     }
 
-    public Halfe direct() {
+    public Halfe converse() {
         return pair[0];
     }
 

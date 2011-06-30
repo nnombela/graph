@@ -22,7 +22,7 @@ public class Linker {
         return null;
     }
 
-    Node link(Graph graph1, Graph graph2, Node.Duality duality) {
+    Node link(Graph graph1, Graph graph2, Node.Duality duality, Halfe.Direction direction) {
         return null;
     }
 

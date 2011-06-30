@@ -20,16 +20,16 @@ public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes
 
     public Node.Duality duality() {
         Graph graph = graph();
-        Nodes vertices = graph.nodes(Node.Duality.hypervertex);
-        Nodes edges = graph.nodes(Node.Duality.hyperedge);
+        Nodes vertices = graph.nodes(Node.Duality.hvert);
+        Nodes edges = graph.nodes(Node.Duality.hedge);
 
-        return (this == vertices)? Node.Duality.hypervertex : (this == edges)? Node.Duality.hyperedge : Node.Duality.hypervertex;
+        return (this == vertices)? Node.Duality.hvert : (this == edges)? Node.Duality.hedge : Node.Duality.hvert;
     }
 
     public Nodes dual() {
         Graph graph = graph();
-        Nodes vertices = graph.nodes(Node.Duality.hypervertex);
-        Nodes edges = graph.nodes(Node.Duality.hyperedge);
+        Nodes vertices = graph.nodes(Node.Duality.hvert);
+        Nodes edges = graph.nodes(Node.Duality.hedge);
 
         return (this == vertices)? edges : (this == edges)? vertices : this;
     }

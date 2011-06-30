@@ -11,10 +11,10 @@ package fgraph;
 
 public interface Halfe extends GraphObject {
     enum Direction {
-        adjacent, incident;  // adjacent, incident
+        adj, inc;  // adjacent, incident
 
         public Direction reverse() {
-            return this == adjacent ? incident : adjacent;
+            return this == adj ? inc : adj;
         }
 
         public boolean is(Direction direction) {
@@ -23,13 +23,13 @@ public interface Halfe extends GraphObject {
     }
 
     enum Join {
-        direct, reverse, inverse   // joins to make a full direct edge, a bidirectional halfe (reverse) or a full inverse edge
+        converse, reverse, inverse   // joins to make a full edge, a bidirectional halfe (reverse) or a full inverse edge
     }
 
     Node linksTo();
     Halfes belongsTo();
 
-    Halfe direct();
+    Halfe converse();
     Halfe reverse();
     Halfe inverse();
 

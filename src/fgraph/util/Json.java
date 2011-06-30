@@ -9,23 +9,23 @@ import fgraph.*;
  */
 public class Json {
     public static String toJson(Graph graph) {
-        return "{graph: { id: '', family: '(fractal|dual|directed)', (nodes|hverts|hedges): {} }, up: $id} }";
+        return "{id: '', family: '(fractal|dual|directed)', (nodes|hverts|hedges): [$id1, $id2, ...], up: $id}";
     }
 
     public static String toJson(Nodes nodes) {
-        return "[$node_1, $node_2]";
+        return "[$node_id1, $node_id2]";
     }
 
     public static String toJson(Node node) {
-        return "{node: {id: '',  (halfes|adjs|incs): [], }";
+        return "{id: '',  (halfes|adjs|incs): [], up: $id, down: $id}";
     }
 
     public static String toJson(Halfes halfes) {
-        return "[$halfe_1, $halfe_2]";
+        return "[$halfe_id1, $halfe_id2]";
     }
 
     public static String toJson(Halfe halfe) {
-        return "{halfe: { id: '', direct: $id1, reverse: $id2, inverse: $id3, down: $id }";
+        return "{id: '', converse: $id1, reverse: $id2, inverse: $id3, down: $id }";
     }
 
 
