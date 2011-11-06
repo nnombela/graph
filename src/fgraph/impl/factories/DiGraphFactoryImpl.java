@@ -2,7 +2,7 @@ package fgraph.impl.factories;
 
 import fgraph.*;
 import fgraph.impl.graph.GraphImpl;
-import fgraph.impl.halfe.DiHalfeImpl;
+import fgraph.impl.link.DiLinkImpl;
 import fgraph.impl.node.DiNodeImpl;
 
 import java.util.Set;
@@ -30,8 +30,8 @@ public class DiGraphFactoryImpl extends GraphFactory {
 
     @Override
     public GraphObject create(GraphObject.Type type, int ordinal) {
-        if (type == GraphObject.Type.halfe) {
-            return new DiHalfeImpl();
+        if (type == GraphObject.Type.link) {
+            return new DiLinkImpl();
         } else if (type == GraphObject.Type.node) {
             return new DiNodeImpl();
         } else if (type == GraphObject.Type.graph) {

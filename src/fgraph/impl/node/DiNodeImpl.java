@@ -9,7 +9,7 @@ import fgraph.*;
  */
 public class DiNodeImpl extends NodeImpl {
     public DiNodeImpl() {
-        super(new DuoHalfesImpl());
+        super(new DuoLinksImpl());
     }
 
     @Override
@@ -18,7 +18,7 @@ public class DiNodeImpl extends NodeImpl {
     }
 
     @Override
-    public Halfes halfes(Halfe.Direction direction) {
-        return ((DuoHalfesImpl) halfes).halfedges(direction);
+    public Links links(Link.Direction direction) {
+        return ((DuoLinksImpl) links).links(direction);
     }
 }

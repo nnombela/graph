@@ -10,13 +10,14 @@ import java.util.Set;
 public interface Graph extends GraphObject {
     Nodes nodes();
 
-    // Dual
+    // ---- Duality
     Nodes nodes(Node.Duality duality);
 
-    // Fractal
-    Node up();
-    void setUp(Node up);
+    // --- Fractal
+    Node bind(Graph graph);
+    void unbind(Graph graph);
 
+    Node up();
     Graph next();
     Set<Graph> before();
 }

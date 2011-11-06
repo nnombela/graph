@@ -2,8 +2,6 @@ package fgraph.impl;
 
 import fgraph.*;
 
-import javax.swing.text.TableView;
-
 /**
  * This class models...
  * Author: nnombela@gmail.com
@@ -16,20 +14,24 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return owner.factory();
     }
 
-    public int index() {
-        switch (type()) {
-            case halfe: return halfes().index((Halfe)this);
-            case halfes: return ((Halfes)this).direction().ordinal();
-            case node: return nodes().index((Node) this);
-            case nodes: return ((Nodes)this).duality().ordinal();
-            case graph: return ordinal();
-        }
-        throw new RuntimeException();
-    }
+//    public int index() {
+//        switch (type()) {
+//            case link: return links().index((Link)this);
+//            case links: return ((Links)this).direction().ordinal();
+//            case node: return nodes().index((Node) this);
+//            case nodes: return ((Nodes)this).duality().ordinal();
+//            case graph: return ordinal();
+//        }
+//        throw new RuntimeException();
+//    }
 
-    public String id() {
-        String id = type().name() + ':' + index();
-        return owner != null? owner.id() + id : id;
+    public String label() {
+        StringBuilder buffer = new StringBuilder();
+        if (owner != null) {
+            buffer.append('[').append(owner.label()).append("]:");
+        }
+        buffer.append(type().name()).append(':').append(index());
+        return buffer.toString();
     }
 
     protected static void free(GraphObject gobj) {
@@ -55,28 +57,28 @@ public abstract class GraphObjectAbstract implements GraphObject {
     }
 
 
-    public GraphObject closest(Type type) {
-        return this.type() == type? this : owner.closest(type);
+    public GraphObject belongsTo(Type type) {
+        return this.type() == type? this : owner.belongsTo(type);
     }
 
     public Graph graph() {
-        return (Graph)closest(Type.graph);
+        return (Graph) belongsTo(Type.graph);
     }
 
     public Nodes nodes() {
-        return (Nodes)closest(Type.nodes);
+        return (Nodes) belongsTo(Type.nodes);
     }
 
     public Node node() {
-        return (Node)closest(Type.node);
+        return (Node) belongsTo(Type.node);
     }
 
-    public Halfes halfes() {
-        return (Halfes)closest(Type.halfes);
+    public Links links() {
+        return (Links) belongsTo(Type.links);
     }
 
-    public Halfe halfe() {
-        return (Halfe)closest(Type.halfe);
+    public Link link() {
+        return (Link) belongsTo(Type.link);
     }
 
     public int ordinal() {

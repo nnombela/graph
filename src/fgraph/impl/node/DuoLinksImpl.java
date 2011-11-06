@@ -1,18 +1,18 @@
 package fgraph.impl.node;
 
 import fgraph.GraphObject;
-import fgraph.Halfe;
-import fgraph.Halfes;
+import fgraph.Link;
+import fgraph.Links;
 
 /**
  * This class models...
  * Author: nnombela@gmail.com
  * Date: 2/06/11
  */
-public class DuoHalfesImpl extends HalfesAbstract {
-    HalfesImpl[] containers = new HalfesImpl[] { new HalfesImpl(), new HalfesImpl() };
+public class DuoLinksImpl extends LinksAbstract {
+    LinksImpl[] containers = new LinksImpl[] { new LinksImpl(), new LinksImpl() };
 
-    public Halfes halfedges(Halfe.Direction direction) {
+    public Links links(Link.Direction direction) {
         return containers[direction.ordinal()];
     }
 
@@ -21,7 +21,7 @@ public class DuoHalfesImpl extends HalfesAbstract {
         containers[1].setOwner(owner);
     }
 
-    public Halfe get(int index) {
+    public Link get(int index) {
         int size0 = containers[0].size();
         return index < size0? containers[0].get(index) : containers[1].get(index - size0);
     }
@@ -30,20 +30,20 @@ public class DuoHalfesImpl extends HalfesAbstract {
         return containers[0].size() + containers[1].size();
     }
 
-    public Halfe add(Halfe g) {
+    public Link add(Link g) {
         return containers[0].add(g);
     }
 
     @Override
-    public Halfe addNew() {
+    public Link addNew() {
         return containers[0].addNew();
     }
 
-    public boolean remove(Halfe g) {
+    public boolean remove(Link g) {
         return containers[0].remove(g) || containers[1].remove(g);
     }
 
-    public boolean swap(Halfe g1, Halfe g2) {
+    public boolean swap(Link g1, Link g2) {
         return containers[0].swap(g1, g2) || containers[1].swap(g1, g2);
     }
 

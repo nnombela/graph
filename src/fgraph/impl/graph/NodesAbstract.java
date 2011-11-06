@@ -11,7 +11,7 @@ import fgraph.impl.GraphObjectAbstract;
 public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes {
 
     public Type type() {
-        return Type.halfes;
+        return Type.links;
     }
 
     public Graph belongsTo() {
@@ -113,4 +113,8 @@ public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes
         return index(g) != -1;
     }
 
+    @Override
+    public int index() {
+        return duality().ordinal();
+    }
 }

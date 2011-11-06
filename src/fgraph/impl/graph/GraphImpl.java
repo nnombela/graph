@@ -19,7 +19,7 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
 
     public GraphImpl(Nodes nodes) {
         this.nodes = nodes;
-        nodes.setOwner(this);
+        ((GraphObjectAbstract)nodes).setOwner(this);
     }
 
     public Type type() {
@@ -31,6 +31,11 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
         return GraphFactory.get("graph");
     }
 
+    @Override
+    public int index() {
+        return 0;
+    }
+
     public Nodes nodes() {
         return nodes;
     }
@@ -39,13 +44,18 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
         return nodes;
     }
 
-    public Node up() {
-        return null;
+    @Override
+    public Node bind(Graph graph) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void setUp(Node up) {
-        throw new RuntimeException("Invalid operation");
+    public void unbind(Graph graph) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public Node up() {
+        return null;
     }
 
     @Override

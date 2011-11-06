@@ -1,6 +1,7 @@
 package fgraph.impl.graph;
 
 import fgraph.*;
+import fgraph.impl.GraphObjectAbstract;
 
 /**
  * This class models...
@@ -8,7 +9,7 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class NodesImpl extends NodesAbstract {
-    protected Node[] objs = new Node[1];
+    protected Node[] objs = new Node[2];
     protected int size = 0;
 
     public Node get(int index) {
@@ -41,7 +42,7 @@ public class NodesImpl extends NodesAbstract {
     public Node add(Node g) {
         accommodate();
         set(g, size++);
-        g.setOwner(this);
+        ((GraphObjectAbstract)g).setOwner(this);
         return g;
     }
 

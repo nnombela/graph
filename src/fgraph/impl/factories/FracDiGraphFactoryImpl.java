@@ -3,7 +3,7 @@ package fgraph.impl.factories;
 import fgraph.GraphFactory;
 import fgraph.GraphObject;
 import fgraph.impl.graph.FracGraphImpl;
-import fgraph.impl.halfe.FracDiHalfeImpl;
+import fgraph.impl.link.FracDiLinkImpl;
 import fgraph.impl.node.FracDiNodeImpl;
 
 import java.util.Set;
@@ -31,8 +31,8 @@ public class FracDiGraphFactoryImpl extends GraphFactory {
 
     @Override
     public GraphObject create(GraphObject.Type type, int ordinal) {
-        if (type == GraphObject.Type.halfe) {
-            return new FracDiHalfeImpl();
+        if (type == GraphObject.Type.link) {
+            return new FracDiLinkImpl();
         } else if (type == GraphObject.Type.node) {
             return new FracDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {

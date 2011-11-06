@@ -9,19 +9,25 @@ import fgraph.impl.GraphObjectAbstract;
  * Date: 8/06/11
  */
 public class NodeImpl extends GraphObjectAbstract implements Node {
-    protected Halfes halfes;
+    protected Links links;
 
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("graph");
     }
 
-    public NodeImpl() {
-        this(new HalfesImpl());
+    @Override
+    public int index() {
+        return belongsTo().index(this);
     }
-    public NodeImpl(Halfes halfes) {
-        this.halfes = halfes;
-        halfes.setOwner(this);
+
+    public NodeImpl() {
+        this(new LinksImpl());
+    }
+
+    public NodeImpl(Links links) {
+        this.links = links;
+        ((GraphObjectAbstract)links).setOwner(this);
     }
 
     public Type type() {
@@ -39,18 +45,28 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     @Override
-    public Halfes halfes() {
-        return halfes;
+    public Links links() {
+        return links;
     }
 
     @Override
-    public Halfes halfes(Halfe.Direction direction) {
-        return halfes;
+    public Link bind(Node node) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void unbind(Node node) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Links links(Link.Direction direction) {
+        return links;
     }
 
     @Override
     public Node inverse() {
-        return halfes.inverse().belongsTo();
+        return links.inverse().belongsTo();
     }
 
     @Override
@@ -59,16 +75,8 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     }
 
     @Override
-    public Halfe up() {
+    public Link up() {
         return null;
     }
 
-    @Override
-    public void setDown(Graph down) {
-        throw new RuntimeException("Invalid operation");
-    }
-    @Override
-    public void setUp(Halfe up) {
-        throw new RuntimeException("Invalid operation");
-    }
 }

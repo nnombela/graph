@@ -10,38 +10,44 @@ import fgraph.impl.GraphObjectAbstract;
  * Time: 19:11
  * To change this template use File | Settings | File Templates.
  */
-public abstract class HalfesAbstract extends GraphObjectAbstract implements Halfes {
+public abstract class LinksAbstract extends GraphObjectAbstract implements Links {
 
     public Type type() {
-        return Type.halfes;
+        return Type.links;
     }
 
     public Node belongsTo() {
         return (Node)owner;
     }
-    @Override
-    public Halfe.Direction direction() {
-        Node node = belongsTo();
-        Halfes adjs = node.halfes(Halfe.Direction.adj);
-        Halfes incs = node.halfes(Halfe.Direction.inc);
-        return (this == adjs)? Halfe.Direction.adj : (this == incs)? Halfe.Direction.inc : Halfe.Direction.adj;
-    }
 
-    public Halfes reverse() {
-        Node node = belongsTo();
-        Halfes adjs = node.halfes(Halfe.Direction.adj);
-        Halfes incs = node.halfes(Halfe.Direction.inc);
-        return (this == adjs)? incs :  (this == incs)? adjs : this;
+    @Override
+    public int index() {
+        return direction().ordinal();
     }
 
     @Override
-    public Halfes inverse() {
-        return belongsTo().up().converse().belongsTo();
+    public Link.Direction direction() {
+        Node node = belongsTo();
+        Links outs = node.links(Link.Direction.out);
+        Links ins = node.links(Link.Direction.in);
+        return (this == outs)? Link.Direction.out : (this == ins)? Link.Direction.in : Link.Direction.none;
+    }
+
+    public Links reverse() {
+        Node node = belongsTo();
+        Links outs = node.links(Link.Direction.out);
+        Links ins = node.links(Link.Direction.in);
+        return (this == outs)? ins :  (this == ins)? outs : this;
+    }
+
+    @Override
+    public Links inverse() {
+        return belongsTo().up().pair().belongsTo();
     }
 
     public void free() {
         forEach(new Closure() {
-            public void execute(Halfe g) {
+            public void execute(Link g) {
                 g.free();
             }
         });
@@ -52,11 +58,11 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
         return new Iterator() {
             private int cursor = -1;
 
-            public Halfe next() {
+            public Link next() {
                 return get(++cursor);
             }
 
-            public Halfe current() {
+            public Link current() {
                 return get(cursor);
             }
 
@@ -74,11 +80,11 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
         return new Accessor() {
             private Object[] objs = new Object[size()];
 
-            public void set(Halfe g, Object obj) {
+            public void set(Link g, Object obj) {
                 objs[index(g)] = obj;
             }
 
-            public Object get(Halfe g) {
+            public Object get(Link g) {
                 return objs[index(g)];
             }
 
@@ -96,7 +102,7 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
         }
     }
 
-    public Halfe find(Condition condition) {
+    public Link find(Condition condition) {
         for(Iterator iterator = iterator(); iterator.hasNext();) {
             if (condition.check(iterator.next())) {
                 return iterator.current();
@@ -105,7 +111,7 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
         return null;
     }
 
-    public int index(Halfe g) {
+    public int index(Link g) {
         for(int i = 0; i < size(); ++i) {
             if (get(i) == g) {
                 return i;
@@ -114,7 +120,7 @@ public abstract class HalfesAbstract extends GraphObjectAbstract implements Half
         return -1;
     }
 
-    public boolean contains(Halfe g) {
+    public boolean contains(Link g) {
         return index(g) != -1;
     }
 

@@ -1,7 +1,6 @@
 package fgraph.impl.node;
 
 import fgraph.*;
-import fgraph.impl.Checker;
 
 /**
  * This class models...
@@ -10,7 +9,7 @@ import fgraph.impl.Checker;
  */
 public class FracNodeImpl extends NodeImpl {
     protected Graph down;
-    protected Halfe up;
+    protected Link up;
 
     @Override
     public GraphFactory factory() {
@@ -18,11 +17,11 @@ public class FracNodeImpl extends NodeImpl {
     }
 
     public FracNodeImpl() {
-        this(new HalfesImpl());
+        this(new LinksImpl());
     }
 
-    public FracNodeImpl(Halfes halfes) {
-        super(halfes);
+    public FracNodeImpl(Links links) {
+        super(links);
     }
 
 
@@ -38,16 +37,8 @@ public class FracNodeImpl extends NodeImpl {
     }
 
     @Override
-    public Halfe up() {
+    public Link up() {
         return up;
     }
 
-    @Override
-    public void setDown(Graph down) {
-        this.down = Checker.setDown(this, down);
-    }
-    @Override
-    public void setUp(Halfe up) {
-        this.up = Checker.setUp(this, up);
-    }
 }

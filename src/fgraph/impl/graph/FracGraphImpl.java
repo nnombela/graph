@@ -1,10 +1,6 @@
 package fgraph.impl.graph;
 
-import fgraph.Graph;
-import fgraph.GraphFactory;
-import fgraph.Node;
-import fgraph.Nodes;
-import fgraph.impl.Checker;
+import fgraph.*;
 import fgraph.impl.GraphObjectAbstract;
 
 import java.util.HashSet;
@@ -41,11 +37,6 @@ public class FracGraphImpl extends GraphImpl {
 
     public Node up() {
         return up;
-    }
-
-    @Override
-    public void setUp(Node up) {
-        this.up = Checker.setUp(this, up);
     }
 
     @Override

@@ -6,33 +6,34 @@ package fgraph;
  * Date: 3/01/11
  */
 public interface Node extends GraphObject {
+    Nodes belongsTo();
+    Links links();
+
+    Link bind(Node node);
+    void unbind(Node node);
+
+    // ---- Direction
+
+    Links links(Link.Direction direction);
+
+    // ---- Duality
+
     enum Duality {
-        hvert, hedge;   //hyper-vertex, hyper-edge
+        none, hvert, hedge;
 
         public Duality dual() {
-            return this == hvert ? hedge : hvert;
+            return this == hvert ? hedge : this == hedge? hvert : none;
         }
         public boolean is(Duality duality) {
             return this == duality;
         }
     }
 
-    Halfes halfes();
-    Nodes belongsTo();
-
-    // Dual
     Duality duality();
 
-    // Directed
-    Halfes halfes(Halfe.Direction direction);
+    // ---- Fractal
 
-    // Fractal
     Node inverse();
-
     Graph down();
-    void setDown(Graph down);
-
-    Halfe up();
-    void setUp(Halfe up);
-
+    Link up();
 }

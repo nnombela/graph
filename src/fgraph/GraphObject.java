@@ -7,7 +7,7 @@ package fgraph;
  */
 public interface GraphObject {
     enum Type {
-        graph, nodes, node, halfes, halfe;
+        graph, nodes, node, links, link;
 
         public boolean is(Type type) {
             return this == type;
@@ -18,19 +18,20 @@ public interface GraphObject {
 
     GraphFactory factory();
 
-    String id();
+    String label();
     int index();
 
     void free();
     GraphObject belongsTo();
-    void setOwner(GraphObject owner);
+    GraphObject belongsTo(Type type);
+    //void setOwner(GraphObject owner);
 
-    GraphObject closest(Type type);
+    // convenient method for belongsTo(Type)
     Graph graph();
     Nodes nodes();
     Node node();
-    Halfes halfes();
-    Halfe halfe();
+    Links links();
+    Link link();
 
     int ordinal();
 }

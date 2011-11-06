@@ -51,7 +51,7 @@ public interface Nodes extends GraphObject {
 
     Graph belongsTo();
 
-    // Dual
+    // ---- Duality
     Node.Duality duality();
     Nodes dual();
 }
