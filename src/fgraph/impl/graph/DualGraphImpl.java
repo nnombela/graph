@@ -9,8 +9,8 @@ import fgraph.*;
  */
 public class DualGraphImpl extends GraphImpl {
 
-    public DualGraphImpl() {
-        super(new DuoNodesImpl());
+    public DualGraphImpl(GraphFactory factory) {
+        super(factory, new DuoNodesImpl());
     }
 
     @Override

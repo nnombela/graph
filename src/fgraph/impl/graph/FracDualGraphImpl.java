@@ -11,12 +11,12 @@ import fgraph.Nodes;
  */
 public class FracDualGraphImpl extends FracGraphImpl {
 
-    public FracDualGraphImpl(int ordinal) {
-        this(new DuoNodesImpl(), ordinal);
+    public FracDualGraphImpl(GraphFactory factory, int ordinal) {
+        this(factory, new DuoNodesImpl(), ordinal);
     }
 
-    public FracDualGraphImpl(Nodes nodes, int ordinal) {
-        super(nodes, ordinal);
+    public FracDualGraphImpl(GraphFactory factory, Nodes nodes, int ordinal) {
+        super(factory, nodes, ordinal);
     }
 
     @Override

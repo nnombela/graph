@@ -36,7 +36,7 @@ public class FracDiGraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new FracDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new FracGraphImpl(ordinal);
+            return new FracGraphImpl(this, ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

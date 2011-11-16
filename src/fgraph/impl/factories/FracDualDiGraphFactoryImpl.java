@@ -36,7 +36,7 @@ public class FracDualDiGraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new FracDiNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new FracDualGraphImpl(ordinal);
+            return new FracDualGraphImpl(this, ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

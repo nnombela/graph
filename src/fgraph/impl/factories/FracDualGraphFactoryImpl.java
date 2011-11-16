@@ -37,7 +37,7 @@ public class FracDualGraphFactoryImpl extends GraphFactory {
         } else if (type == GraphObject.Type.node) {
             return new FracNodeImpl();
         } else if (type == GraphObject.Type.graph) {
-            return new FracDualGraphImpl(ordinal);
+            return new FracDualGraphImpl(this, ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

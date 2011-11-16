@@ -20,13 +20,13 @@ public class FracGraphImpl extends GraphImpl {
         return GraphFactory.get("fractal-graph");
     }
 
-    public FracGraphImpl(int ordinal) {
-        super(new NodesImpl());
+    public FracGraphImpl(GraphFactory factory, int ordinal) {
+        super(factory, new NodesImpl());
         this.ordinal = ordinal;
     }
 
-    public FracGraphImpl(Nodes nodes, int ordinal) {
-        super(nodes);
+    public FracGraphImpl(GraphFactory factory, Nodes nodes, int ordinal) {
+        super(factory, nodes);
         this.ordinal = ordinal;
     }
 

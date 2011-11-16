@@ -14,17 +14,6 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return owner.factory();
     }
 
-//    public int index() {
-//        switch (type()) {
-//            case link: return links().index((Link)this);
-//            case links: return ((Links)this).direction().ordinal();
-//            case node: return nodes().index((Node) this);
-//            case nodes: return ((Nodes)this).duality().ordinal();
-//            case graph: return ordinal();
-//        }
-//        throw new RuntimeException();
-//    }
-
     public String label() {
         StringBuilder buffer = new StringBuilder();
         if (owner != null) {

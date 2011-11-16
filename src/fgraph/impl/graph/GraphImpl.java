@@ -11,13 +11,15 @@ import java.util.Set;
  * Date: 2/06/11
  */
 public class GraphImpl extends GraphObjectAbstract implements Graph {
+    protected GraphFactory factory;
     protected Nodes nodes;
 
-    public GraphImpl() {
-        this(new NodesImpl());
+    public GraphImpl(GraphFactory factory) {
+        this(factory, new NodesImpl());
     }
 
-    public GraphImpl(Nodes nodes) {
+    public GraphImpl(GraphFactory factory, Nodes nodes) {
+        this.factory = factory;
         this.nodes = nodes;
         ((GraphObjectAbstract)nodes).setOwner(this);
     }
@@ -28,7 +30,7 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
 
     @Override
     public GraphFactory factory() {
-        return GraphFactory.get("graph");
+        return factory;
     }
 
     @Override
