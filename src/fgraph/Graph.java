@@ -15,9 +15,8 @@ public interface Graph extends GraphObject {
 
     // --- Fractal
     Node bind(Graph graph);
+    Node bind(Graph graph, Node.Duality duality, Link.Direction direction);
     void unbind(Graph graph);
 
     Node up();
-    Graph next();
-    Set<Graph> before();
 }

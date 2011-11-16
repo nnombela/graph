@@ -13,9 +13,10 @@ public interface Link extends GraphObject {
     void bind(Link link);
     void unbind(Link link);
 
-    Node adjacent();
-    Links belongsTo();
+    Node to();
+    Node node();
 
+    Links belongsTo();
     Link pair();
 
     // ---- Direction

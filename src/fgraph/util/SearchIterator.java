@@ -21,7 +21,7 @@ public class SearchIterator implements Nodes.Iterator {
     Type type;
 
     public SearchIterator(Node root, Type type) {
-        Nodes nodes = (type == Type.BFS_1 || type == Type.DFS_1)? root.graph().nodes() : root.nodes();
+        Nodes nodes = (type == Type.BFS_1 || type == Type.DFS_1)? root.graph().nodes() : root.belongsTo();
         this.visited = nodes.accessor();
         this.closure = createClosure(type);
         this.type = type;
@@ -53,7 +53,7 @@ public class SearchIterator implements Nodes.Iterator {
         if (hasNext()) {
             current = stack.removeFirst();
             ++index;
-            current.nodes().forEach(closure);
+            current.belongsTo().forEach(closure);
             return current;
         }
         throw new NoSuchElementException();
@@ -73,7 +73,7 @@ public class SearchIterator implements Nodes.Iterator {
 
     protected abstract class Closure implements Links.Closure, Nodes.Closure {
         public void execute(Link link) {
-            Node node = link.adjacent();
+            Node node = link.to();
 
             if (node != null && visited.get(node) == null) {
                 visited.set(node, true);
@@ -101,7 +101,7 @@ public class SearchIterator implements Nodes.Iterator {
     protected Closure get2ndClosure(final Closure closure) {
         return new Closure() {
             public void execute(Node node) {
-                node.nodes().forEach(closure);
+                node.belongsTo().forEach(closure);
             }
         };
     }

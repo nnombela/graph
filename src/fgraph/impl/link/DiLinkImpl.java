@@ -1,5 +1,6 @@
 package fgraph.impl.link;
 
+import fgraph.GraphFactory;
 import fgraph.Link;
 
 /**
@@ -9,6 +10,11 @@ import fgraph.Link;
  */
 public class DiLinkImpl extends LinkImpl {
     protected LinkImpl reverse;
+
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("directed-graph");
+    }
 
     @Override
     public void bind(Link link) {

@@ -4,11 +4,9 @@ import fgraph.*;
 import fgraph.impl.GraphObjectAbstract;
 
 /**
- * Created by IntelliJ IDEA.
- * User: nnombela
+ * This class models...
+ * Author: nnombela@gmail.com
  * Date: 28/05/11
- * Time: 19:11
- * To change this template use File | Settings | File Templates.
  */
 public abstract class LinksAbstract extends GraphObjectAbstract implements Links {
 
@@ -28,16 +26,14 @@ public abstract class LinksAbstract extends GraphObjectAbstract implements Links
     @Override
     public Link.Direction direction() {
         Node node = belongsTo();
-        Links outs = node.links(Link.Direction.out);
-        Links ins = node.links(Link.Direction.in);
-        return (this == outs)? Link.Direction.out : (this == ins)? Link.Direction.in : Link.Direction.none;
+        return (this == node.links(Link.Direction.out))? Link.Direction.out :
+                (this == node.links(Link.Direction.in))? Link.Direction.in : Link.Direction.none;
     }
 
     public Links reverse() {
         Node node = belongsTo();
-        Links outs = node.links(Link.Direction.out);
-        Links ins = node.links(Link.Direction.in);
-        return (this == outs)? ins :  (this == ins)? outs : this;
+        return (this == node.links(Link.Direction.out))? node.links(Link.Direction.in) :
+                (this == node.links(Link.Direction.in))? node.links(Link.Direction.out) : this;
     }
 
     @Override

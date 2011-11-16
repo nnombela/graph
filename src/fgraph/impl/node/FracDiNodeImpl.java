@@ -21,7 +21,7 @@ public class FracDiNodeImpl extends FracNodeImpl {
 
     @Override
     public GraphFactory factory() {
-        return GraphFactory.get("directed-graph");
+        return GraphFactory.get("fractal-directed-graph");
     }
 
     @Override

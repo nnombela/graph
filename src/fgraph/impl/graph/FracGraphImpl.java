@@ -39,24 +39,14 @@ public class FracGraphImpl extends GraphImpl {
         return up;
     }
 
-    @Override
-    public Graph next() {
-        return up.graph();
+    public void setUp(Node up) {
+        if (this.up != null) {
+            this.up = up;
+        } else {
+            throw new RuntimeException("Invalid Operation");
+        }
     }
 
-    @Override
-    public Set<Graph> before() {
-        final Set<Graph> graphs = new HashSet<Graph>();
-
-        nodes().forEach(new Nodes.Closure() {
-            public void execute(Node g) {
-                if (g.down() != null) {
-                    graphs.add(g.down().graph());
-                }
-            }
-        });
-        return graphs;
-    }
 
     public int ordinal() {
         return ordinal;

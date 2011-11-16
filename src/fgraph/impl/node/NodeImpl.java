@@ -34,6 +34,11 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
         return Type.node;
     }
 
+    @Override
+    public Graph graph() {
+        return belongsTo().belongsTo();
+    }
+
     public Nodes belongsTo() {
         return (Nodes)owner;
     }
@@ -51,12 +56,28 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
 
     @Override
     public Link bind(Node node) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return bind(node, Link.Direction.out);
     }
 
     @Override
-    public void unbind(Node node) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public Link bind(Node node, Link.Direction direction) {
+        Link link = links(direction).addNew();
+        link.bind(node.links(direction.reverse()).addNew());
+        return link;
+    }
+
+    @Override
+    public void unbind(final Node node) {
+        Link link = links().find(new Links.Condition() {
+            public boolean check(Link g) {
+               return g.to() == node;
+            }
+        });
+        if (link != null) {
+            link.unbind(link.pair());
+        } else {
+            throw new RuntimeException("Invalid Operation");
+        }
     }
 
     @Override
@@ -66,7 +87,7 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
 
     @Override
     public Node inverse() {
-        return links.inverse().belongsTo();
+        return up() != null && up().pair() != null? up().pair().down() : null;
     }
 
     @Override

@@ -6,6 +6,7 @@ package fgraph;
  * Date: 3/01/11
  */
 public interface Node extends GraphObject {
+    Graph graph();
     Nodes belongsTo();
     Links links();
 
@@ -13,6 +14,7 @@ public interface Node extends GraphObject {
     void unbind(Node node);
 
     // ---- Direction
+    Link bind(Node node, Link.Direction direction);
 
     Links links(Link.Direction direction);
 

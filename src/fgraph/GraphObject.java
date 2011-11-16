@@ -26,12 +26,5 @@ public interface GraphObject {
     GraphObject belongsTo(Type type);
     //void setOwner(GraphObject owner);
 
-    // convenient method for belongsTo(Type)
-    Graph graph();
-    Nodes nodes();
-    Node node();
-    Links links();
-    Link link();
-
     int ordinal();
 }

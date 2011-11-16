@@ -1,4 +1,5 @@
 package fgraph.impl.link;
+import fgraph.GraphFactory;
 import fgraph.Link;
 import fgraph.Node;
 
@@ -10,6 +11,11 @@ import fgraph.Node;
 public class FracLinkImpl extends LinkImpl {
     protected LinkImpl inverse;
     protected Node down;
+
+    @Override
+    public GraphFactory factory() {
+        return GraphFactory.get("fractal-graph");
+    }
 
     @Override
     public void bind(Link link) {
@@ -51,5 +57,13 @@ public class FracLinkImpl extends LinkImpl {
 
     public Node down() {
         return down;
+    }
+
+    public void setDown(Node down) {
+        if (this.down != null) {
+            this.down = down;
+        } else {
+            throw new RuntimeException("Invalid Operation");
+        }
     }
 }

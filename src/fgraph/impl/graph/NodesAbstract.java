@@ -19,7 +19,7 @@ public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes
     }
 
     public Node.Duality duality() {
-        Graph graph = graph();
+        Graph graph = belongsTo();
         Nodes vertices = graph.nodes(Node.Duality.hvert);
         Nodes edges = graph.nodes(Node.Duality.hedge);
 
@@ -27,7 +27,7 @@ public abstract class NodesAbstract extends GraphObjectAbstract implements Nodes
     }
 
     public Nodes dual() {
-        Graph graph = graph();
+        Graph graph = belongsTo();
         Nodes vertices = graph.nodes(Node.Duality.hvert);
         Nodes edges = graph.nodes(Node.Duality.hedge);
 

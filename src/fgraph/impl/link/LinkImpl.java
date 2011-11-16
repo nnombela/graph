@@ -25,7 +25,7 @@ public class LinkImpl extends GraphObjectAbstract implements Link {
         super.free();
     }
 
-    public Node adjacent() {
+    public Node to() {
         return pair.node();
     }
 
@@ -47,7 +47,7 @@ public class LinkImpl extends GraphObjectAbstract implements Link {
 
     @Override
     public void bind(Link link) {
-        if (graph() == link.graph()) {
+        if (belongsTo(Type.graph) == link.belongsTo(Type.graph)) {
             bind(Binding.pair, (LinkImpl)link);
         } else {
             throw new RuntimeException("Invalid Operation");
@@ -134,7 +134,7 @@ public class LinkImpl extends GraphObjectAbstract implements Link {
     }
 
     public int index() {
-        return links().index(this);
+        return belongsTo().index(this);
     }
 
 }

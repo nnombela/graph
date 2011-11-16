@@ -50,6 +50,11 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
     }
 
     @Override
+    public Node bind(Graph graph, Node.Duality duality, Link.Direction direction) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public void unbind(Graph graph) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -58,15 +63,7 @@ public class GraphImpl extends GraphObjectAbstract implements Graph {
         return null;
     }
 
-    @Override
-    public Graph next() {
-        return null;
-    }
 
-    @Override
-    public Set<Graph> before() {
-        return null;
-    }
 
     public int ordinal() {
         return 0;

@@ -61,26 +61,6 @@ public abstract class GraphObjectAbstract implements GraphObject {
         return this.type() == type? this : owner.belongsTo(type);
     }
 
-    public Graph graph() {
-        return (Graph) belongsTo(Type.graph);
-    }
-
-    public Nodes nodes() {
-        return (Nodes) belongsTo(Type.nodes);
-    }
-
-    public Node node() {
-        return (Node) belongsTo(Type.node);
-    }
-
-    public Links links() {
-        return (Links) belongsTo(Type.links);
-    }
-
-    public Link link() {
-        return (Link) belongsTo(Type.link);
-    }
-
     public int ordinal() {
         return owner !=null? owner.ordinal() : -1;
     }

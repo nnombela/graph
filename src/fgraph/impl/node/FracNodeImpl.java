@@ -31,14 +31,42 @@ public class FracNodeImpl extends NodeImpl {
         super.free();
     }
 
-    @Override
-    public Graph down() {
-        return down;
+
+
+        @Override
+    public Link bind(Node node) {
+        if (graph() != node.graph()) {
+
+            return null;
+            // TODO
+        } else {
+            return super.bind(node);
+        }
     }
 
     @Override
-    public Link up() {
-        return up;
+    public void unbind(final Node node) {
+        if (graph() == node.graph()) {
+            // TODO
+        } else {
+            super.unbind(node);
+        }
+    }
+
+    public void setDown(Graph down) {
+        if (this.down != null) {
+            this.down = down;
+        } else {
+            throw new RuntimeException("Invalid Operation");
+        }
+    }
+
+    public void setUp(Link up) {
+        if (this.up != null) {
+            this.up = up;
+        } else {
+            throw new RuntimeException("Invalid Operation");
+        }
     }
 
 }
