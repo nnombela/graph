@@ -29,13 +29,13 @@ public class DiGraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public GraphObject create(GraphObject.Type type, int ordinal) {
+    public GraphObject create(GraphObject.Type type, String label, int ordinal) {
         if (type == GraphObject.Type.link) {
-            return new DiLinkImpl();
+            return new DiLinkImpl(label);
         } else if (type == GraphObject.Type.node) {
-            return new DiNodeImpl();
+            return new DiNodeImpl(label);
         } else if (type == GraphObject.Type.graph) {
-            return new GraphImpl(this);
+            return new GraphImpl(label, this);
         }
         throw new RuntimeException("Unknown type " + type);
     }

@@ -8,8 +8,9 @@ import fgraph.*;
  * Date: 2/06/11
  */
 public class DiNodeImpl extends NodeImpl {
-    public DiNodeImpl() {
-        super(new DuoLinksImpl());
+
+    public DiNodeImpl(String label) {
+        super(label, new DuoLinksImpl());
     }
 
     @Override

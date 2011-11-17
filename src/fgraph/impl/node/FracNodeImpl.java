@@ -16,12 +16,12 @@ public class FracNodeImpl extends NodeImpl {
         return GraphFactory.get("fractal-graph");
     }
 
-    public FracNodeImpl() {
-        this(new LinksImpl());
+    public FracNodeImpl(String label) {
+        this(label, new LinksImpl());
     }
 
-    public FracNodeImpl(Links links) {
-        super(links);
+    public FracNodeImpl(String label, Links links) {
+        super(label, links);
     }
 
 

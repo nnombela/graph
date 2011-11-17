@@ -16,10 +16,7 @@ public abstract class GraphObjectAbstract implements GraphObject {
 
     public String label() {
         StringBuilder buffer = new StringBuilder();
-        if (owner != null) {
-            buffer.append('[').append(owner.label()).append("]:");
-        }
-        buffer.append(type().name()).append(':').append(index());
+        buffer.append(type()).append(":").append(hashCode());
         return buffer.toString();
     }
 
@@ -51,7 +48,7 @@ public abstract class GraphObjectAbstract implements GraphObject {
     }
 
     public int ordinal() {
-        return owner !=null? owner.ordinal() : -1;
+        return owner != null? owner.ordinal() : -1;
     }
 
 }

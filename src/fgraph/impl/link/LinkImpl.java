@@ -10,6 +10,15 @@ import fgraph.impl.GraphObjectAbstract;
  */
 public class LinkImpl extends GraphObjectAbstract implements Link {
     protected LinkImpl pair;
+    protected String label;
+
+    public LinkImpl(String label) {
+        this.label = label != null? label : super.label();
+    }
+
+    public String label() {
+        return label;
+    }
 
     public Type type() {
         return Type.link;
@@ -61,6 +70,11 @@ public class LinkImpl extends GraphObjectAbstract implements Link {
         } else {
             throw new RuntimeException("Invalid Operation");
         }
+    }
+
+    @Override
+    public void unbind() {
+        unbind(Binding.pair, (LinkImpl)pair());
     }
 
     // --------- Helper methods to bind/unbind

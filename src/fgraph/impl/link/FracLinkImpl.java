@@ -12,6 +12,10 @@ public class FracLinkImpl extends LinkImpl {
     protected LinkImpl inverse;
     protected Node down;
 
+    public FracLinkImpl(String label) {
+        super(label);
+    }
+
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("fractal-graph");

@@ -9,13 +9,8 @@ import fgraph.*;
  */
 public class DualGraphImpl extends GraphImpl {
 
-    public DualGraphImpl(GraphFactory factory) {
-        super(factory, new DuoNodesImpl());
-    }
-
-    @Override
-    public GraphFactory factory() {
-        return GraphFactory.get("dual-graph");
+    public DualGraphImpl(String label, GraphFactory factory) {
+        super(label, factory, new DuoNodesImpl());
     }
 
     public Nodes nodes(Node.Duality duality) {

@@ -11,6 +11,10 @@ import fgraph.Link;
 public class DiLinkImpl extends LinkImpl {
     protected LinkImpl reverse;
 
+    public DiLinkImpl(String label) {
+        super(label);
+    }
+
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("directed-graph");

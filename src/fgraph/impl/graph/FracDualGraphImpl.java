@@ -11,17 +11,12 @@ import fgraph.Nodes;
  */
 public class FracDualGraphImpl extends FracGraphImpl {
 
-    public FracDualGraphImpl(GraphFactory factory, int ordinal) {
-        this(factory, new DuoNodesImpl(), ordinal);
+    public FracDualGraphImpl(String label, GraphFactory factory, int ordinal) {
+        this(label, factory, new DuoNodesImpl(), ordinal);
     }
 
-    public FracDualGraphImpl(GraphFactory factory, Nodes nodes, int ordinal) {
-        super(factory, nodes, ordinal);
-    }
-
-    @Override
-    public GraphFactory factory() {
-        return GraphFactory.get("fractal-dual-graph");
+    public FracDualGraphImpl(String label, GraphFactory factory, Nodes nodes, int ordinal) {
+        super(label, factory, nodes, ordinal);
     }
 
     public Nodes nodes(Node.Duality duality) {

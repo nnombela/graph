@@ -12,6 +12,7 @@ package fgraph;
 public interface Link extends GraphObject {
     void bind(Link link);
     void unbind(Link link);
+    void unbind();
 
     Node to();
     Node node();

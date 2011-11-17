@@ -11,12 +11,12 @@ import fgraph.Links;
  */
 public class FracDiNodeImpl extends FracNodeImpl {
 
-    public FracDiNodeImpl() {
-        this(new DuoLinksImpl());
+    public FracDiNodeImpl(String label) {
+        this(label, new DuoLinksImpl());
     }
 
-    public FracDiNodeImpl(Links links) {
-        super(links);
+    public FracDiNodeImpl(String label, Links links) {
+        super(label, links);
     }
 
     @Override

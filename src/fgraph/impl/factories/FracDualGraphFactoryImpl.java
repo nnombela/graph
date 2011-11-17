@@ -19,7 +19,6 @@ public class FracDualGraphFactoryImpl extends GraphFactory {
         register(new FracDualGraphFactoryImpl());
     }
 
-
     @Override
     public Set<Family> families() {
         return asSet(new Family[] { Family.fractal, Family.dual });
@@ -30,14 +29,13 @@ public class FracDualGraphFactoryImpl extends GraphFactory {
         return "fractal-dual-graph";
     }
 
-    @Override
-    public GraphObject create(GraphObject.Type type, int ordinal) {
+    public GraphObject create(GraphObject.Type type, String label, int ordinal) {
         if (type == GraphObject.Type.link) {
-            return new FracLinkImpl();
+            return new FracLinkImpl(label);
         } else if (type == GraphObject.Type.node) {
-            return new FracNodeImpl();
+            return new FracNodeImpl(label);
         } else if (type == GraphObject.Type.graph) {
-            return new FracDualGraphImpl(this, ordinal);
+            return new FracDualGraphImpl(label, this, ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

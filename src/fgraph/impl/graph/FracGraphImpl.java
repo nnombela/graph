@@ -15,20 +15,16 @@ public class FracGraphImpl extends GraphImpl {
     protected Node up;
     protected int ordinal;
 
-    @Override
-    public GraphFactory factory() {
-        return GraphFactory.get("fractal-graph");
-    }
-
-    public FracGraphImpl(GraphFactory factory, int ordinal) {
-        super(factory, new NodesImpl());
+    public FracGraphImpl(String label, GraphFactory factory, int ordinal) {
+        super(label, factory, new NodesImpl());
         this.ordinal = ordinal;
     }
 
-    public FracGraphImpl(GraphFactory factory, Nodes nodes, int ordinal) {
-        super(factory, nodes);
+    public FracGraphImpl(String label, GraphFactory factory, Nodes nodes, int ordinal) {
+        super(label, factory, nodes);
         this.ordinal = ordinal;
     }
+
 
     public void free() {
         GraphObjectAbstract.free(up);

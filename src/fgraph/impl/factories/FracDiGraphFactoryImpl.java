@@ -30,13 +30,13 @@ public class FracDiGraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public GraphObject create(GraphObject.Type type, int ordinal) {
+    public GraphObject create(GraphObject.Type type, String label, int ordinal) {
         if (type == GraphObject.Type.link) {
-            return new FracDiLinkImpl();
+            return new FracDiLinkImpl(label);
         } else if (type == GraphObject.Type.node) {
-            return new FracDiNodeImpl();
+            return new FracDiNodeImpl(label);
         } else if (type == GraphObject.Type.graph) {
-            return new FracGraphImpl(this, ordinal);
+            return new FracGraphImpl(label, this, ordinal);
         }
         throw new RuntimeException("Unknown type " + type);
     }

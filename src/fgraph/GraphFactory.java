@@ -1,7 +1,6 @@
 package fgraph;
 
-import org.omg.IOP.CodecPackage.FormatMismatch;
-
+import fgraph.impl.factories.*;
 import java.util.*;
 
 /**
@@ -10,6 +9,16 @@ import java.util.*;
  * Date: 5/01/11
  */
 public abstract class GraphFactory {
+    static {
+        register(new DiGraphFactoryImpl());
+        register(new DualDiGraphFactoryImpl());
+        register(new DualGraphFactoryImpl());
+        register(new FracDiGraphFactoryImpl());
+        register(new FracDualDiGraphFactoryImpl());
+        register(new FracDualGraphFactoryImpl());
+        register(new GraphFactoryImpl());
+    }
+
     public enum Family {
         directed, dual, fractal;
 
@@ -28,8 +37,8 @@ public abstract class GraphFactory {
         return factories.get(name);
     }
 
-    public static boolean has(GraphFactory factory, Family family) {
-        for (Family f : factory.families()) {
+    public boolean has(Family family) {
+        for (Family f : families()) {
             if (f == family) {
                 return true;
             }
@@ -68,5 +77,17 @@ public abstract class GraphFactory {
 
     public abstract String name();
 
-    public abstract GraphObject create(GraphObject.Type type, int ordinal);
+    public abstract GraphObject create(GraphObject.Type type, String label, int ordinal);
+
+    public GraphObject create(GraphObject.Type type, String label) {
+        return create(type, label, 0);
+    }
+
+    public GraphObject create(GraphObject.Type type, int ordinal) {
+        return create(type, null, ordinal);
+    }
+
+    public GraphObject create(GraphObject.Type type) {
+        return create(type, null, 0);
+    }
 }

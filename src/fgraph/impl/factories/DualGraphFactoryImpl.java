@@ -31,13 +31,13 @@ public class DualGraphFactoryImpl extends GraphFactory {
     }
 
     @Override
-    public GraphObject create(GraphObject.Type type, int ordinal) {
+    public GraphObject create(GraphObject.Type type, String label, int ordinal) {
         if (type == GraphObject.Type.link) {
-            return new LinkImpl();
+            return new LinkImpl(label);
         } else if (type == GraphObject.Type.node) {
-            return new NodeImpl();
+            return new NodeImpl(label);
         } else if (type == GraphObject.Type.graph) {
-            return new DualGraphImpl(this);
+            return new DualGraphImpl(label, this);
         }
         throw new RuntimeException("Unknown type " + type);
     }

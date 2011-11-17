@@ -13,6 +13,10 @@ public class FracDiLinkImpl extends DiLinkImpl {
     protected LinkImpl inverse;
     protected Node down;
 
+    public FracDiLinkImpl(String label) {
+        super(label);
+    }
+
     @Override
     public GraphFactory factory() {
         return GraphFactory.get("fractal-directed-graph");

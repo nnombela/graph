@@ -10,6 +10,21 @@ import fgraph.impl.GraphObjectAbstract;
  */
 public class NodeImpl extends GraphObjectAbstract implements Node {
     protected Links links;
+    protected String label;
+
+    public NodeImpl(String label) {
+        this(label, new LinksImpl());
+    }
+
+    public NodeImpl(String label, Links links) {
+        this.label = label != null? label : super.label();
+        this.links = links;
+        ((GraphObjectAbstract)links).setOwner(this);
+    }
+
+    public String label() {
+        return label;
+    }
 
     @Override
     public GraphFactory factory() {
@@ -19,15 +34,6 @@ public class NodeImpl extends GraphObjectAbstract implements Node {
     @Override
     public int index() {
         return belongsTo().index(this);
-    }
-
-    public NodeImpl() {
-        this(new LinksImpl());
-    }
-
-    public NodeImpl(Links links) {
-        this.links = links;
-        ((GraphObjectAbstract)links).setOwner(this);
     }
 
     public Type type() {

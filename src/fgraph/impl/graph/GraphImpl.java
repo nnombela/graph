@@ -3,7 +3,6 @@ package fgraph.impl.graph;
 import fgraph.*;
 import fgraph.impl.GraphObjectAbstract;
 
-import java.util.Set;
 
 /**
  * This class models...
@@ -13,15 +12,21 @@ import java.util.Set;
 public class GraphImpl extends GraphObjectAbstract implements Graph {
     protected GraphFactory factory;
     protected Nodes nodes;
+    protected String label;
 
-    public GraphImpl(GraphFactory factory) {
-        this(factory, new NodesImpl());
+    public GraphImpl(String label, GraphFactory factory) {
+        this(label, factory, new NodesImpl());
     }
 
-    public GraphImpl(GraphFactory factory, Nodes nodes) {
+    public GraphImpl(String label, GraphFactory factory, Nodes nodes) {
+        this.label = label != null? label : super.label();
         this.factory = factory;
         this.nodes = nodes;
         ((GraphObjectAbstract)nodes).setOwner(this);
+    }
+
+    public String label() {
+        return label;
     }
 
     public Type type() {
