@@ -16,6 +16,13 @@ public class NodesImpl extends NodesAbstract {
         return objs[index];
     }
 
+    @Override
+    public Node[] toArray() {
+        Node[] array = new Node[size];
+        System.arraycopy(objs, 0, array, 0, size);
+        return array;
+    }
+
     protected void set(Node g, int index) {
         objs[index] = g;
     }

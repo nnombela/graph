@@ -35,6 +35,8 @@ public interface Nodes extends GraphObject {
 
     Accessor accessor();
 
+    Node[] toArray();
+
     void forEach(Closure closure);
 
     Node find(Condition condition);

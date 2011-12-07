@@ -20,6 +20,13 @@ public class DuoLinksImpl extends LinksAbstract {
         containers[0].setOwner(owner);
         containers[1].setOwner(owner);
     }
+    @Override
+    public Link[] toArray() {
+        Link[] array = new Link[containers[0].size() + containers[1].size()];
+        System.arraycopy(containers[0].toArray(), 0, array, 0, containers[0].size());
+        System.arraycopy(containers[1].toArray(), 0, array, containers[0].size(), containers[1].size());
+        return array;
+    }
 
     public Link get(int index) {
         int size0 = containers[0].size();

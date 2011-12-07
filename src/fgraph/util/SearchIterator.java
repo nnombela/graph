@@ -21,10 +21,11 @@ public class SearchIterator implements Nodes.Iterator {
     Type type;
 
     public SearchIterator(Node root, Type type) {
-        Nodes nodes = (type == Type.BFS_1 || type == Type.DFS_1)? root.graph().nodes() : root.belongsTo();
-        this.visited = nodes.accessor();
         this.closure = createClosure(type);
         this.type = type;
+
+        Nodes nodes = (type == Type.BFS_1 || type == Type.DFS_1)? root.graph().nodes() : root.belongsTo();
+        this.visited = nodes.accessor();
 
         visited.set(root, true);
         stack.addLast(root);

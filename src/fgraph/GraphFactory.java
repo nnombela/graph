@@ -37,13 +37,8 @@ public abstract class GraphFactory {
         return factories.get(name);
     }
 
-    public boolean has(Family family) {
-        for (Family f : families()) {
-            if (f == family) {
-                return true;
-            }
-        }
-        return false;
+    public boolean contains(Family family) {
+        return families().contains(family);
     }
 
     public static Set<Family> asSet(Family[] families) {

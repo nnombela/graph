@@ -27,6 +27,14 @@ public class DuoNodesImpl extends NodesAbstract {
         return index < size0? containers[0].get(index) : containers[1].get(index - size0);
     }
 
+    @Override
+    public Node[] toArray() {
+        Node[] array = new Node[containers[0].size() + containers[1].size()];
+        System.arraycopy(containers[0].toArray(), 0, array, 0, containers[0].size());
+        System.arraycopy(containers[1].toArray(), 0, array, containers[0].size(), containers[1].size());
+        return array;
+    }
+
     public int size() {
         return containers[0].size() + containers[1].size();
     }

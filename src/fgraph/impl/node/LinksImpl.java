@@ -17,6 +17,13 @@ public class LinksImpl extends LinksAbstract {
         return objs[index];
     }
 
+    @Override
+    public Link[] toArray() {
+        Link[] array = new Link[size];
+        System.arraycopy(objs, 0, array, 0, size);
+        return array;
+    }
+
     protected void set(Link g, int index) {
         objs[index] = g;
     }

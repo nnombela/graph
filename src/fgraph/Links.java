@@ -34,6 +34,8 @@ public interface Links extends GraphObject {
 
     Accessor accessor();
 
+    Link[] toArray();
+
     void forEach(Closure closure);
 
     Link find(Condition condition);
